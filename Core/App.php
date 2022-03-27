@@ -8,7 +8,7 @@ class App {
 
         //get controller Home/Show/1
         if (isset($arr[0])){
-            if (file_exists("./Controllers/{$arr[0]}.php")) {
+            if (file_exists("./Controllers/$arr[0].php")) {
                 $this->controller = ucfirst($arr[0]);
             } else {
                 Error();
@@ -16,7 +16,7 @@ class App {
             }
             unset($arr[0]);
         }
-        require_once "./Controllers/{$this->controller}.php";
+        require_once "./Controllers/$this->controller.php";
         $this->controller = new $this->controller;
         //get action 
         if (isset($arr[1])) {
