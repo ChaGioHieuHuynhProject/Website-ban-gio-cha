@@ -6,7 +6,7 @@
             ]);
         } else {
             $accModel = $this->model("AccountModel");
-            $acc = $accModel->getUser($_POST["username"]);
+            $acc = $accModel->getAccountByUserName($_POST["username"]);
             if (!is_null($acc)) {
                 $pepper = $_ENV["pepper"];
                 $pwd = $_POST["password"];
