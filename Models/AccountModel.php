@@ -9,13 +9,21 @@
         }
         return $accList;
     }
-    function getAccount($id) {
+    function getAccountById($id) {
         $result = $this->con->query("SELECT * FROM accounts WHERE id = $id");
         if ($result) return $result->fetch_assoc();
         return null;
     }
-    function isAnAccount() {
-        
+    function getAccountByUserName($username) {
+        $result = $this->con->query("SELECT * FROM accounts WHERE id = $username");
+        if ($result) return $result->fetch_assoc();
+        return null;
+    }
+    function isExistedAccount($username) {
+        if (is_null($this->getAccountByUserName($username))) {
+            return false;
+        };
+        return true;
     }
     
 }
