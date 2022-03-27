@@ -5,7 +5,7 @@
 
             }
             case "delete": {
-                $this->con->query("DELETE FROM products where id={$id}");
+                $this->con->query("DELETE FROM products where id=$id");
             }
         }
     }
