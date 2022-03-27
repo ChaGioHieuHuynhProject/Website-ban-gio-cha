@@ -8,7 +8,7 @@
         return $productList;
     }
     function getProduct($id) {
-        $result = $this->con->query("SELECT * FROM products WHERE id={$id}");
+        $result = $this->con->query("SELECT * FROM products WHERE id=$id");
         return $result->fetch_assoc();
     }
 } 
