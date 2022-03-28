@@ -22,7 +22,7 @@
             return $this->con->query($sql);
         }
 
-        function updateContact($id,$address, $phone, $email){
+        function updateContact($id, $address, $phone, $email){
             $sql = "UPDATE contacts SET address = '$address', phone ='$phone', email ='$email' WHERE id = {$id}";
             return $this->con->query($sql);
         }

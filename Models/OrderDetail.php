@@ -19,7 +19,7 @@
             return $orderDetailList;
         }
 
-        function getOrderDetailById($id)
+        function getOrderDetailById($orderId)
         {
             $result = $this->con->query(
                 "SELECT name, phoneNumber, address, email, products.name, quantity, price FROM customers 
@@ -29,7 +29,7 @@
                     ON orders.id = orderDetails
                     LEFT JOIN products
                     ON orderDetails.productId = products.id
-                    WHERE orders.id = {$id} 
+                    WHERE orders.id = {$orderId} 
                     "
             );
             return $result->fetch_assoc();

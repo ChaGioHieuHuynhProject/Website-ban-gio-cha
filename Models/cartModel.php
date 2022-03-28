@@ -1,7 +1,7 @@
 <?php 
     class cartModel extends Model {
         
-        function getCartListByCustomerId($id){
+        function getCartListByCustomerId($customerId){
             $results = $this->con->query(
                 "SELECT link, name, price
                 FROM carts
@@ -11,7 +11,7 @@
                 ON products.id = imgs.productId
                 LEFT JOIN customers
                 ON carts.cusId = customers.id
-                WHERE customers.id = {$id}
+                WHERE customers.id = {$customerId}
             ");
             $cartList = [];
             while ($row = $results->fetch_assoc()) {

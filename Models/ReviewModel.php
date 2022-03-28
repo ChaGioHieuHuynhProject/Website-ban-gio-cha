@@ -13,7 +13,7 @@
         function getReviewByProduct($productId)
         {
             $reviewList = [];
-            $results = $this->con->query("SELECT * FROM reviews WHERE productId={$productId}");
+            $results = $this->con->query("SELECT * FROM reviews LEFT JOIN products ON reviews.productId = products.id WHERE productId={$productId}");
             while ($row = $results->fetch_assoc()) {
                 array_push($reviewList, $row);
             }
