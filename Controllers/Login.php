@@ -2,29 +2,27 @@
     function Index() {
         if (!isset($_POST["login"])) {
             $this->view("MainLayout", [
-                "page"=>"Login"
+                "page"=>"login"
             ]);
         } else {
             $accModel = $this->model("AccountModel");
-            $acc = $accModel->getAccountByUserName($_POST["username"]);
+            $acc = $accModel->getAccountByPhoneNumber($_POST["phone-number"]);
             if (!is_null($acc)) {
                 $pepper = $_ENV["pepper"];
                 $pwd = $_POST["password"];
                 $pepperedPwd = hash_hmac('sha256', $pwd, $pepper);
-                if (password_verify($pepperedPwd, $acc["password"])) {
+                if (password_verify($pepperedPwd, $acc['password'])) {
                     session_start();
-                    $_SESSION["cusID"] = $acc["cusId"];
-                    header("Location: Home");
+                    $_SESSION["cusID"] = $acc["id"];
+                    return header("Location: Home");
                 }
-                else {
-                    $message = "Password incorect! Please try again!";
-                }
+                $message = "Sai mật khẩu! Vui lòng thử lại!";
             } else {
-                $message = "Username is not existed!";
+                $message = "Số điện thoại hiện chưa đăng kí tài khoản!";
             }
-            $this->view("MainLayout", [
-                "page"=>"Login",
-                "errorMessage"=>$message
+            return $this->view("MainLayout", [
+                "page"=>"login",
+                "message"=>$message
             ]);
         }
     }
