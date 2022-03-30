@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$data['page']?></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
         <section class="header">
             <!-- <div></div> -->
             <div class="header-logo">
-                <img class="header-logo__img" src="asset/img/Logo.png" alt="">
+                <img class="header-logo__img" src="Assets/img/Logo.png" alt="">
             </div>
             <ul class="header-menu">
                 <li><a href="homePage.php">TRANG CHỦ</a></li>
@@ -36,7 +37,7 @@
         <section class="footer">
             <div class="footer__top">
                 <div class="footer-logo">
-                    <img class="footer-logo__img" src="asset/img/Logo.png" alt="">
+                    <img class="footer-logo__img" src="Assets/img/Logo.png" alt="">
                 </div>
                 <div class="footer-contact">
                     <h3>CONTACT</h3>
@@ -53,10 +54,8 @@
                     <p>Giò chả Hiếu Huỳnh là một cơ sỏ sản xuất gia truyền hơn 30 năm. Đã được chứng nhận bởi OCOP. Tự hào là cơ sở sản xuất chất lượng. Đảm bảo, tự tin đem đến cho khách hàng những sản phẩm tốt nhất!</p>
                 </div>
             </div>
-            <div class="footer__bottom">© 2023 by cha gio Hieu & Huynh</div>
+            <div class="footer__bottom">© 2023 by <span><a href="https://www.passerellesnumeriques.org/en/our-actions/vietnam/"> Passerelles numériques Vietnam</a></span> students</div>
         </section>
     </footer>
 </body>
 </html>
-<link rel="stylesheet" href="./Assets/css/style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />

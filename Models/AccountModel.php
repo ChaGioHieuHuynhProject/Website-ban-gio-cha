@@ -28,6 +28,4 @@
     function addNewAccount($id, $password) {
         return $this->con->query("INSERT INTO accounts VALUES ($id, '$password')");
     }
-
-    
 }
