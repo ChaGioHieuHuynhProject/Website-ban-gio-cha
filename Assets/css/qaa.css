@@ -139,14 +139,11 @@ table {
 
 /*----------------------------Hạnh---------------------------------------------------*/
 
-<<<<<<< HEAD:Assets/css/QuestionAndAnswer.css
-=======
 * {
     font-family: 'Times New Roman', Times, serif;
     font-size: 30px;
 }
 
->>>>>>> 5e8bf480f47f4dc29f2dffed2b2c7e262f6d799b:Assets/css/qaa.css
 .h-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -155,10 +152,7 @@ table {
     margin: 9%;
     margin-bottom: 5%;
     margin-top: 2%;
-<<<<<<< HEAD:Assets/css/QuestionAndAnswer.css
-=======
     font-size: 125%;
->>>>>>> 5e8bf480f47f4dc29f2dffed2b2c7e262f6d799b:Assets/css/qaa.css
 }
 
 .h-img {
@@ -192,13 +186,8 @@ table {
 
 .h-accordion .h-label::before {
     content: '+';
-<<<<<<< HEAD:Assets/css/QuestionAndAnswer.css
-    position: absolute;
-    font-size: 25px;
-=======
     color: black;
     position: absolute;
->>>>>>> 5e8bf480f47f4dc29f2dffed2b2c7e262f6d799b:Assets/css/qaa.css
     top: 50%;
     right: -5px;
     transform: translateY(-50%);
@@ -216,8 +205,6 @@ table {
 }
 
 
-<<<<<<< HEAD:Assets/css/QuestionAndAnswer.css
-=======
 /* Adds a horizontal line between the contents */
 
 .h-accordion hr {
@@ -227,7 +214,6 @@ table {
 }
 
 
->>>>>>> 5e8bf480f47f4dc29f2dffed2b2c7e262f6d799b:Assets/css/qaa.css
 /* Unhides the content part when active. Sets the height */
 
 .h-accordion .h-container.h-active .h-text {
@@ -241,12 +227,4 @@ table {
 
 .h-accordion .h-container.h-active .h-label::before {
     content: '-';
-<<<<<<< HEAD:Assets/css/QuestionAndAnswer.css
-    font-size: 25px;
 }
-
-
-/* ----------------------------------- */
-=======
-}
->>>>>>> 5e8bf480f47f4dc29f2dffed2b2c7e262f6d799b:Assets/css/qaa.css
