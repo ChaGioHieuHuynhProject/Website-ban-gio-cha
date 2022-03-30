@@ -1,5 +1,5 @@
 <?php 
-    class cartModel extends Model {
+    class CartModel extends Model {
         
         function getCartListByCustomerId($customerId){
             $results = $this->con->query(
