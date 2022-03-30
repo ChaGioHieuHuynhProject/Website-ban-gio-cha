@@ -15,13 +15,13 @@
                 <img class="header-logo__img" src="Assets/img/Logo.png" alt="">
             </div>
             <ul class="header-menu">
-                <li><a href="homePage.php">TRANG CHỦ</a></li>
-                <li><a href="aboutUs.php">VỀ CHÚNG TÔI</a></li>
-                <li><a href="products.php">SẢN PHẨM</a></li>
-                <li><a href="stories.php">CÂU CHUYỆN</a></li>
-                <li><a href="review.php">ĐÁNH GIÁ</a></li>
-                <li><a href="qa.php">HỎI ĐÁP</a></li>
-                <li><a href="contact.php">LIÊN HỆ</a></li>
+                <li><a href="<?=Redirect("Index", "Home")?>">TRANG CHỦ</a></li>
+                <li><a href="<?=Redirect("Index", "AboutUs")?>">VỀ CHÚNG TÔI</a></li>
+                <li><a href="<?=Redirect("Index", "Product")?>">SẢN PHẨM</a></li>
+                <li><a href="<?=Redirect("Index", "Stories")?>">CÂU CHUYỆN</a></li>
+                <li><a href="<?=Redirect("Index", "Review")?>">ĐÁNH GIÁ</a></li>
+                <li><a href="<?=Redirect("Index", "QuestionAndAnswer")?>">HỎI ĐÁP</a></li>
+                <li><a href="<?=Redirect("Index", "Contact")?>">LIÊN HỆ</a></li>
             </ul>
             <div>
                 <div class="header__btn">
