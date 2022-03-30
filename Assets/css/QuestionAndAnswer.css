@@ -1,0 +1,219 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/*----------------------------Hạnh---------------------------------------------------*/
+
+.h-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1%;
+    text-align: center;
+    margin: 9%;
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+
+.h-img {
+    display: block;
+    max-width: 600px;
+    height: 700px;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+
+/* accordion */
+
+.h-accordion .h-container {
+    position: relative;
+    margin: 10px 10px;
+}
+
+
+/* Positions the labels relative to the .container. Adds padding to the top and bottom and increases font size. Also makes its cursor a pointer */
+
+.h-accordion .h-label {
+    position: relative;
+    padding: 10px 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+
+/* Positions the plus sign 5px from the right. Centers it using the transform property. */
+
+.h-accordion .h-label::before {
+    content: '+';
+    position: absolute;
+    font-size: 25px;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+}
+
+
+/* Hides the content (height: 0), decreases font size, justifies text and adds transition */
+
+.h-accordion .h-text {
+    background: white;
+    height: 0;
+    width: 580px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+
+/* Unhides the content part when active. Sets the height */
+
+.h-accordion .h-container.h-active .h-text {
+    height: auto;
+    background-color: #E9D3BC;
+    padding: 4%;
+}
+
+
+/* Changes from plus sign to negative sign once active */
+
+.h-accordion .h-container.h-active .h-label::before {
+    content: '-';
+    font-size: 25px;
+}
+
+
+/* ----------------------------------- */
