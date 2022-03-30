@@ -20,7 +20,7 @@
                 <li><a href="<?=Redirect("Index", "Product")?>">SẢN PHẨM</a></li>
                 <li><a href="<?=Redirect("Index", "Stories")?>">CÂU CHUYỆN</a></li>
                 <li><a href="<?=Redirect("Index", "Review")?>">ĐÁNH GIÁ</a></li>
-                <li><a href="<?=Redirect("Index", "QuestionAndAnswer")?>">HỎI ĐÁP</a></li>
+                <li><a href="<?=Redirect("Index", "Qaa")?>">HỎI ĐÁP</a></li>
                 <li><a href="<?=Redirect("Index", "Contact")?>">LIÊN HỆ</a></li>
             </ul>
             <div>
