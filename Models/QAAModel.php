@@ -1,34 +1,34 @@
 <?php
-    class AskAndAnswerModel extends Model{
+    class QAAModel extends Model{
 
-        function getAskAndAnswerList(){
+        function getQAAList(){
             $results = $this->con->query("SELECT * FROM QaA");
-            $askAndAnswerList = [];
+            $QAAList = [];
             while ($row = $results->fetch_assoc()) {
-                array_push($askAndAnswerList, $row);
+                array_push($QAAList, $row);
             }
-            return $askAndAnswerList;
+            return $QAAList;
         }
 
-        function getAskAndAnswerById($id){
+        function getQAAById($id){
             $result = $this->con->query("SELECT * FROM QaA WHERE id={$id}");
             return $result->fetch_assoc();
         }
 
-        function addAskAndAnswer($question, $answer){
+        function addQAA($question, $answer){
             $sql = "INSERT INTO reviews(question,answer) 
             VALUES('$question','$answer')";
-            return $this->con->query($sql);
+            $this->con->query($sql);
         }
 
-        function updateAskAndAnswer($id,$question, $answer){
+        function updateQAA($id,$question, $answer){
             $sql = "UPDATE QaA set question = '$question', answer = '$answer' where id={$id}";
-            return $this->con->query($sql);
+            $this->con->query($sql);
         }
 
-        function deleteAskAndAnswer($id){
+        function deleteQAA($id){
             $sql = "DELETE FROM QaA where id = $id";
-            return $this->con->query($sql);
+            $this->con->query($sql);
         }
     }
 ?>
