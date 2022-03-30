@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$data['page']?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/mainLayout.css" type="text/css">
 </head>
 <body>
     <header>
         <section class="header">
             <!-- <div></div> -->
             <div class="header-logo">
-                <img class="header-logo__img" src="Assets/img/Logo.png" alt="">
+                <img class="header-logo__img" src="<?=ROOT_URL?>Assets/img/Logo.png" alt="">
             </div>
             <ul class="header-menu">
                 <li><a href="<?=Redirect("Index", "Home")?>">TRANG CHỦ</a></li>
@@ -37,7 +38,7 @@
         <section class="footer">
             <div class="footer__top">
                 <div class="footer-logo">
-                    <img class="footer-logo__img" src="Assets/img/Logo.png" alt="">
+                    <img class="footer-logo__img" src="<?=ROOT_URL?>Assets/img/Logo.png" alt="">
                 </div>
                 <div class="footer-contact">
                     <h3>CONTACT</h3>
