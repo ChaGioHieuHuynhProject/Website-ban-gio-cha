@@ -96,56 +96,76 @@ table {
 }
 /* _________________________ */
 .footer {
-	color: white;
-	display: grid;
-	grid-template-rows: 85% 15%;
-	font-size: 20px;
+	color: black;
+	background-color: antiquewhite;
+	font-size: 24px;
 	text-align: justify;
 }
-.footer h3 {
-	font-size: 24px;
+.footer hr {
+	margin: 0;
+	height: 3px;
+	background-color: rgb(161, 105, 0);
 }
-.footer__top{
-	padding: 2% 0 2% 0;
+.footer-top {
 	display: grid;
-	grid-template-columns: 15% 27% 23% 15%;
+	grid-template-columns: 10% 25% 25%;
 	justify-content: center;
-	background-color: rgb(243, 243, 208);	
-	background:
-	linear-gradient(
-	  rgba(0, 0, 0, 0.2), 
-	  rgba(0, 0, 0, 0.6)
-	),
-	url(https://cdn.tgdd.vn/2020/06/CookProduct/thum1200-1200x676-23.jpg);
 }
-.footer-logo__img {
-	height: 200px;
-	width: 250px;
+.footer-top__img {
+	height: 150px;
+	width: 200px;
 	object-fit: cover;
 	object-position: 50% 50%;
 }
-.footer-contact p{
-	padding: 1.5% 0 1.5% 0;
+.footer-top-right {
+	font-size: 25px;
+	line-height: 150px;
 }
-.footer-contact p a{
+.footer-top__icon {
+	font-size: 40px;
+	padding: 0% 2% 0 2%;
+	color: green;
+}
+.footer-center {
+	display: grid;
+	grid-template-columns: 35% 15% 25%;
+	justify-content: center;
+	padding: 1% 0 1% 0;
+}
+.footer-center h1 {
+	font-size: 25px;
+	padding-bottom: 3%;
+}
+.footer-center p {
+	padding: 0 0 3% 0;
+}
+.footer-center-left a {
 	text-decoration: none;
-	color: white;
+	color: black;
 }
-.footer-contact p a:hover{
+.footer-center-left a:hover {
+	color: rgb(138, 94, 83);
+}
+.footer-icon__btn{
 	color: green;
-	text-decoration: underline;
+	padding-right: 10px;
 }
-.footer-description p{
-	padding: 1.5% 0 1.5% 0;
+.footer-center-mid a{
+	text-decoration: none;
+	color: black;
 }
-.footer-icon__btn {
-	padding: 0 2% 0 0;
-	color: green;
-}
-.footer__bottom{
+.footer-bottom{
 	height: 25px;
 	text-align: center;
 	padding: 0.3%;
 	background-color: rgb(138, 94, 83);
 	line-height: 25px;
+	color: white;
+}
+.footer-bottom a {
+	text-decoration: none;
+	color: white;
+}
+.footer-bottom a:hover {
+	color: rgb(44, 70, 186);
 }

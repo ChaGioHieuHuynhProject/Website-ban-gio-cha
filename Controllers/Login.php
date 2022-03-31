@@ -1,8 +1,8 @@
 <?php class Login extends Controller {
     function Index() {
         if (!isset($_POST["login"])) {
-            $this->view("MainLayout", [
-                "page"=>"login"
+            $this->view("EmptyLayout", [
+                "page"=>"Login-Register"
             ]);
         } else {
             $accModel = $this->model("AccountModel");
