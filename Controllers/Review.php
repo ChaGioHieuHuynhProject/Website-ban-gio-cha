@@ -5,7 +5,7 @@
             $reviewList = $reviewModel->getReviewList();
             $this->view("MainLayout", [
                 'reviewList'=>$reviewList,
-                'page'=>"reviews"
+                'page'=>"Reviews"
             ]);
         }
     }

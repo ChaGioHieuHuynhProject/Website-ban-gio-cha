@@ -45,4 +45,4 @@ accordions.forEach(item => {
     })
 })
 </script>
-<link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/qaa.css" type="text/css">
+<link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/QAA.css" type="text/css">

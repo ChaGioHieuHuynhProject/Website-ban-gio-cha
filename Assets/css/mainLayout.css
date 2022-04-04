@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -41,9 +42,18 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a {
+	text-decoration: none;
+}
+svg {
+	vertical-align: middle;
+}
 /* ____________________________ */
+* {
+	font-family:  'Lora', serif!important;
+}
 .header{
-	font-size: 20px;
+	font-size: 18px;
 	justify-content: center;
 	display:grid;
 	grid-template-columns:  10% 50% 20%;
@@ -90,9 +100,11 @@ table {
 	/* background-color: beige; */
 }
 .header-icon__btn {
-	font-size: 25px;
-	padding: 0 2% 0 2%;
-	color: green;
+	padding: 0 2%;
+	fill: green;
+	justify-content: center;
+	width:22px;
+	height: auto
 }
 /* _________________________ */
 .footer {
@@ -122,9 +134,10 @@ table {
 	line-height: 150px;
 }
 .footer-top__icon {
-	font-size: 40px;
+	width: 40px;
+	height: auto;
 	padding: 0% 2% 0 2%;
-	color: green;
+	fill: green;
 }
 .footer-center {
 	display: grid;
@@ -146,9 +159,16 @@ table {
 .footer-center-left a:hover {
 	color: rgb(138, 94, 83);
 }
+.footer-center-left div {
+	margin-top: 0.5rem
+}
 .footer-icon__btn{
-	color: green;
-	padding-right: 10px;
+	fill: green;
+	width: 20px;
+	height: auto
+}
+.footer-icon__btn~a:hover{
+	color: green
 }
 .footer-center-mid a{
 	text-decoration: none;
