@@ -1,1 +1,0 @@
-<h1>Name: <?php echo $data["name"]?></h1>
