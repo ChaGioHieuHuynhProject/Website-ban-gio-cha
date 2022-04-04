@@ -33,7 +33,7 @@
                 $message = "Vui lòng nhập đầy đủ thông tin!";
             } 
             else if ($accountModel->isExistedAccount($_POST["phone-number"])) {
-                $message = "Số điện thoại đã tồn tại! Vui lòng nhập tài khoản khác!";
+                $message = "Số điện thoại đã tồn tại! Vui lòng nhập số điện thoại khác!";
             }
             else {
                 $name = $_POST["name"];
@@ -51,7 +51,7 @@
                     return header("Location: Home");
                 }
                 catch (Exception){
-                    $message = "Error!";
+                    $message = "Có lỗi xảy ra!";
                 }
             }
             return $this->view("EmptyLayout", [

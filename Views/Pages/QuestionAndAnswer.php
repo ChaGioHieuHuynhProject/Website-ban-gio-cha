@@ -44,11 +44,5 @@ accordions.forEach(item => {
         item.classList.toggle("h-active")
     })
 })
-// for (i = 0; i < accordions.length; i++) {
-//     accordions[i].addEventListener('click', function() {
-//         this.classList.toggle('h-active')
-//     })
-// }
-
 </script>
 <link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/qaa.css" type="text/css">

@@ -49,6 +49,13 @@ table {
     --modal-height: 603px
 }
 /* ____________________________ */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 .login {
     width: 900px;
     display: grid;
@@ -150,4 +157,8 @@ table {
 }
 .btn-signup:hover{
     cursor: pointer;
+}
+.error-message {
+    color: red;
+    margin: 1rem 0
 }
