@@ -11,7 +11,7 @@ this is product page
                 echo "<h3>Sorry, No product to show!</h3>";
             }
             else 
-                foreach($data["data"] as $product) { ?> 
+                foreach($data["productList"] as $product) { ?> 
                 <tr>
                     <td><?=$product['id']?></td>
                     <td><?=$product["name"]?></td>

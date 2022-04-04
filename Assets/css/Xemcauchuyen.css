@@ -21,7 +21,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: 'd1 d2''d3 d4';
+    grid-template-areas: "d1 d2" "d3 d4";
 }
 
 .N-layoutImgItem {

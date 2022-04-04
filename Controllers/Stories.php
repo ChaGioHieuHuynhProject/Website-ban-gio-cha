@@ -9,5 +9,4 @@
             "storyList" => $storyList
         ]);
     }
-
 }
