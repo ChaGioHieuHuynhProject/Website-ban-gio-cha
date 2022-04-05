@@ -11,11 +11,11 @@ this is product page
                 echo "<h3>Sorry, No product to show!</h3>";
             }
             else 
-                foreach($data["data"] as $product) { ?> 
+                foreach($data["productList"] as $product) { ?> 
                 <tr>
                     <td><?=$product['id']?></td>
                     <td><?=$product["name"]?></td>
-                    <td><button onclick="location.href='http://localhost/Kynguyen/MVC/Product/Detail/<?=$product['id']?>'">detail</button></td>
+                    <td><button onclick="location.href='http://localhost//Product/Detail/<?=$product['id']?>'">detail</button></td>
                 </tr>
         <?php }
         ?>

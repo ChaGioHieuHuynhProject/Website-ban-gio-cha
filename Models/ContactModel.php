@@ -1,36 +1,32 @@
-<?php
+<?php 
     class ContactModel extends Model{
 
         function getContactList(){
             $results = $this->con->query("SELECT * FROM contacts");
-            $contactList = [];
-            while ($row = $results->fetch_assoc()) {
+            $contactList=[];
+            while($row = $results->fetch_assoc()){
                 array_push($contactList, $row);
             }
             return $contactList;
         }
 
-        function getContactsById($id)
-        {
-            $result = $this->con->query("SELECT * FROM contacts WHERE id={$id}");
+        function getContactById($id){
+            $result = $this->con->query("SELECT * FROM contacts WHERE id = {$id}");
             return $result->fetch_assoc();
         }
-
-        function addContact($address, $phone, $email){
-            $sql = "INSERT INTO contacts (address, phone, email) 
-            VALUES('$address', '$phone, '$email')";
+        function addContact($name, $phoneNumber, $email, $note){
+            $sql = "INSERT INTO contacts (name, phoneNumber, email, note)
+            value ('$name', '$phoneNumber', '$email', '$note')";
             return $this->con->query($sql);
         }
-
-        function updateContact($id, $address, $phone, $email){
-            $sql = "UPDATE contacts SET address = '$address', phone ='$phone', email ='$email' WHERE id = {$id}";
+        function updateContact($id, $name, $phoneNumber, $email, $note){
+            $sql = "UPDATE contacts SET name='$name', phoneNumber='$phoneNumber', email='$email', note='$note' WHERE id={$id}";
             return $this->con->query($sql);
+            
         }
 
-        function deleteContact($id)
-        {
-            $sql = "DELETE FROM contacts where id = $id";
+        function delateContact($id){
+            $sql = "DELETE FROM contacts WHERE id={$id}";
             return $this->con->query($sql);
         }
     }
-?>
