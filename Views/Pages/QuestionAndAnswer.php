@@ -12,14 +12,14 @@
             </div>
             <hr>
             <div class="h-container">
-                <div class="h-label"><i class="fa-solid fa-truck-front"></i> Giò chả có thể vận chuyển đi xa được không?</div>
+                <div class="h-label">Giò chả có thể vận chuyển đi xa được không?</div>
                 <div class="h-text">CSS stands for Cascading Style Sheets. It is the language for describing the presentation of Web pages, including colours, layout, and fonts, thus making our web pages presentable to the users. CSS is designed to make style sheets
                     for the web. It is independent of HTML and can be used with any XML-based markup language. CSS is popularly called the design language of the web.
                 </div>
             </div>
             <hr>
             <div class="h-container">
-                <div class="h-label"><i class="fas fa-money-bill" aria-hidden="true"></i> Cách thức thanh toán?</div>
+                <div class="h-label">Cách thức thanh toán?</div>
                 <div class="h-text">JavaScript is a scripting or programming language that allows you to implement complex features on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely
                     content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably involved. It is the third of the web trio.</div>
             </div>
@@ -35,12 +35,14 @@
 </section>
 
 <script>
-const accordion = document.getElementsByClassName('h-container');
-
-for (i = 0; i < accordion.length; i++) {
-    accordion[i].addEventListener('click', function() {
-        this.classList.toggle('h-active')
+var accordions = document.querySelectorAll('.h-container')
+accordions.forEach(item => {
+    item.addEventListener("click", () => {
+        accordions.forEach(ele => {
+            ele.classList.remove("h-active")
+        })
+        item.classList.toggle("h-active")
     })
-}
+})
 </script>
-<link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/qaa.css" type="text/css">
+<link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/QAA.css" type="text/css">

@@ -3,7 +3,7 @@
         $productList = $this->model("ProductModel")->getProductList();
         $this->view("MainLayout", [
             "page" => "Product",
-            "data" => $productList
+            "productList" => $productList
         ]);
     }
     function Detail($id=null) {
