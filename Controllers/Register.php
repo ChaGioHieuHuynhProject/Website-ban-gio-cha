@@ -30,7 +30,7 @@
                     $accountModel->addNewAccount($id, $pwdHashed);
                     return header("Location: Home");
                 }
-                catch (Exception){
+                catch(Exception $name){
                     $message = "Error!";
                 }
             }
