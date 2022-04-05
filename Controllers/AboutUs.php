@@ -1,5 +1,4 @@
 <?php class AboutUs extends Controller{
-
     function Index(){
         $this->view("MainLayout", [
             "page" => "AboutUs",
