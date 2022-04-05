@@ -3,7 +3,6 @@
     function Error() {
         require_once "error.php";
     }
-    function Redirect($action, $controller) {
+    function Redirect($controller, $action = "") {
         return "/KyNguyen/Website-ban-gio-cha/$controller/$action";
     }
-?>

@@ -104,7 +104,7 @@ svg {
 .footer {
 	color: black;
 	background-color: antiquewhite;
-	font-size: 24px;
+	font-size: 1.3rem;
 	text-align: justify;
 }
 .footer hr {
@@ -137,7 +137,7 @@ svg {
 	display: grid;
 	grid-template-columns: 35% 25% 25%;
 	justify-content: center;
-	padding: 1% 0 1% 0;
+	padding: 1% 0;
 }
 .footer-center__title{
 	font-size: 25px;
