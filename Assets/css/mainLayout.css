@@ -52,13 +52,18 @@ svg {
 * {
 	font-family:  'Lora', serif!important;
 }
+::placeholder {
+	font-size: 1rem;
+	color: #784949
+}
 .header{
 	font-size: 18px;
-	justify-content: center;
-	display:grid;
-	grid-template-columns:  10% 50% 20%;
-	gap: 2%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content:space-evenly;
 	padding-top: 0.5%;
+	background-color: antiquewhite;
 }
 .header-logo__img {
 	height: 140px;
@@ -71,6 +76,7 @@ svg {
 	gap: 3.5%;
 	line-height: 140px;
 	font-weight: bold;
+	width: 54%;
 }
 .header-menu a{
     text-decoration: none;
@@ -82,6 +88,8 @@ svg {
 }
 .header__btn{
 	line-height: 140px;
+	display: flex;
+	gap: 2rem;
 }
 .header__btn input{
 	font-size: 20px;
