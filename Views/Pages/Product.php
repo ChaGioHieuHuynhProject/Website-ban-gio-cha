@@ -15,7 +15,7 @@ this is product page
                 <tr>
                     <td><?=$product['id']?></td>
                     <td><?=$product["name"]?></td>
-                    <td><button onclick="location.href='http://localhost/Kynguyen/MVC/Product/Detail/<?=$product['id']?>'">detail</button></td>
+                    <td><button onclick="location.href='http://localhost//Product/Detail/<?=$product['id']?>'">detail</button></td>
                 </tr>
         <?php }
         ?>
