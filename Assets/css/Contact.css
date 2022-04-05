@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+
+body{font-family: 'Lora', serif;}
+
+.N-container {
+    height: auto;
+    width: 960px;
+    margin: 0 auto;
+}
+
+.N-layout {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 20px;
+
+}
+
+.N-map {
+    width: 100%;
+}
+
+.N-map iframe {
+    width: 100%;
+    height: 400px;
+}
+.N-field {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    
+}
+
+.N-submit {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: beige;
+    cursor: pointer;
+    padding: 10px 20px;
+    display: flex;  
+    justify-content: center;  
+    align-items: center;
+    margin: 0 auto;
+
+}

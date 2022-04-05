@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+
+body{font-family: 'Lora', serif;}
 .N-container {
     height: auto;
     width: 960px;
@@ -21,7 +24,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-template-areas: 'd1 d2''d3 d4';
+    grid-template-areas: "d1 d2" "d3 d4";
 }
 
 .N-layoutImgItem {
@@ -43,13 +46,18 @@
     font-size: 20px;
 }
 
-.textContent {
+/* .N-textContent {
     padding: 0 30px;
-    /* text-align: center;
-    vertical-align: middle; */
+    text-align: center;
+    vertical-align: middle;
     overflow: hidden;
+} */
+.N-textContent {
+    padding: 30px;
+    word-wrap: break-word;
+    text-align: justify;
+    
 }
-
 .N-layoutTextItem:nth-child(1) {
     grid-area: d2;
 }
