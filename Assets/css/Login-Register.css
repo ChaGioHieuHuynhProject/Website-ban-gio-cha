@@ -1,99 +1,189 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
 }
-body {
-	line-height: 1;
+
+ol,
+ul {
+    list-style: none;
 }
-ol, ul {
-	list-style: none;
+
+blockquote,
+q {
+    quotes: none;
 }
-blockquote, q {
-	quotes: none;
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 * {
     box-sizing: border-box;
 }
+
 :root {
     --modal-height: 603px
 }
+
 /* ____________________________ */
+body {
+    height: 100vh
+}
 
 .container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 100%;
 }
+
 .login {
     width: 900px;
-    display: grid;
-    grid-template-columns: 50% 50%;
     margin: auto auto;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     border-radius: 20px;
-    position: relative;
+    display: flex;
+    flex-direction: row;
 }
-.login-left{
+
+.login-left {
     text-align: center;
     width: 450px;
     padding: 15% 5%;
     border-radius: 20px;
-    position: absolute;
-    top:0;
-    left:0;
     height: var(--modal-height);
 }
+
 .register-right {
     text-align: center;
     width: 450px;
     padding: 4% 5%;
     border-radius: 20px;
-    position: absolute;
-    top:0;
-    left:0;
     height: var(--modal-height)
 }
-.login-left h1, .register-right h1 {
+
+.login-left h1,
+.register-right h1 {
     font-size: 50px;
     padding: 0 0 5% 0;
     color: rgb(161, 105, 0);
 }
+
 .login-left a {
     color: green;
 }
-.login-left button, .register-right button {
+
+.login-left button,
+.register-right button {
     font-size: 20px;
     width: 150px;
     height: 40px;
@@ -103,42 +193,51 @@ table {
     background-color: green;
     margin: 0 0 5% 0;
 }
+
 .login-left .btn-login {
     margin-top: 5%;
 }
-.login-left input, .register-right input {
+
+.login-left input,
+.register-right input {
     width: 300px;
     height: 40px;
     border-radius: 20px;
     border: solid 1px green;
     outline: none;
-    padding:0 4% 0 4%;
+    padding: 0 4% 0 4%;
     margin-bottom: 5%;
     font-size: 20px;
-    color:rgb(161, 105, 0)
+    color: rgb(161, 105, 0)
 }
+
 ::placeholder {
     color: rgb(161, 105, 0);
 }
+
 .login-icon {
     font-size: 45px;
-    padding: 0 5% 0 5% ;
+    padding: 0 5% 0 5%;
     margin-bottom: 5%;
     color: rgba(0, 70, 182, 0.883);
 }
-.login-left p , .register-right p{
+
+.login-left p,
+.register-right p {
     font-size: 24px;
     color: rgb(161, 105, 0);
 }
+
 .login-right .login-exit {
     position: absolute;
     z-index: 1;
     padding: 1% 0 0 0;
     font-size: 40px;
     color: green;
-    margin:12px 0 0 390px;
+    margin: 12px 0 0 390px;
 }
-.login-right img{
+
+.login-right img {
     position: relative;
     height: 603px;
     width: 450px;
@@ -146,18 +245,19 @@ table {
     object-position: 50% 50%;
     border-radius: 20px;
 }
+
 .login-right {
-    position:absolute;
-    top:0;
-    right:0;
     height: var(--modal-height)
 }
+
 .hidden {
     display: none;
 }
-.btn-signup:hover{
+
+.btn-signup:hover {
     cursor: pointer;
 }
+
 .error-message {
     color: red;
     margin: 1rem 0
