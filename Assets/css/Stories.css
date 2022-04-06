@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
 
 body{font-family: 'Lora', serif;}
-
 .N-container {
     height: auto;
     width: 960px;
-    margin: 3rem auto;
+    margin: 0 auto;
 }
 
 .N-title {
@@ -17,67 +16,62 @@ body{font-family: 'Lora', serif;}
 .N-title p {
     text-align: center;
     font-size: 35px;
+    margin: 2rem 0;
+    font-weight: bold
 }
 
 .N-layout {
-    display: flex;
-    justify-content: space-around;
-}
-
-.N-card {
-    padding: 30px;
-    margin-bottom: 20px;
-    width: 18rem;
-}
-
-.N-card-img {
     width: 100%;
-    height: 15vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "d1 d2" "d3 d4";
+}
+
+.N-layout-img-item {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.N-img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    overflow: hidden;
 }
 
-.N-card-body {
-    width: 100%;
-}
-
-.N-card-title {
+.N-text-title {
     text-align: center;
+    font-weight: bold;
     font-size: 20px;
 }
 
-.N-card-text {
-    display: block;
-    display: -webkit-box;
-    height: 16px * 1.3 *3;
-    font-size: 15px;
-    line-height: 1.3;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+/* .N-textContent {
+    padding: 0 30px;
+    text-align: center;
+    vertical-align: middle;
     overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: 10px;
-}
-
-.N-see-more {
-    display: flex;
-    justify-content: center;
-}
-
-.N-btn {
-    display: inline-block;
-    text-decoration: none;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: #000000;
-    padding: 12px 24px;
-    border-radius: 30px;
-}
-
-.N-btn-continue {
-    background-color: bisque;
-}
-
-/* .N-btn-continue:visited {
-    color: grey;
 } */
+.N-text-content {
+    padding: 30px;
+    word-wrap: break-word;
+    text-align: justify;
+    
+}
+.N-layout-text-item:nth-child(1) {
+    grid-area: d2;
+}
+
+.N-layout-text-item:nth-child(2) {
+    grid-area: d3;
+}
+
+.N-layout-img-item:nth-child(1) {
+    grid-area: d1;
+}
+
+.N-layout-img-item:nth-child(2) {
+    grid-area: d4;
+}

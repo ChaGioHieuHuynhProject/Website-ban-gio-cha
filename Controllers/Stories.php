@@ -5,7 +5,7 @@
         $storiesModel = $this->model("StoriesModel");
         $storyList = $storiesModel->getStoryList();
         $this->view("MainLayout", [
-            "page" => "Morestories",
+            "page" => "Stories",
             "storyList" => $storyList
         ]);
     }
