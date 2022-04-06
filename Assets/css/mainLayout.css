@@ -73,7 +73,7 @@ svg {
 }
 .header-menu{
     display: flex;
-	gap: 3.5%;
+	justify-content: space-evenly;
 	line-height: 140px;
 	font-weight: bold;
 	width: 54%;
