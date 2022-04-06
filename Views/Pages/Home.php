@@ -1,11 +1,8 @@
 <div class="t2-container">
-    <div class="t2-slides">
-        <div class="t2-sliders">
-            <input class="form-control" type="radio" name="radio-slider" id="t2-radio1">
-            <input class="form-control" type="radio" name="radio-slider" id="t2-radio2">
-            <input class="form-control" type="radio" name="radio-slider" id="t2-radio3">
-            <div class="t2-slide first">
-                <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
+    <div class="banner">
+        <div class="slides">
+            <div class="t2-slide">
+                <img src="<?= ROOT_URL ?>Assets/img/Banner.jpg" alt="">
             </div>
             <div class="t2-slide">
                 <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
@@ -13,34 +10,38 @@
             <div class="t2-slide">
                 <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
             </div>
-            <div class="t2-navigatiomauto">
-                <div class="t2-autono1"></div>
-                <div class="t2-autono2"></div>
-                <div class="t2-autono3"></div>
+        </div>
+        <div class="right-banner">
+            <div class="title">
+                <h3>GIÒ CHẢ NHÀ <br>HIẾU & HUYNH</h3>
+                <h1>GIA TRUYỀN HƠN 30 NĂM</h1>
             </div>
-        </div>
-        <div class="t2-navigation-manual">
-            <label for="t2-radio1" id="t2-autono1" class="t2-manualno"></label>
-            <label for="t2-radio2" id="t2-autono2" class="t2-manualno"></label>
-            <label for="t2-radio3" id="t2-autono3" class="t2-manualno"></label>
-        </div>
-    </div>
-    <div class="t2-textbox">
-        <div class="t2-title">
-            <h3>GIÒ CHẢ NHÀ HIẾU HUYNH</h3>
-            <h1><b>GIA TRUYỀN HƠN 30 NĂM</b></h1>
         </div>
     </div>
 </div>
+<link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/HomeStyle.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
-    var counter = 1;
-    setInterval(function() {
-        document.getElementById('t2-radio' + counter).checked = true;
-        counter++;
-        if (counter > 3) {
-            counter = 1;
-        }
-    }, 5000)
+var slide = $('.slides').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+});
+$(".slides").on("afterChange", (e, slick, index) => {
+    $(".title").css("opacity", 1)
+    if (index == 0) {
+        $(".title").css("opacity", 0);
+    }
+})
 </script>
-<link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/HomeStyle.css">
