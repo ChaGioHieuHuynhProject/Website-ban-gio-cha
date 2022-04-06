@@ -73,6 +73,8 @@ table {
   font-weight: bold;
   transition: all 0.75s;
   opacity: 0;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .title h3 {
   font-size: 60px;
