@@ -1,0 +1,157 @@
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* ^reset CSS--------------------------------------------------------------- */
+
+.t2-container {
+    margin: auto;
+    margin-top: 100px;
+    width: 85%;
+    display: flex;
+}
+
+.t2-slides {
+    position: relative;
+    background-color: #E9D3BC;
+    width: 75%;
+    overflow: hidden;
+}
+
+.t2-sliders {
+    width: 500%;
+    display: flex;
+}
+
+.t2-sliders input {
+    display: none;
+}
+
+.t2-slide {
+    width: 20%;
+    transition: 0.85s;
+}
+
+.t2-slide img {
+    width: 100%;
+}
+
+.t2-navigation-manual {
+    position: absolute;
+    width: 100%;
+    margin-top: -45px;
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+.t2-manualno {
+    border: 2px solid rgb(241, 238, 238);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.t2-manualno:not(:last-child) {
+    margin-right: 5%;
+}
+
+.t2-manualno:hover {
+    background: cornsilk;
+}
+
+#t2-radio1:checked~.first {
+    margin-left: 0%;
+}
+
+#t2-radio2:checked~.first {
+    margin-left: -20%;
+}
+
+#t2-radio3:checked~.first {
+    margin-left: -40%;
+}
+
+.t2-navigatiomauto {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 31px;
+    bottom: 0px;
+}
+
+.t2-navigatiomauto div {
+    border: 2px solid rgb(241, 238, 238);
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+    display: none;
+}
+
+.t2-navigatiomauto div:not(:last-child) {
+    margin-right: 5%;
+}
+
+#t2-radio1:checked~.t2-navigatiomauto .t2-autono1,
+#t2-radio2:checked~.t2-navigatiomauto .t2-autono2,
+#t2-radio3:checked~.t2-navigatiomauto .t2-autono3 {
+    background: rgb(241, 238, 238);
+}
+
+.t2-textbox {
+    width: 25%;
+    background-color: #E9D3BC;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.t2-title {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: -50%;
+    margin-right: 20%;
+}
