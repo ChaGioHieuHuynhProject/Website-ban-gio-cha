@@ -83,6 +83,7 @@ table {
   margin-top: 5%;
   font-size: 20px;
 }
+/* ------------------------------ */
 .N-container {
   height: auto;
   width: 80vw;
@@ -93,6 +94,7 @@ table {
   height: auto;
   width: 100%;
   padding: 10px 0;
+  font-weight: bold;
 }
 
 .N-title p {
@@ -125,6 +127,7 @@ table {
   text-align: center;
   font-size: 20px;
   margin: 1rem 0;
+  font-weight: bold;
 }
 
 .N-card-text {
