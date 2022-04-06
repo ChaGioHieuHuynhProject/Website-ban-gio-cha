@@ -1,4 +1,4 @@
-<div class="t2-container">
+<section class="t2-container">
     <div class="banner">
         <div class="slides">
             <div class="t2-slide">
@@ -18,7 +18,19 @@
             </div>
         </div>
     </div>
-</div>
+</section>
+<section class="foundation">
+    <div class="t2-content">
+            <h1 class="foundation-title">Lịch sử hình thành</h1>
+            <p class="content-center">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, dolorum unde consequuntur nesciunt hic nihil eius odio iure voluptatum, consequatur cum provident error atque porro voluptas odit, quas optio. Consequuntur voluptas deleniti, id quae quidem suscipit dolor vel in laboriosam eum numquam excepturi, eos, minus fugit corrupti commodi quia. Nostrum?
+            </p>
+            <div class="N-see-more">
+            <a class="N-btn N-btn-see-more" href="<?=Redirect("AboutUs")?>">Tìm hiểu thêm</a>
+        </div>
+    </div>
+    <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="">
+</section>
 <section class="N-container">
     <div class="N-title">
         <p>Câu chuyện mỗi ngày</p>
