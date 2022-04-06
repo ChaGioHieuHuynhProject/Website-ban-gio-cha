@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="HomeStyle.css">
 <div class="t2-container">
     <div class="t2-slides">
         <div class="t2-sliders">
@@ -6,13 +5,13 @@
             <input class="form-control" type="radio" name="radio-slider" id="t2-radio2">
             <input class="form-control" type="radio" name="radio-slider" id="t2-radio3">
             <div class="t2-slide first">
-                <img src="img/IMG_20220404_204550-removebg.png" alt="">
+                <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
             </div>
             <div class="t2-slide">
-                <img src="img/IMG_20220404_204550-removebg.png" alt="">
+                <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
             </div>
             <div class="t2-slide">
-                <img src="img/IMG_20220404_204550-removebg.png" alt="">
+                <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
             </div>
             <div class="t2-navigatiomauto">
                 <div class="t2-autono1"></div>
@@ -25,16 +24,6 @@
             <label for="t2-radio2" id="t2-autono2" class="t2-manualno"></label>
             <label for="t2-radio3" id="t2-autono3" class="t2-manualno"></label>
         </div>
-        <script type="text/javascript">
-        var counter = 1;
-        setInterval(function() {
-            document.getElementById('t2-radio' + counter).checked = true;
-            counter++;
-            if (counter > 3) {
-                counter = 1;
-            }
-        }, 5000)
-        </script>
     </div>
     <div class="t2-textbox">
         <div class="t2-title">
@@ -43,3 +32,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    var counter = 1;
+    setInterval(function() {
+        document.getElementById('t2-radio' + counter).checked = true;
+        counter++;
+        if (counter > 3) {
+            counter = 1;
+        }
+    }, 5000)
+</script>
+<link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/HomeStyle.css">
