@@ -16,6 +16,8 @@ body{font-family: 'Lora', serif;}
 .N-title p {
     text-align: center;
     font-size: 35px;
+    margin: 2rem 0;
+    font-weight: bold
 }
 
 .N-layout {
