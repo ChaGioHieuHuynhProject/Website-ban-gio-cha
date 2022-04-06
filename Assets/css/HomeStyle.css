@@ -85,7 +85,7 @@ table {
 }
 .N-container {
   height: auto;
-  width: 960px;
+  width: 80vw;
   margin: 3rem auto;
 }
 
@@ -108,12 +108,12 @@ table {
 .N-card {
   padding: 30px;
   margin-bottom: 20px;
-  width: 18rem;
+  width: 35%;
 }
 
 .N-card-img {
   width: 100%;
-  height: 15vw;
+  height: 35vw;
   object-fit: cover;
 }
 
