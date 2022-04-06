@@ -25,9 +25,5 @@
     <div class="N-see-more">
         <a class="N-btn N-btn-continue" href="">Tìm hiểu thêm</a>
     </div>
-    </div>
-    <div class="N-seeMore">
-        <a class="N-btn N-btn-continue" href="">Tìm hiểu thêm</a>
-    </div>
 </section>
 <link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/Stories.css">
