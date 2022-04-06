@@ -6,4 +6,3 @@
     function Redirect($controller, $action = "") {
         return "/KyNguyen/Website-ban-gio-cha/$controller/$action";
     }
-  

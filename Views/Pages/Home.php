@@ -8,7 +8,7 @@
                 <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
             </div>
             <div class="t2-slide">
-                <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
+                <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="">
             </div>
         </div>
         <div class="right-banner">
