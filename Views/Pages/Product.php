@@ -5,42 +5,42 @@
             <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
             <p class="title">Chả lụa</p>
             <div class="overlay"></div>
-            <div class="button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="button"><a href=""> Xem Thêm </a></div>
             <div class="block"></div>
         </div>
         <div class="div-image">
             <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
             <p class="title">Chả lụa</p>
             <div class="overlay"></div>
-            <div class="button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="button"><a href=""> Xem Thêm </a></div>
             <div class="block"></div>
         </div>
         <div class="div-image">
             <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
             <p class="title">Chả lụa</p>
             <div class="overlay"></div>
-            <div class="button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="button"><a href=""> Xem Thêm </a></div>
             <div class="block"></div>
         </div>
         <div class="div-image">
             <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
             <p class="title">Chả lụa</p>
             <div class="overlay"></div>
-            <div class="button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="button"><a href=""> Xem Thêm </a></div>
             <div class="block"></div>
         </div>
         <div class="div-image">
             <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
             <p class="title">Chả lụa</p>
             <div class="overlay"></div>
-            <div class="button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="button"><a href=""> Xem Thêm </a></div>
             <div class="block"></div>
         </div>
         <div class="div-image">
             <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
             <p class="title">Chả lụa</p>
             <div class="overlay"></div>
-            <div class="button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="button"><a href=""> Xem Thêm </a></div>
             <div class="block"></div>
         </div>
     </div>
