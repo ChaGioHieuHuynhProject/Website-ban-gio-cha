@@ -19,13 +19,42 @@
         </div>
     </div>
 </section>
+<section class="t-products">
+    <h1 class="foundation-title">Sản phẩm nổi bật</h1>
+    <div class="t-content">
+        <div class="t-div-image">
+            <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
+            <p class="t-title">Chả lụa</p>
+            <div class="t-overlay"></div>
+            <div class="t-button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="t-block"></div>
+        </div>
+        <div class="t-div-image">
+            <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
+            <p class="t-title">Chả lụa</p>
+            <div class="t-overlay"></div>
+            <div class="t-button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="t-block"></div>
+        </div>
+        <div class="t-div-image">
+            <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
+            <p class="t-title">Chả lụa</p>
+            <div class="t-overlay"></div>
+            <div class="t-button"><a href="http://127.0.0.1:5500/PROJECT/products.html"> Xem Thêm </a></div>
+            <div class="t-block"></div>
+        </div>
+    </div>
+</section>
 <section class="foundation">
     <div class="t2-content">
-            <h1 class="foundation-title">Lịch sử hình thành</h1>
-            <p class="content-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, dolorum unde consequuntur nesciunt hic nihil eius odio iure voluptatum, consequatur cum provident error atque porro voluptas odit, quas optio. Consequuntur voluptas deleniti, id quae quidem suscipit dolor vel in laboriosam eum numquam excepturi, eos, minus fugit corrupti commodi quia. Nostrum?
-            </p>
-            <div class="N-see-more">
+        <h1 class="foundation-title">Lịch sử hình thành</h1>
+        <p class="content-center">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, dolorum unde consequuntur nesciunt hic
+            nihil eius odio iure voluptatum, consequatur cum provident error atque porro voluptas odit, quas optio.
+            Consequuntur voluptas deleniti, id quae quidem suscipit dolor vel in laboriosam eum numquam excepturi, eos,
+            minus fugit corrupti commodi quia. Nostrum?
+        </p>
+        <div class="N-see-more">
             <a class="N-btn N-btn-see-more" href="<?=Redirect("AboutUs")?>">Tìm hiểu thêm</a>
         </div>
     </div>
@@ -59,6 +88,7 @@
         <a class="N-btn N-btn-see-more" href="<?=Redirect("Stories")?>">Tìm hiểu thêm</a>
     </div>
 </section>
+
 <link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/HomeStyle.css">
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
