@@ -16,7 +16,7 @@
                 if (password_verify($pepperedPwd, $acc['password'])) {
                     session_start();
                     $_SESSION["cusID"] = $acc["id"];
-                    return header("Location: Home");
+                    return header("Location:" . ROOT_URL);
                 }
                 $message = "Sai mật khẩu! Vui lòng thử lại!";
             } else {
@@ -44,7 +44,7 @@
                 try {
                     $customerModel->addNewCustomer($id, $name, $phoneNumber, $address, $email);
                     $accountModel->addNewAccount($id, $pwdHashed);
-                    return header("Location: Home");
+                    return header("Location:" . ROOT_URL);
                 } catch (Exception) {
                     $message = "Có lỗi xảy ra!";
                 }
