@@ -22,4 +22,4 @@
         </div>
     </div>
 </section>
-<link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/AboutUs.css">
+<?=RenderCSS("AboutUs")?>

@@ -54,4 +54,4 @@
         </div>
     </div>
 </section>
-<link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/Reviews.css" type="text/css">
+<?=RenderCSS("Reviews")?>

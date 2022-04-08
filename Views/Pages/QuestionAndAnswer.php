@@ -49,4 +49,4 @@
         })
     })
 </script>
-<link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/QAA.css" type="text/css">
+<?=RenderCSS("QAA")?>

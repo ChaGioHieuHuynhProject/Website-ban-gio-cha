@@ -13,4 +13,4 @@
         </div>
     </div>
 </section>
-<link rel="stylesheet" href="<?=ROOT_URL?>Assets/css/Contact.css">
+<?=RenderCSS("Contact")?>
