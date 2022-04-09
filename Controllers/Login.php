@@ -15,7 +15,8 @@
                 $pepperedPwd = hash_hmac('sha256', $pwd, $pepper);
                 if (password_verify($pepperedPwd, $acc['password'])) {
                     session_start();
-                    $_SESSION["cusID"] = $acc["id"];
+                    $cusInfo = $this->model("CustomerModel")->getCustomerById($acc["id"]);
+                    $_SESSION["LOGIN"] = ["cusId" => $acc["id"], "cusName" => $cusInfo["name"]];
                     return header("Location:" . ROOT_URL);
                 }
                 $message = "Sai mật khẩu! Vui lòng thử lại!";

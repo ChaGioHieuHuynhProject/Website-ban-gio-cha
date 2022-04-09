@@ -4,5 +4,9 @@
             "page"=>"Home" 
         ]);
     }
+    function Logout() {
+        $_SESSION["LOGIN"] = null;
+        header("Location:".ROOT_URL);
+    }
 }
 ?>

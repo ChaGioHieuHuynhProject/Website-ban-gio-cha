@@ -190,6 +190,33 @@ svg {
   height: auto;
 }
 /* _________________________ */
+.logedIn-nav {
+  position: relative;
+}
+.user-dropdown {
+  visibility: hidden;
+  position: absolute;
+  top: 6rem;
+  right: -2rem;
+  width: max-content;
+  line-height: 2rem;
+  z-index: 1000;
+  text-align: right;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+.user-dropdown li {
+  margin: 0;
+  padding: 1rem;
+
+  border-bottom: 2px solid black;
+}
+.logedIn-nav:hover .user-dropdown{
+  visibility: visible;
+  opacity: 1;
+}
+/* _________________________ */
 .footer {
   color: black;
   background-color: antiquewhite;
