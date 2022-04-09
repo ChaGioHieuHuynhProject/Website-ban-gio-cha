@@ -103,6 +103,7 @@ section {
 }
 body {
   line-height: 1;
+  overflow-x: hidden;
 }
 ol,
 ul {
@@ -192,6 +193,9 @@ svg {
 /* _________________________ */
 .logedIn-nav {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 .user-dropdown {
   visibility: hidden;
@@ -209,8 +213,10 @@ svg {
 .user-dropdown li {
   margin: 0;
   padding: 1rem;
-
   border-bottom: 2px solid black;
+}
+.user-dropdown li>a {
+  color: #000
 }
 .logedIn-nav:hover .user-dropdown{
   visibility: visible;
@@ -229,9 +235,9 @@ svg {
   background-color: rgb(161, 105, 0);
 }
 .footer-top {
-  display: grid;
-  grid-template-columns: 10% 25% 25%;
-  justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .footer-top__img {
   height: 150px;
@@ -240,6 +246,8 @@ svg {
   object-position: 50% 50%;
 }
 .footer-top-right {
+  display: flex;
+  gap: 1rem;
   font-size: 25px;
   line-height: 150px;
 }
@@ -273,6 +281,9 @@ svg {
 }
 .footer-center-left div {
   margin-bottom: 0.5rem;
+}
+.footer-center-right img {
+  width: 30vw
 }
 .footer-icon__btn {
   fill: green;
