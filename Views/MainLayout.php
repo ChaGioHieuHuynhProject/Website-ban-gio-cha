@@ -14,7 +14,7 @@
         <section class="header">
             <!-- <div></div> -->
             <div class="header-logo">
-                <img class="header-logo__img" src="<?= ROOT_URL ?>Assets/img/Logo.png" alt="">
+                <img class="header-logo__img" src="<?= ImageLink("Logo.png")?>" alt="">
             </div>
             <ul class="header-menu">
                 <li><a href="<?= Redirect("Home") ?>">TRANG CHỦ</a></li>
@@ -58,7 +58,7 @@
     <?php require_once "./Views/Pages/{$data['page']}.php" ?>
     <footer class="footer">
         <div class="footer-top">
-            <img class="footer-top__img" src="<?= ROOT_URL ?>Assets/img/Logo.png" alt="">
+            <img class="footer-top__img" src="<?= ImageLink("Logo.png")?>" alt="">
             <div class="footer-top-right">
                 <span style="font-weight:bold">Theo dõi chúng tôi tại</span>
                 <a href="">
@@ -148,7 +148,7 @@
             </div>
             <div class="footer-center-right">
                 <h1 class="footer-center__title">VITRADE</h1>
-                <img src="<?= ROOT_URL ?>Assets/img/vitrade.jpg" alt="">
+                <img src="<?= ImageLink("vitrade.jpg")?>" alt="">
             </div>
         </div>
         <div class="footer-bottom">© 2022 by <a href="https://www.passerellesnumeriques.org/vi/">Passerelles numériques Vietnam</a> students </div>

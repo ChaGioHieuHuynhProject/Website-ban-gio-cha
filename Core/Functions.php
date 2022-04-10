@@ -16,3 +16,6 @@ function RenderJs($jsFileName)
 {
     echo "<script src='" . ROOT_URL . "Assets/js/$jsFileName.js'></script>\n";
 }
+function ImageLink($imgFileName) {
+    return ROOT_URL."Assets/img/$imgFileName";
+}

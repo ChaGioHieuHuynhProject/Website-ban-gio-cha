@@ -11,7 +11,7 @@
             <button class="btn-signup" name="register" type="submit">Đăng Ký</button><br>
             <button class="btn-login" type="button" onclick="animation_login()">Đăng Nhập</button><br>
         </form>
-        <form method="post" class="login-left" id="login-left" style="background-image: url('<?= ROOT_URL ?>Assets/img/bg.jpeg');">
+        <form method="post" class="login-left" id="login-left" style="background-image: url(<?=ImageLink("bg.jpeg")?>);">
             <h1>Đăng Nhập</h1>
             <input placeholder="Số điện thoại *" type="tel" name="phone-number" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại')"><br>
             <input placeholder="Mật khẩu *" type="password" name="password" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập mật khẩu')"><br>
@@ -23,8 +23,8 @@
 
         <div class="login-right">
             <i class="fa-solid fa-circle-xmark login-exit "></i>
-            <img id="bg-login" src="<?= ROOT_URL ?>Assets/img/Chagiavitg.jpg" alt="">
-            <img id="bg-register" class="hidden" src="<?= ROOT_URL ?>/Assets/img/giolua.jpg" alt="">
+            <img id="bg-login" src="<?=ImageLink("Chagiavitg.jpg")?>" alt="">
+            <img id="bg-register" class="hidden" src="<?=ImageLink("giolua.jpg")?>" alt="">
         </div>
     </div>
 </div>
