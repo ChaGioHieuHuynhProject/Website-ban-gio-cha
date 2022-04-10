@@ -215,8 +215,11 @@ svg {
   padding: 1rem;
   border-bottom: 2px solid black;
 }
-.user-dropdown li>a {
-  color: #000
+.user-dropdown li > a {
+  color: #000;
+}
+.user-dropdown li>a:hover {
+  color: green
 }
 .logedIn-nav:hover .user-dropdown{
   visibility: visible;

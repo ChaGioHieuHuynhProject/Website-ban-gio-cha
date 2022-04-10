@@ -16,7 +16,7 @@
                 if (password_verify($pepperedPwd, $acc['password'])) {
                     session_start();
                     $cusInfo = $this->model("CustomerModel")->getCustomerById($acc["id"]);
-                    $_SESSION["LOGIN"] = ["cusId" => $acc["id"], "firstName" => end(explode(' ',$cusInfo["name"]))];
+                    $_SESSION["LOGIN"] = ["cusId" => $acc["id"], "firstName" => end(explode(' ', $cusInfo["name"]))];
                     return header("Location:" . ROOT_URL);
                 }
                 $message = "Sai mật khẩu! Vui lòng thử lại!";
@@ -40,7 +40,6 @@
                 $pwd = $_POST["password"];
                 $pwdPeppered = hash_hmac("sha256", $pwd, $_ENV["pepper"]);
                 $pwdHashed = password_hash($pwdPeppered, PASSWORD_DEFAULT);
-                echo $pwdHashed;
                 $id = date_create()->getTimestamp();
                 try {
                     $customerModel->addNewCustomer($id, $name, $phoneNumber, $address, $email);
