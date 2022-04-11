@@ -1,12 +1,12 @@
 .cart {
     width: 80vw;
-    margin: auto;
+    margin: 2rem auto;
 }
 
-.table {
+.cart-table {
     width: 100%;
     text-align: center;
-    padding: 3rem 0;
+    margin: 3rem 0;
 }
 
 thead tr {
@@ -16,13 +16,15 @@ thead tr {
 thead th {
     padding: 0.9rem;
 }
-
+.cart-table td {
+    vertical-align: middle;
+}
 .tbl tr {
     height: 7rem;
 }
-
-.tbl-title {}
-
+.tbl-title {
+    font-weight: bold
+}
 #tbl-img {
     height: 10vh;
 }
@@ -39,33 +41,8 @@ thead th {
 .below {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-}
-
-.voucher {
-    margin-left: 3rem;
-    width: 35%;
-}
-
-.voucher-input {
-    height: 44px;
-    border-radius: 30px;
-    border: 1px solid;
-    width: 65%;
-}
-
-.voucher-input::placeholder {
-    padding-left: 15%;
-}
-
-.apply-btn {
-    border: none;
-    outline: none;
-    color: #000000;
-    padding: 12px 24px;
-    border-radius: 30px;
-    background-color: antiquewhite;
-    border: 2px transparent solid;
+    flex-direction: row;
+    justify-content: flex-end;
 }
 
 .confirm {
@@ -99,7 +76,10 @@ thead th {
     background-color: antiquewhite;
     border: 2px transparent solid;
 }
-
+.confirm-btn:hover{
+    font-weight: bold;
+    border: 2px solid black;
+}
 /* -------------------Quantity button--------------------- */
 input[type="number"] {
     -webkit-appearance: textfield;

@@ -99,8 +99,7 @@ table {
   padding: 10px 0;
 }
 
-.N-title p,
-.home-title {
+.N-title p {
   text-align: center;
   font-size: 2.25rem;
   font-weight: bold;
