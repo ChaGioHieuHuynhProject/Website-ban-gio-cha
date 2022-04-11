@@ -41,4 +41,4 @@
         </div>
     </div>
 </section>
-<link rel="stylesheet" type="" href="<?= ROOT_URL ?>Assets/css/Stories.css">
+<?=RenderCSS("Stories")?>

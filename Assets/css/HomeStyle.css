@@ -39,14 +39,16 @@ table {
   border-spacing: 0;
 }
 
-/* slides CSS--------------------------------------------------------------- */
-
+/* ^reset CSS--------------------------------------------------------------- */
+:root {
+  --banner-height: 80vh;
+}
 .t2-container {
   margin: 3rem auto;
 }
 .banner {
-  height: 80vh;
-  width: 80vw;
+  height: var(--banner-height);
+  width: 78vw;
   margin: auto;
   display: flex;
   align-items: center;
@@ -58,6 +60,7 @@ table {
   width: 100%;
   height: 80vh;
   object-fit: cover;
+  object-position: center top;
 }
 .right-banner {
   position: relative;
@@ -97,7 +100,7 @@ table {
 }
 
 .N-title p,
-.foundation-title {
+.home-title {
   text-align: center;
   font-size: 2.25rem;
   font-weight: bold;
@@ -186,18 +189,18 @@ table {
 }
 
 /* product css------------------------------------ */
-.t-products {
+.featured-products {
   margin: 3rem auto;
   justify-content: space-between;
   width: 80vw;
 }
 
-.t-products h1 {
+.featured-products h1 {
   margin-top: 1rem;
   text-align: center;
 }
 
-.t-content {
+.featured-products__content {
   display: grid;
   grid-template-columns: repeat(3, 30%);
   height: 80vh;
@@ -231,7 +234,7 @@ table {
 
 .t-div-image img {
   width: 100%;
-  height: auto;
+  height: 10rem;
   object-fit: cover;
 }
 
@@ -260,10 +263,15 @@ table {
   color: black;
   z-index: 1;
   transition: top 25 5s;
+  user-select: none;
+}
+.t-title::before {
+  content: "ả";
+  visibility: hidden;
 }
 
 .t-div-image:hover .t-title {
-  top: 90px;
+  top: 4rem;
   color: white;
 
 }
@@ -279,6 +287,7 @@ table {
   text-align: center;
   opacity: 0;
   transition: opacity 0.35s ease;
+  z-index: 1000;
 }
 
 .t-button a {
@@ -287,13 +296,13 @@ table {
   text-align: center;
   color: white;
   border: solid 2px white;
-  z-index: 1;
   text-decoration: none;
 }
 
 .t-div-image:hover .t-button {
   opacity: 1;
   text-decoration: dashed;
+  cursor: pointer;
 }
 
 .t-block {
