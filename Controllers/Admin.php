@@ -1,5 +1,10 @@
 <?php class Admin extends Controller
 {
+    function Index() {
+        $this->view("AdminLayout", [
+            "page" => "Admin_Index"
+        ]);
+    }
     function Product($action = null, $id = null)
     {
         switch ($action) {
