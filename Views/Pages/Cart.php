@@ -1,5 +1,5 @@
 <section class="cart">
-    <table cellspacing="0" class="table">
+    <table cellspacing="0" class="cart-table">
         <thead class="tbl-title">
             <tr>
                 <th>STT</th>
@@ -49,10 +49,6 @@
         </tbody>
     </table>
     <div class="below">
-        <div class="voucher">
-            <input type="text" name="" id="" class="voucher-input" placeholder="Nhập mã voucher">
-            <button class="apply-btn">Áp dụng</button>
-        </div>
         <div class="confirm">
             <table cellspacing="0">
                 <tr>
