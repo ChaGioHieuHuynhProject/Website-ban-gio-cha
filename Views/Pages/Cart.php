@@ -72,4 +72,6 @@
         </div>
     </div>
 </section>
-<link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/Cart.css">
+<?=RenderCSS("Cart");
+RenderJs("Cart");
+?>
