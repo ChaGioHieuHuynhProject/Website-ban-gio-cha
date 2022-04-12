@@ -48,8 +48,8 @@
 }
 
 .div-image img {
-    width: 25rem;
-    height: 15rem;
+    width: 20vw;
+    height: 25vh;
     object-fit: cover;
 }
 
@@ -111,10 +111,6 @@
     height: 25%;
     background-color: #E9D3BC;
     transition: all 1s;
-}
-
-body {
-    overflow-x: hidden;
 }
 
 .grid {

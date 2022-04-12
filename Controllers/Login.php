@@ -16,7 +16,7 @@
                 if (password_verify($pepperedPwd, $acc['password'])) {
                     session_start();
                     $cusInfo = $this->model("CustomerModel")->getCustomerById($acc["id"]);
-                    $_SESSION["LOGIN"] = ["cusId" => $acc["id"], "firstName" => end(explode(' ', $cusInfo["name"]))];
+                    $_SESSION[LOGIN] = ["cusId" => $acc["id"], "firstName" => end(explode(' ', $cusInfo["name"]))];
                     return header("Location:" . ROOT_URL);
                 }
                 $message = "Sai mật khẩu! Vui lòng thử lại!";

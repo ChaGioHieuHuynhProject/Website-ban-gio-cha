@@ -1,5 +1,7 @@
 <?php
 define("ROOT_URL", "http://localhost/KyNguyen/Website-ban-gio-cha/");
+define("CART", "cart");
+define("LOGIN", "login");
 function Error()
 {
     require_once "error.php";
