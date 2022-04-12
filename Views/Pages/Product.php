@@ -4,41 +4,11 @@
         <?php foreach ($data["productList"] as $product) { ?>
             <div class="div-image">
                 <img src="<?= ImageLink($product["img"]) ?>" />
-                <p class="title button"><a href="<?=Redirect("Product", "Detail")."/".$product["id"]?>"><?=$product["name"]?></a></p>
+                <p class="title button"><a href="<?= Redirect("Product", "Detail") . "/" . $product["id"] ?>"><?= $product["name"] ?></a></p>
                 <div class="overlay"></div>
                 <div class="block"></div>
             </div>
         <?php } ?>
-        <!-- <div class="div-image">
-            <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
-            <p class="title button"><a>Chả lụa</a></p>
-            <div class="overlay"></div>
-            <div class="block"></div>
-        </div>
-        <div class="div-image">
-            <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
-            <p class="title button"><a>Chả lụa</a></p>
-            <div class="overlay"></div>
-            <div class="block"></div>
-        </div>
-        <div class="div-image">
-            <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
-            <p class="title button"><a>Chả lụa</a></p>
-            <div class="overlay"></div>
-            <div class="block"></div>
-        </div>
-        <div class="div-image">
-            <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
-            <p class="title button"><a>Chả lụa</a></p>
-            <div class="overlay"></div>
-            <div class="block"></div>
-        </div>
-        <div class="div-image">
-            <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="" />
-            <p class="title button"><a>Chả lụa</a></p>
-            <div class="overlay"></div>
-            <div class="block"></div>
-        </div> -->
     </div>
 </section>
 <link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/product.css">
