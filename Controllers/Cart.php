@@ -19,7 +19,7 @@
         ]);
     }
     function Add($id = null, $quantity = null, $massUnit = null) {
-        if ($id == null || $quantity == null || is_numeric($quantity)) {
+        if ($id == null || $quantity == null ) {
             return header("Location:".Redirect("Cart"));
         }
         $cartModel = $this->model("CartSessionHelper");

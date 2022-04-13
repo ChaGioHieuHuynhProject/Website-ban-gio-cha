@@ -286,3 +286,6 @@ svg {
 .footer-bottom a:hover {
   color: rgb(44, 70, 186);
 }
+.text-bold {
+  font-weight: bold;
+}

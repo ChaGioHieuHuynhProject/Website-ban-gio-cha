@@ -130,7 +130,7 @@
             </div>
             <div class="footer-center-right">
                 <h1 class="footer-center__title">VITRADE</h1>
-                <img src="<?= ImageLink("vitrade.jpg") ?>" alt="">
+                <a href="https://chaheohieuhuynh.danangtrade.gov.vn/" target="blank"><img src="<?= ImageLink("vitrade.jpg") ?>" alt="vitradeQRCode"></a>
             </div>
         </div>
         <div class="footer-bottom">© 2022 by <a href="https://www.passerellesnumeriques.org/vi/">Passerelles numériques
