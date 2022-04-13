@@ -144,13 +144,12 @@ table {
 }
 
 .h-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 1%;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin: 9%;
-    margin-bottom: 5%;
-    margin-top: 2%;
+    margin: 3% 0;
     font-size: 125%;
 }
 

@@ -1,1 +1,1 @@
-<?php print_r($_SESSION[CART]) ?>
+<?php print_r($data["list"]) ?>
