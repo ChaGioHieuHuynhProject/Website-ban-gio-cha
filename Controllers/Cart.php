@@ -31,14 +31,14 @@
         if (!isset($_POST)) {
             return header("Loaction:".Redirect("Cart"));
         }
-        $this->model("CartSessionHelper")->update(["index" => $_POST["ixdex"], "quantity" => $_POST["quantity"]]);
+        $this->model("CartSessionHelper")->update(["index" => $_POST["index"], "quantity" => $_POST["quantity"]]);
     }
     function Delete($index) {
         $this->model("CartSessionHelper")->delete($index);
         return header("Location:" . Redirect("Cart"));
     }
     function test() {
-        // session_destroy();
+        session_destroy();
         $this->view("MainLayout", [
             "page" => "test"
         ]);
