@@ -11,7 +11,7 @@
             Error();
             return;
         }
-        $product = $this->model("ProductModel")->getProduct($id);
+        $product = $this->model("ProductModel")->getProductById($id);
         $this->view("MainLayout", [
             "page" => "Detail",
             "data" => $product
