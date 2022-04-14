@@ -17,12 +17,6 @@
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
-
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__wobble" src="<?=ImageLink('AdminLTELogo.png')?>" alt="AdminLTELogo" height="60" width="60">
-    </div>
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
       <!-- Left navbar links -->
@@ -120,8 +114,8 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="<?=Redirect("Admin")?>" class="brand-link">
-        <img src="<?=ImageLink("Logo.png")?>" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <a href="<?= Redirect("Admin") ?>" class="brand-link">
+        <img src="<?= ImageLink("Logo.png") ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Chả Giò Hiếu Huynh</span>
       </a>
 
@@ -145,11 +139,23 @@
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
+              <a id="DashBoard" href="<?= Redirect("Admin", "DashBoard") ?>" class=" nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
                   <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <a id="Product" href="<?= Redirect("Admin", "Product") ?>" class="nav-link">
+                <i class="nav-icon fas fa-box-open"></i>
+                <p>
+                  Product
+                </p>
+              </a>
+              <a id="Order" href="<?= Redirect("Admin", "Order") ?>" class="nav-link">
+                <i class="nav-icon fas fa-file-invoice"></i>
+                <p>
+                  Order
                 </p>
               </a>
             </li>
@@ -163,15 +169,11 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Main content will be here -->
-      <?php require_once "./Views/Pages/{$data['page']}.php" ?>
+      <main class="container">
+        <?php require_once "./Views/Pages/Admin/{$data['page']}.php" ?>
+      </main>
     </div>
     <!-- /.content-wrapper -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
     <footer class="main-footer">
@@ -209,6 +211,9 @@
   <!-- <script src="dist/js/demo.js"></script> -->
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <!-- <script src="dist/js/pages/dashboard2.js"></script> -->
+  <script>
+    $("#<?= $data["action"] ?>").addClass("active")
+  </script>
 </body>
 
 </html>

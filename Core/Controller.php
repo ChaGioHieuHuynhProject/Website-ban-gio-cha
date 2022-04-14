@@ -4,7 +4,7 @@
         return new $model;
     }
     public function view($layout, $data=[]) {
-        require_once "./Views/$layout.php";
+        require_once "./Views/Layouts/$layout.php";
     }
 }
 ?>

@@ -15,4 +15,11 @@ const updateTempCost = () => {
   });
   $("#temp-cost").text(sum);
 };
+const confirmOrder = () => {
+  $.ajax({
+    method: "post",
+    url: "http://localhost/KyNguyen/Website-ban-gio-cha/Cart/Confirm",
+    data: { customerName: "NDK", phoneNumber: "0987654321", customerAddress:"101B - Lê Hữu Trác", note: "Đòn 0.5kg" },
+  });
+};
 updateTempCost();

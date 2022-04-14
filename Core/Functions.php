@@ -26,7 +26,7 @@ function ImageLink($imgFileName)
 {
     return ROOT_URL . "Assets/img/$imgFileName";
 }
-function sendEmail($mailTo, $subject, $content) {
+function sendEmail($subject, $content) {
     //Create an instance; passing `true` enables exceptions
     $mail = new PHPMailer(true);
 
@@ -44,7 +44,7 @@ function sendEmail($mailTo, $subject, $content) {
 
         //Recipients
         $mail->setFrom('dangkyqt2509@gmail.com');
-        $mail->addAddress($mailTo);     //Add a recipient
+        $mail->addAddress($_ENV["MAILSHOP"]);     //Add a recipient
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML

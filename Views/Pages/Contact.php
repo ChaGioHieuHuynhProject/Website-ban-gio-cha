@@ -4,10 +4,10 @@
         <div class="N-form-contact">
             <form action="" method="post">
                 <input class="N-field" type="text" name="name" placeholder="Họ và Tên *" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập tên của bạn')">
-                <input class="N-field" type="email" name="email" placeholder="Email *" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập email của bạn')">
+                <input class="N-field" type="text" name="address" placeholder="Địa chỉ *" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập email của bạn')">
                 <input class="N-field" type="text" name="phone-number" placeholder="Điện thoại *" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại của bạn')">
                 <textarea class="N-field" name="note" id="" cols="30" rows="10" placeholder="Lời nhắn *" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập lời nhắn đến shop')"></textarea>
-                <div style="margin: 1rem 0; color: red"><?= empty($data["message"]) ? "" : $data["message"] ?></div>
+                <div style="margin: 1rem 0; color: red; text-align: center"><?= empty($data["message"]) ? "" : $data["message"] ?></div>
                 <button class="N-submit" type="submit" name="send-contact">Gửi</button>
             </form>
         </div>

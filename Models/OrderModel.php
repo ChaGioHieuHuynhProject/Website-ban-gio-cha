@@ -1,8 +1,8 @@
 <?php
     class OrderModel extends Model{
 
-        function getOrderList(){
-            $results = $this->con->query("SELECT * FROM orders");
+        function getOrderList($order){
+            $results = $this->con->query("SELECT * FROM orders ORDER BY date $order");
             $orderList = [];
             while ($row = $results->fetch_assoc()) {
                 array_push($orderList, $row);
@@ -24,11 +24,11 @@
             return $orderList;
         }
 
-        function addOrder($customerName, $customerPhone, $note){
+        function addOrder($customerName, $customerPhone, $customerAddress, $note){
             $dateNow = date_create("now");
             $date = $dateNow->format("Y-m-d H:i:s");
-            $sql = "INSERT INTO orders (customerName, customerPhone, date, note, statusID) 
-            VALUES('$customerName', '$customerPhone' , '$date', '$note', 0)";
+            $sql = "INSERT INTO orders (customerName, customerPhone, customerAddress, date, note, statusID) 
+            VALUES('$customerName', '$customerPhone', '$customerAddress', '$date', '$note', 0)";
             return $this->con->query($sql);
         }
 

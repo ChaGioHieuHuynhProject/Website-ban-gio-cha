@@ -14,18 +14,12 @@
         $result = $this->con->query("SELECT * FROM contacts WHERE id = {$id}");
         return $result->fetch_assoc();
     }
-    function addContact($name, $phoneNumber, $email, $note)
+    function addContact($name, $phoneNumber, $address, $note)
     {
-        $sql = "INSERT INTO contacts (name, phoneNumber, email, note)
-            value ('$name', '$phoneNumber', '$email', '$note')";
+        $sql = "INSERT INTO contacts (name, phoneNumber, address, note)
+            value ('$name', '$phoneNumber', '$address', '$note')";
         return $this->con->query($sql);
     }
-    function updateContact($id, $name, $phoneNumber, $email, $note)
-    {
-        $sql = "UPDATE contacts SET name='$name', phoneNumber='$phoneNumber', email='$email', note='$note' WHERE id={$id}";
-        return $this->con->query($sql);
-    }
-
     function delateContact($id)
     {
         $sql = "DELETE FROM contacts WHERE id={$id}";

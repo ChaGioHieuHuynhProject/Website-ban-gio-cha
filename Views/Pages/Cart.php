@@ -45,7 +45,7 @@
                         <td class="confirm-title confirm-title-right"><span id="temp-cost"></span> VNĐ</td>
                     </tr>
                 </table>
-                <button class="confirm-btn">XÁC NHẬN</button>
+                <button class="confirm-btn" onclick="confirmOrder()">XÁC NHẬN</button>
             </div>
         </div>
     <?php } ?>

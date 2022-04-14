@@ -9,4 +9,4 @@ require_once "Core/Functions.php";
 require_once realpath(__DIR__ . '/vendor/autoload.php');
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-$$app = new App();
+$app = new App();
