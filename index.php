@@ -1,13 +1,12 @@
-<?php 
-    session_start();
-    require_once "Core/App.php";
-    require_once "Core/Controller.php";
-    require_once "Core/Model.php";
-    require_once "Core/Functions.php";
+<?php
+session_start();
 
-    require_once realpath(__DIR__ . '/vendor/autoload.php');
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
+require_once "Core/App.php";
+require_once "Core/Controller.php";
+require_once "Core/Model.php";
+require_once "Core/Functions.php";
 
-    $app = new App();
-?>
+require_once realpath(__DIR__ . '/vendor/autoload.php');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+$$app = new App();

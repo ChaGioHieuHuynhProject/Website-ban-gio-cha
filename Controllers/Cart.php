@@ -43,8 +43,20 @@
         $this->model("CartSessionHelper")->delete($index);
         return header("Location:" . Redirect("Cart"));
     }
+    function Confirm() {
+        if (!isset($_POST)) {
+            return header("Loaction:" . Redirect("Cart"));
+        }
+        $orderModel = $this->model("OrderModel");
+        $orderDetailModel = $this->model("OrderDetailModel");
+        $orderModel->addOrder($_POST["customerName"], $_POST["phoneNumber"], $_POST["note"]);
+        $orderId = $orderModel->getLatestOrderId();
+        foreach($_SESSION[CART] as $detail) {
+            $orderDetailModel->addOrderDetail($orderId, $detail["id"], $detail["quantity"], $detail["massUnit"]);
+        }
+    }
     function test() {
-        session_destroy();
+        // session_destroy();
         // $detailList = [];
         // $productModel = $this->model("ProductModel");
         // $massUnitModel = $this->model("MassUnitModel");
@@ -54,6 +66,7 @@
         //     array_push($detailList, ["productInfo" => $product, "quantity" => $detail["quantity"], "massUnit" => $detail["massUnit"], "price" => $price]);
         // }
         // $massUnitList = array_map(fn ($value) => $value["name"], $this->model("MassUnitModel")->getMassUnitListByProductId(1));
+        sendEmail("Ky.nguyen23@student.passerellesnumeriques.org");
         $this->view("MainLayout", [
             "page" => "test",
             "list" => $_SESSION[CART]

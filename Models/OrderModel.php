@@ -15,8 +15,8 @@
             return $result->fetch_assoc();
         }
 
-        function getOrderListByCustomerId($cusId){
-            $results = $this->con->query("SELECT * FROM orders LEFT JOIN customers ON orders.cusId = customers.id WHERE customers.id = {$cusId}");
+        function getOrderListByCustomerPhone($phone){
+            $results = $this->con->query("SELECT * FROM orders WHERE customerPhone = $phone");
             $orderList = [];
             while ($row = $results->fetch_assoc()) {
                 array_push($orderList, $row);
@@ -24,14 +24,16 @@
             return $orderList;
         }
 
-        function addOrder($cusId, $date, $statusID, $shipFee){
-            $sql = "INSERT INTO orders (cusId, date, statusID, shipFee) 
-            VALUES('$cusId', '$date', '$statusID', '$shipFee')";
+        function addOrder($customerName, $customerPhone, $note){
+            $dateNow = date_create("now");
+            $date = $dateNow->format("Y-m-d H:i:s");
+            $sql = "INSERT INTO orders (customerName, customerPhone, date, note, statusID) 
+            VALUES('$customerName', '$customerPhone' , '$date', '$note', 0)";
             return $this->con->query($sql);
         }
 
         function updateOrder($id, $date, $statusID, $shipFee){
-            $sql = "UPDATE orders SET date ='$date', statusID ='$statusID', shipFee ='$shipFee' WHERE id ={$id}";
+            $sql = "UPDATE orders SET date ='$date', statusID ='$statusID', shipFee = $shipFee WHERE id = $id";
             return $this->con->query($sql);
         }
 
@@ -59,5 +61,7 @@
             }
             return $orderList;
         }
+        function getLatestOrderId() {
+            return $this->con->query("SELECT id FROM orders HAVING id = max(id)")->fetch_assoc()["id"];
+        }
     }
-?>
