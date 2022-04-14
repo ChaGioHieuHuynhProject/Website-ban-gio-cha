@@ -158,6 +158,24 @@
                   Order
                 </p>
               </a>
+              <a id="Contact" href="<?= Redirect("Admin", "Contact") ?>" class="nav-link">
+                <i class="nav-icon fas fa-envelope"></i>
+                <p>
+                  Contact
+                </p>
+              </a>
+              <a id="QAA" href="<?= Redirect("Admin", "QAA") ?>" class="nav-link">
+                <i class="nav-icon fas fa-question"></i>
+                <p>
+                  Q&A
+                </p>
+              </a>
+              <a id="Banner" href="<?= Redirect("Admin", "Banner") ?>" class="nav-link">
+                <i class="nav-icon fas fa-image"></i>
+                <p>
+                  Banner
+                </p>
+              </a>
             </li>
           </ul>
         </nav>
