@@ -18,7 +18,7 @@
                     <tr>
                         <td><?= $index + 1 ?></td>
                         <td><img class="tbl-img" src="<?= ImageLink($detail["productInfo"]["img"]) ?>" alt=""></td>
-                        <td><?= $detail["productInfo"]["name"] ?><?=$detail["massUnit"] == null? '' : "({$detail['massUnit']})" ?></td>
+                        <td><?= $detail["productInfo"]["name"] ?><?= $detail["massUnit"] == null ? '' : "({$detail['massUnit']})" ?></td>
                         <td><span id="price-<?= $index ?>"><?= $detail["price"] ?></span> VND</td>
                         <td>
                             <div class="number-input">
@@ -45,11 +45,12 @@
                         <td class="confirm-title confirm-title-right"><span id="temp-cost"></span> VNĐ</td>
                     </tr>
                 </table>
-                <button class="confirm-btn" onclick="confirmOrder()">XÁC NHẬN</button>
+                <button id="confirm-btn" onclick="confirmOrder()">XÁC NHẬN</button>
             </div>
         </div>
     <?php } ?>
 </section>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?= RenderCSS("Cart");
 RenderJs("Cart");
 ?>

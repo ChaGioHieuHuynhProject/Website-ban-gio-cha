@@ -23,3 +23,16 @@ const confirmOrder = () => {
   });
 };
 updateTempCost();
+$("#confirm-btn").click(()=> {
+  swal({
+    title: "Đặt hàng thành công!",
+    text: "Shop sẽ liên lạc với bạn trong vài phút!\nCảm ơn bạn đã lựa chọn shop.",
+    icon: "success",
+    button: {
+      text: "Trở về trang chủ!",
+      className: "back-to-home"
+    }
+  }).then(() => {
+      return window.location.href = "http://localhost/KyNguyen/Website-ban-gio-cha/";
+  });
+})

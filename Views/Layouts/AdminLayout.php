@@ -12,6 +12,7 @@
   <!-- <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"> -->
   <!-- Theme style -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <?= RenderCSS("adminlte") ?>
 </head>
 
@@ -30,6 +31,19 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
         </li>
+        <?php if ($data["action"] == "Order") { ?>
+          <li class="nav-item d-none d-flex align-items-center">
+            <form method="get">
+              <select name="filter-order-status">
+                <option value="">---Chọn trạng thái đơn hàng---</option>
+                <?php foreach ($data["statusList"] as $status) { ?>
+                  <option value="<?= $status["id"] ?>"><?= $status["name"] ?></option>
+                <?php } ?>
+              </select>
+              <button class="btn btn-primary" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
+            </form>
+          </li>
+        <?php } ?>
       </ul>
 
       <!-- Right navbar links -->
@@ -68,9 +82,9 @@
               <div class="media">
                 <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
                 <div class="media-body">
-                  <h3 class="dropdown-item-title">
+                  <h3 class="dropdown-item-title
                     Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                    <span class=" float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                   </h3>
                   <p class="text-sm">Call me whenever you can...</p>
                   <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
@@ -103,8 +117,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
+          <a class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Đăng xuất" href=" <?= Redirect("Admin", "Logout") ?>" role="button">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
           </a>
         </li>
       </ul>
@@ -122,7 +136,7 @@
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- SidebarSearch Form -->
-        <div class="form-inline">
+        <!-- <div class="form-inline">
           <div class="input-group" data-widget="sidebar-search">
             <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
@@ -131,7 +145,7 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -212,8 +226,7 @@
   <!-- overlayScrollbars -->
   <!-- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
   <!-- AdminLTE App -->
-  <?= RenderJs("jquery");
-  RenderJs("bootstrap.bundle");
+  <?= RenderJs("bootstrap.bundle");
   RenderJs("adminlte") ?>
 
   <!-- PAGE PLUGINS -->
