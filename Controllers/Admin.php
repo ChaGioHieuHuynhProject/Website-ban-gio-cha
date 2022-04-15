@@ -37,6 +37,9 @@
     }
     function DashBoard()
     {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
         $this->view("AdminLayout", [
             "page" => "DashBoard",
             "action" => "DashBoard"
@@ -44,6 +47,9 @@
     }
     function Product($action = null, $id = null)
     {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
         switch ($action) {
             case "Create": {
                 }
@@ -61,6 +67,9 @@
     }
     function Order($action = null, $id = null)
     {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
         switch ($action) {
             case "Create": {
                 }
@@ -82,6 +91,9 @@
     }
     function Contact($action = null, $id = null)
     {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
         switch ($action) {
             default: {
                 $this->view("AdminLayout", [
@@ -90,6 +102,9 @@
             }
         }
     }
+    private function isAdminLogedIn() {
+        return $_SESSION[ADMIN_LOGIN] != null;
+    } 
     function test() {
         $pwd = "admin";
         $pwdPeppered = hash_hmac("sha256", $pwd, $_ENV["pepper"]);
