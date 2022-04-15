@@ -193,17 +193,95 @@
             </li>
           </ul>
         </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
-    </aside>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Main content will be here -->
-      <main class="container">
-        <?php require_once "./Views/Pages/Admin/{$data['page']}.php" ?>
-      </main>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="<?= Redirect("Admin") ?>" class="brand-link">
+                <img src="<?= ImageLink("Logo.png") ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Chả Giò Hiếu Huynh</span>
+            </a>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- SidebarSearch Form -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                        <li class="nav-item menu-open">
+                            <a id="DashBoard" href="<?= Redirect("Admin", "DashBoard") ?>" class=" nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <a id="Product" href="<?= Redirect("Admin", "Product") ?>" class="nav-link">
+                                <i class="nav-icon fas fa-box-open"></i>
+                                <p>
+                                    Product
+                                </p>
+                            </a>
+                            <a id="Order" href="<?= Redirect("Admin", "Order") ?>" class="nav-link">
+                                <i class="nav-icon fas fa-file-invoice"></i>
+                                <p>
+                                    Order
+                                </p>
+                            </a>
+                            <a id="Contact" href="<?= Redirect("Admin", "Contact") ?>" class="nav-link">
+                                <i class="nav-icon fas fa-envelope"></i>
+                                <p>
+                                    Contact
+                                </p>
+                            </a>
+                            <a id="QAA" href="<?= Redirect("Admin", "QAA") ?>" class="nav-link">
+                                <i class="nav-icon fas fa-question"></i>
+                                <p>
+                                    Q&A
+                                </p>
+                            </a>
+                            <a id="Banner" href="<?= Redirect("Admin", "Banner") ?>" class="nav-link">
+                                <i class="nav-icon fas fa-image"></i>
+                                <p>
+                                    Banner
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content will be here -->
+            <main class="container">
+                <?php require_once "./Views/Pages/Admin/{$data['page']}.php" ?>
+            </main>
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            All rights reserved.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 3.2.0
+            </div>
+        </footer>
     </div>
     <!-- /.content-wrapper -->
 
@@ -228,23 +306,21 @@
   <!-- AdminLTE App -->
   <?= RenderJs("bootstrap.bundle");
   RenderJs("adminlte") ?>
-
-  <!-- PAGE PLUGINS -->
-  <!-- jQuery Mapael -->
-  <!-- <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+    <!-- PAGE PLUGINS -->
+    <!-- jQuery Mapael -->
+    <!-- <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
   <script src="plugins/raphael/raphael.min.js"></script>
   <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
   <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script> -->
-  <!-- ChartJS -->
-  <!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
-
-  <!-- AdminLTE for demo purposes -->
-  <!-- <script src="dist/js/demo.js"></script> -->
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <!-- <script src="dist/js/pages/dashboard2.js"></script> -->
-  <script>
+    <!-- ChartJS -->
+    <!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
+    <!-- AdminLTE for demo purposes -->
+    <!-- <script src="dist/js/demo.js"></script> -->
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <!-- <script src="dist/js/pages/dashboard2.js"></script> -->
+    <script>
     $("#<?= $data["action"] ?>").addClass("active")
-  </script>
+    </script>
 </body>
 
 </html>
