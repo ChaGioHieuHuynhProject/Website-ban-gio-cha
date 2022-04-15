@@ -225,7 +225,8 @@ svg {
   margin: 0 10px;
 }
 
-/* .mobile-nav {
+.mobile-nav {
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -244,7 +245,7 @@ svg {
   background-color: rgba(0, 0, 0, 0.3);
   display: none;
   z-index: 5;
-} */
+}
 
 .mobile-header-menu {}
 
