@@ -53015,4 +53015,10 @@ a.text-muted:hover {
 .vertical-middle {
   vertical-align: middle!important;
 }
+.sidebar-collapse .content-wrapper{
+  width: 90vw
+}
+.content-wrapper {
+  transition: width 0.5s ease-out!important;
+}
 /*# sourceMappingURL=adminlte.css.map */

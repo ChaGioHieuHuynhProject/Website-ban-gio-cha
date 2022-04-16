@@ -52,17 +52,21 @@
         }
         switch ($action) {
             case "Create": {
+
                 }
             case "Delete": {
-                    $this->con->query("DELETE FROM products where id=$id");
+                    
                 }
             case "Update": {
                 }
             default: {
-                    $this->view("AdminLayout", [
-                        "page" => "Product"
-                    ]);
-                }
+                $productList = $this->model("ProductModel")->getProductList();
+                $this->view("AdminLayout", [
+                    "page" => "Product",
+                    "action" => "Product",
+                    "productList" => $productList
+                ]);
+            }
         }
     }
     function Order($action = null, $id = null)
@@ -78,9 +82,13 @@
             case "Show": {
                 }
             default: {
-                    $orderList = $this->model("OrderModel")->getOrderList("DESC");
                     $statusList = $this->model("StatusModel")->getStatusList();
-                    $this->view("AdminLayout", [
+                    if (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] != '') {
+                        $orderList = $this->model("OrderModel")->getOrderListByStatusId($_POST["filter-order-status"]);
+                    } else {
+                        $orderList = $this->model("OrderModel")->getOrderList("DESC");
+                    }
+                    return $this->view("AdminLayout", [
                         "page" => "Order",
                         "action" => "Order",
                         "orderList" => $orderList,
@@ -102,17 +110,20 @@
             }
         }
     }
+    function QAA($action = null, $id = null) {
+        
+    }
     private function isAdminLogedIn() {
         return $_SESSION[ADMIN_LOGIN] != null;
     } 
     function test() {
-        $pwd = "admin";
-        $pwdPeppered = hash_hmac("sha256", $pwd, $_ENV["pepper"]);
-        $pwdHashed = password_hash($pwdPeppered, PASSWORD_DEFAULT);
+        // $pwd = "admin";
+        // $pwdPeppered = hash_hmac("sha256", $pwd, $_ENV["pepper"]);
+        // $pwdHashed = password_hash($pwdPeppered, PASSWORD_DEFAULT);
         $this->view("AdminLayout", [
             "page" => "test",
             "action"=> "test",
-            "pwd" => $pwdHashed
+            "id" => $_GET["id"]
         ]);
     }
 }

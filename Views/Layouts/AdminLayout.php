@@ -28,11 +28,11 @@
         </li>
         <?php if ($data["action"] == "Order") { ?>
           <li class="nav-item d-none d-flex align-items-center">
-            <form method="get">
+            <form method="post">
               <select name="filter-order-status">
                 <option value="">---Chọn trạng thái đơn hàng---</option>
                 <?php foreach ($data["statusList"] as $status) { ?>
-                  <option value="<?= $status["id"] ?>"><?= $status["name"] ?></option>
+                  <option value="<?= $status["id"] ?>" <?= (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] == $status["id"]) ? "selected" : "" ?>><?= $status["name"] ?></option>
                 <?php } ?>
               </select>
               <button class="btn btn-primary" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
@@ -190,9 +190,11 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Main content will be here -->
-      <main class="container">
-        <?php require_once "./Views/Pages/Admin/{$data['page']}.php" ?>
-      </main>
+      <section class="content">
+        <main class="container-fluid">
+          <?php require_once "./Views/Pages/Admin/{$data['page']}.php" ?>
+        </main>
+      </section>
     </div>
     <!-- /.content-wrapper -->
     <!-- Main Footer -->
