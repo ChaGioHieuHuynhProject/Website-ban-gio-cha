@@ -16,7 +16,7 @@
             try {
                 $contactModel->addContact($name, $phone, $address, $note);
                 $message = "Đã gửi thành công!<br>Cảm ơn quý khách đã gửi thông tin liên lạc";
-            } catch (Exception) {
+            } catch (Exception $name) {
                 $message = "Xảy ra lỗi!";
             }
             $subject = "[Khách hàng liên lạc][Đang chờ phản hồi]";

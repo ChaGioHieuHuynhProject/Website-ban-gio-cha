@@ -14,7 +14,7 @@
         $product = $this->model("ProductModel")->getProductById($id);
         $this->view("MainLayout", [
             "page" => "Detail",
-            "data" => $product
+            "product" => $product
         ]);
     }
 }

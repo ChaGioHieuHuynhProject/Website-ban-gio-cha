@@ -1,28 +1,64 @@
-.N-container {
-    height: auto;
-    width: 1080px;
-    margin: 2rem auto;
+:root {
+    --fd-contact-layout:row;
+    /* --form-contact-width: 40%; */
+    --map-iframe-height:100%;
+    --padding-screen: 0 150px;
+}
+
+@media screen and (max-width: 1224px) {
+    :root {
+        --fd-contact-layout:row;
+        --form-contact-width: 45%;
+        --map-iframe-height:100%;
+        --padding-screen: 0 35px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    :root {
+        --padding-screen: 0 calc(7px + 5vw);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+    --fd-contact-layout:column;
+    --form-contact-width:100%;
+    --map-iframe-height:300px;
+    }
+}
+
+#note-contact{
+    row-gap: 7;
 }
 
 .N-layout {
-    width: 100%;
+    /* width: 90%; */
     height: auto;
-    display: grid;
-    grid-template-columns: 60% 40%;
+    display: flex;
+    flex-direction: var(--fd-contact-layout);
+    justify-content: space-between;
     gap: 2rem;
-
+    margin: 3rem auto;
+    padding: var(--padding-screen);
 }
 
 .N-map {
+    position: relative;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.N-map iframe {
+.N-map iframe{
     width: 100%;
-    height: 400px;
+    height: var(--map-iframe-height);
+}
+.N-form-contact{
+    width: var(--form-contact-width);
+}
+.form-contact {
+    /* width: 35%; */
 }
 .N-field {
     width: 100%;
