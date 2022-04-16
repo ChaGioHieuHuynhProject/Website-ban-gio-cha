@@ -57,12 +57,12 @@
 }
 .content-above .img-content {
   width: var(--content-above-width);
-  height: var(--img-above-height);
   position: relative;
 }
 .content-above .img-content img {
   width: 100%;
   height: auto;
+  height: var(--img-above-height);
   position: var(--img-above-position);
   position: -webkit-sticky;
   top: 0.5rem;
