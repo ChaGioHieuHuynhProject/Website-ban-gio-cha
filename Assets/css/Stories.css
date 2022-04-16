@@ -1,10 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
 
 body{font-family: 'Lora', serif;}
+:root {
+    --padding-screen: 0 150px;
+    --content-above-width:48%;
+    --img-above-position:sticky;
+}
+
+@media screen and (max-width: 1224px) {
+    :root {
+        --padding-screen: 0 35px;
+        --padding-screen: 0 calc(7px + 5vw);
+        --content-above-width:48%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    :root {
+        --img-above-height:auto;
+        --padding-screen: 0 calc(7px + 5vw);
+        --fd-content-above:row;
+        --img-above-position:sticky;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+        --content-above-width:100%;
+        --fd-content-above:column-reverse;
+        --img-above-height:300px;
+        --img-above-position:unset;
+    }
+}
 .N-container {
     height: auto;
-    width: 960px;
-    margin: 0 auto;
+    padding: var(--padding-screen);
 }
 
 .N-title {
@@ -22,24 +52,29 @@ body{font-family: 'Lora', serif;}
 
 .N-layout {
     width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "d1 d2" "d3 d4";
+
+}
+.story {
+    display: flex;
+}
+
+.N-layout-text-item {
+    width: var(--content-above-width);
 }
 
 .N-layout-img-item {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    width: var(--content-above-width);
+    position: relative;
 }
 
 .N-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
+    height: auto;
+    height: var(--img-above-height);
+    position: var(--img-above-position);
+    position: -webkit-sticky;
+    top: 0.5rem;
+    border: 2px black solid;
 }
 
 .N-text-title {
@@ -48,30 +83,10 @@ body{font-family: 'Lora', serif;}
     font-size: 20px;
 }
 
-/* .N-textContent {
-    padding: 0 30px;
-    text-align: center;
-    vertical-align: middle;
-    overflow: hidden;
-} */
 .N-text-content {
     padding: 30px;
     word-wrap: break-word;
     text-align: justify;
     
 }
-.N-layout-text-item:nth-child(1) {
-    grid-area: d2;
-}
 
-.N-layout-text-item:nth-child(2) {
-    grid-area: d3;
-}
-
-.N-layout-img-item:nth-child(1) {
-    grid-area: d1;
-}
-
-.N-layout-img-item:nth-child(2) {
-    grid-area: d4;
-}

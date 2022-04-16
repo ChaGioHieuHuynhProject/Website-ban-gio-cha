@@ -21,7 +21,7 @@
     function getProductById($id)
     {
         $result = $this->con->query("SELECT * FROM products WHERE id=$id");
-        return $result->fetch_assoc();
+        // return $result->fetch_assoc();
     }
 
     function addProduct($name, $price, $ingredients, $description, $usageGuide, $massUnitId)

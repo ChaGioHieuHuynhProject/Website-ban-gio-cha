@@ -234,7 +234,7 @@ img {
 }
 
 .header-logo__img {
-  height: 130%;
+  height: 90%;
   width: auto;
   position: absolute;
   left: 0;
@@ -366,7 +366,6 @@ img {
   height: 3px;
   background-color: rgb(138, 94, 83);
 }
-
 .footer-top {
   height: var(--header-height);
   display: flex;
@@ -374,19 +373,27 @@ img {
   align-items: center;
   padding: var(--padding-screen);
 }
+
 .footer-logo {
   height: 100%;
   width: var(--logo-width);
   position: relative;
 }
+
 .footer-top__img {
-  height: 130%;
+  height: 90%;
   width: auto;
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   margin: auto;
+}
+.slogan{
+  text-decoration: none;
+  color: green;
+  font-size: calc(20px + 6 * ((100vw - 320px) / 680));
+  font-weight: bold;
 }
 
 .footer-top-right {
