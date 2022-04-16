@@ -16,7 +16,8 @@
         <section class="header">
             <!-- <div></div> -->
             <div class="header-logo">
-                <img class="header-logo__img" src="<?= ImageLink("Logo.png") ?>" alt="">
+                <img class="header-logo__img" src="<?= ImageLink("Logo1.png") ?>" alt="">
+                <p>Tiếp nối truyền thống giò chả Việt</p>
             </div>
             <ul class="header-menu">
                 <li class="menu-item"><a href="<?= Redirect("Home") ?>">TRANG CHỦ</a></li>

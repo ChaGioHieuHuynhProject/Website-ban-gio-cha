@@ -199,19 +199,12 @@ svg {
 }
 
 .header-logo {
-  height: 100%;
+  height: 5rem;
   width: var(--logo-width);
-  position: relative;
 }
 
 .header-logo__img {
-  height: 130%;
-  width: auto;
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  width: 80%;
 }
 
 .menu-btn {
