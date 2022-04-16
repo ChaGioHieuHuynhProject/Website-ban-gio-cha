@@ -156,6 +156,7 @@ svg {
   --footer-center-space:space-between;
   --footer-font-size:20px;
   --footer-title-font-size:25px;
+  --header-footer-background-color:rgb(250, 229, 215) ;
 }
 
 @media screen and (max-width: 1224px) {
@@ -224,7 +225,7 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: var(--padding-screen);
-  background-color: antiquewhite;
+  background-color: var(--header-footer-background-color);
 }
 
 .header-logo {
@@ -285,7 +286,7 @@ img {
   width: 320px;
   max-width: 100%;
   height: auto;
-  background-color: antiquewhite;
+  background-color: var(--header-footer-background-color);
   transition: 0.5s;
 }
 
@@ -356,7 +357,7 @@ img {
 /* __________________________________________________________________________________________ */
 .footer {
   color: black;
-  background-color: antiquewhite;
+  background-color: var(--header-footer-background-color);
   font-size: var(--footer-font-size);
   text-align: justify;
 }
