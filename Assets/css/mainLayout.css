@@ -428,7 +428,7 @@ img {
 
 .footer-center__title {
   font-size: var(--footer-title-font-size);
-  padding: 3% 0;
+  padding: 0.5rem 0;
   font-weight: bold;
   text-align: center;
 }
@@ -455,6 +455,7 @@ img {
   width: var(--vitrade-width);
   display: flex ;
   margin: auto;
+  margin-top: 0;
 }
 
 .footer-icon__btn {
