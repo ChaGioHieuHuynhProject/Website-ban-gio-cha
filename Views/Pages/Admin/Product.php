@@ -21,13 +21,16 @@
                 <tr>
                     <th scope="row"><?= $product["id"] ?></th>
                     <td><?= $product["name"] ?></td>
-                    <td ><img class="img-fluid" src="<?= ImageLink($product["img"]) ?>"></td>
+                    <td><img class="img-fluid" src="<?= ImageLink($product["img"]) ?>"></td>
                     <td><?= $product["price"] ?></td>
                     <td><?= $product["ingredients"] ?></td>
                     <td><?= $product["description"] ?></td>
                     <td><?= $product["usageGuide"] ?></td>
                     <td>
-                        <a href="#" role="button" class="btn btn-primary">
+                        <a href="<?= Redirect("Admin", "Product") ?>/Delete/<?= $product["id"] ?>" role="button" class="btn btn-danger">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                        <a href="<?= Redirect("Admin", "Product") ?>/Update/<?= $product["id"] ?>" role="button" class="btn btn-primary mt-2">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </a>
                     </td>

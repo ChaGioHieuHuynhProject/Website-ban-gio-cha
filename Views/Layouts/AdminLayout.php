@@ -20,25 +20,33 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="index3.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
-        </li>
-        <?php if ($data["action"] == "Order") { ?>
-          <li class="nav-item d-none d-flex align-items-center">
-            <form method="post">
-              <select name="filter-order-status">
-                <option value="">---Chọn trạng thái đơn hàng---</option>
-                <?php foreach ($data["statusList"] as $status) { ?>
-                  <option value="<?= $status["id"] ?>" <?= (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] == $status["id"]) ? "selected" : "" ?>><?= $status["name"] ?></option>
-                <?php } ?>
-              </select>
-              <button class="btn btn-primary" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
-            </form>
-          </li>
-        <?php } ?>
+        </li> -->
+        <?php
+        switch ($data["action"]) {
+          case "Product": { ?>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?=Redirect("Admin", "Product")?>/Create" class="nav-link">Tạo sản phẩm mới</a>
+            </li>
+          <?php break;}
+          case "Order": { ?>
+              <li class="nav-item d-none d-flex align-items-center">
+                <form method="post">
+                  <select name="filter-order-status">
+                    <option value="">---Chọn trạng thái đơn hàng---</option>
+                    <?php foreach ($data["statusList"] as $status) { ?>
+                      <option value="<?= $status["id"] ?>" <?= (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] == $status["id"]) ? "selected" : "" ?>><?= $status["name"] ?></option>
+                    <?php } ?>
+                  </select>
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                </form>
+              </li>
+        <?php break; }
+        } ?>
       </ul>
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">

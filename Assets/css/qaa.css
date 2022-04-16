@@ -30,7 +30,7 @@
     flex-direction: var(--fd-qaa-layout);
     justify-content: space-between;
     align-items: center;
-    text-align: center;
+    text-align: justify;
     padding: var(--padding-screen);
     margin: 1rem auto;
     font-size: 125%;

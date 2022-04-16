@@ -53021,4 +53021,7 @@ a.text-muted:hover {
 .content-wrapper {
   transition: width 0.5s ease-out!important;
 }
+input:-internal-autofill-selected {
+  background-color: transparent!important;
+}
 /*# sourceMappingURL=adminlte.css.map */

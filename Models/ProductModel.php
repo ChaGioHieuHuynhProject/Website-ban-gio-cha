@@ -21,25 +21,25 @@
     function getProductById($id)
     {
         $result = $this->con->query("SELECT * FROM products WHERE id=$id");
-        return $result->fetch_assoc();
+        return $result ? $result->fetch_assoc() : null;
     }
 
-    function addProduct($name, $price, $ingredients, $description, $usageGuide, $massUnitId)
+    function addProduct($name, $price, $img, $ingredients, $description, $usageGuide)
     {
-        $sql = "INSERT INTO products (name, price, ingredients, description, usageGuide, massUnitId) 
-        VALUES('$name', '$price', '$ingredients', '$description', '$usageGuide', '$massUnitId')";
+        $sql = "INSERT INTO products (name, price, img, ingredients, description, usageGuide) 
+        VALUES('$name', '$price', '$img', '$ingredients', '$description', '$usageGuide')";
         return $this->con->query($sql);
     }
 
-    function updateProduct($id, $name, $price, $ingredients, $description, $usageGuide, $massUnitId)
+    function updateProduct($id, $name, $price, $img, $ingredients, $description, $usageGuide)
     {
-        $sql = "UPDATE products SET name ='$name', ingredients ='$price', shipFee ='$ingredients', description ='$description', usageGuide ='$usageGuide',massUnitId = '$massUnitId' WHERE id ={$id}";
+        $sql = "UPDATE products SET name ='$name', price ='$price', img = '$img', ingredients ='$ingredients', description ='$description', usageGuide ='$usageGuide' WHERE id = $id";
         return $this->con->query($sql);
     }
 
     function deleteProduct($id)
     {
-        $sql = "DELETE FROM prorducts WHERE id ={$id}";
+        $sql = "DELETE FROM products WHERE id = $id";
         return $this->con->query($sql);
     }
 }
