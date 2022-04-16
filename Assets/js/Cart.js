@@ -1,7 +1,7 @@
 const update = (index, quantity) => {
   $.ajax({
     method: "post",
-    url: "http://localhost/KyNguyen/Website-ban-gio-cha/Cart/Update",
+    url: "http://localhost:8080/Website-ban-gio-cha/Cart/Update",
     data: { index: index, quantity: quantity },
   });
   $(`#total-${index}`).text($(`#price-${index}`).text() * quantity);
@@ -18,7 +18,7 @@ const updateTempCost = () => {
 const confirmOrder = () => {
   $.ajax({
     method: "post",
-    url: "http://localhost/KyNguyen/Website-ban-gio-cha/Cart/Confirm",
+    url: "http://localhost:8080/Website-ban-gio-cha/Cart/Confirm",
     data: {
       customerName: "NDK",
       phoneNumber: "0987654321",
@@ -28,16 +28,17 @@ const confirmOrder = () => {
   });
 };
 updateTempCost();
-$("#confirm-btn").click(()=> {
+$("#confirm-btn").click(() => {
   swal({
     title: "Đặt hàng thành công!",
     text: "Shop sẽ liên lạc với bạn trong vài phút!\nCảm ơn bạn đã lựa chọn shop.",
     icon: "success",
     button: {
       text: "Trở về trang chủ!",
-      className: "back-to-home"
-    }
+      className: "back-to-home",
+    },
   }).then(() => {
-      return (window.location.href = "http://localhost/KyNguyen/Website-ban-gio-cha/");
+    return (window.location.href =
+      "http://localhost:8080/Website-ban-gio-cha/");
   });
-})
+});
