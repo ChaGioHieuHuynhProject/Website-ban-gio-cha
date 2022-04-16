@@ -175,7 +175,7 @@
             </div>
             <div class="footer-center-right">
                 <h1 class="footer-center__title">VITRADE</h1>
-                <img src="<?= ImageLink("vitrade.jpg") ?>" alt="">
+                <img src="<?= ImageLink("vitrade.jpg") ?>" alt="" style="margin: 1rem 0">
             </div>
         </div>
         <div class="footer-bottom">© 2022 by <a href="https://www.passerellesnumeriques.org/vi/">Passerelles

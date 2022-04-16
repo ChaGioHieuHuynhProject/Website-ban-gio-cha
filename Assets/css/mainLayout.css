@@ -168,6 +168,7 @@ svg {
     --logo-width: 100px;
     --footer-center__title-display: none;
     --footer-center-left-right-width:45%;
+    --footer-center-space:space-between;
   }
 }
 
@@ -190,7 +191,12 @@ svg {
 
 @media screen and (max-width: 640px) {
   :root {
+    --fd-footer-center:column;
     --header-height: 50px;
+    --height-footer-center:auto;
+    --footer-center-left-right-width:90%;
+    --footer-font-size:calc(13px + 6 * ((100vw - 320px) / 680));
+    --footer-title-font-size:calc(16px + 6 * ((100vw - 320px) / 680));
   }
 }
 
@@ -403,11 +409,11 @@ img {
 
 .footer-center {
   display: flex;
+  flex-direction: var(--fd-footer-center);
   justify-content: var(--footer-center-space);
   align-items: center;
   padding: var(--padding-screen);
-  height: 275px;
-  gap: 35px;
+  height: 275px var(--height-footer-center);
 }
 
 .footer-center__title {
