@@ -26,10 +26,10 @@
         if (empty($this->model("ProductModel")->getProductById($id)) || $cartModel->hasProduct($id)) {
             return header("Location:".Redirect("Cart"));
         }
-        $massUnitList = array_map(fn ($value) => $value["name"], $this->model("MassUnitModel")->getMassUnitListByProductId($id));
-        if ($massUnit != null & !in_array($massUnit, $massUnitList)) {
-            $massUnit = $massUnitList[0];
-        }
+            // $massUnitList = array_map(fn ($value) => $value["name"], $this->model("MassUnitModel")->getMassUnitListByProductId($id));
+            // if ($massUnit != null & !in_array($massUnit, $massUnitList)) {
+            //     $massUnit = $massUnitList[0];
+            // }
         $cartModel->add(["id" => $id, "quantity" => $quantity, "massUnit" => $massUnit]);
         return header("Location:" . Redirect("Cart"));
     }
@@ -54,14 +54,8 @@
         foreach($_SESSION[CART] as $detail) {
             $orderDetailModel->addOrderDetail($orderId, $detail["id"], $detail["quantity"], $detail["massUnit"]);
         }
-        $_SESSION[CART] = null;
+        header("Location:".Redirect("Home"));
 
-        $subject = "[Đơn hàng số $orderId][Đang chờ xác nhận]";
-        $content = "Tên khách hàng: <b>{$_POST['customerName']}</b><br>
-                    Số điện thoại: <b>{$_POST["phoneNumber"]}</b><br>
-                    Địa chỉ: <b>{$_POST["customerAddress"]}</b><br><br>
-                    Vui lòng vào admin page để biết thêm chi tiết!";
-        sendEmail($subject, $content);
     }
     function test() {
         // session_destroy();
