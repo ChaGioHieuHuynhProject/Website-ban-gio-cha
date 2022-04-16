@@ -1,61 +1,34 @@
 :root {
-  --gap-nav: 35px;
-  --fz-body: 13px;
-  --display-menu-btn: none;
-  --display-nav: flex;
   --padding-screen: 0 150px;
-  --header-height: 140px;
-  --logo-width: 185px;
-  --footer-center__title-display: block;
-  --vitrade-width: auto;
-  --vitrade-height: 200px;
-  --footer-center-left-right-width: 35%;
-  --footer-center-space: space-between;
-  --footer-font-size: 20px;
-  --footer-title-font-size: 25px;
+  --content-above-width:48%;
+  --img-above-position:sticky;
 }
 
 @media screen and (max-width: 1224px) {
   :root {
-    --gap-nav: 20px;
-    /* --fz-body: 12px; */
     --padding-screen: 0 calc(7px + 5vw);
-    --line-clamp-history-content: 3;
-    --header-height: 100px;
-    --logo-width: 100px;
-    --footer-center__title-display: none;
-    --footer-center-left-right-width: 45%;
-    --footer-center-space: space-between;
+    --content-above-width:48%;
   }
 }
 
 @media screen and (max-width: 960px) {
   :root {
-    --gap-nav: 20px;
-    /* --fz-body: 12px; */
-    --display-menu-btn: block;
-    --display-nav: none;
+    --img-above-height:auto;
     --padding-screen: 0 calc(7px + 5vw);
-    --header-height: 100px;
-    --vitrade-width: 100%;
-    --vitrade-height: auto;
-    --footer-center-space: space-evenly;
-    --footer-font-size: calc(10px + 6 * ((100vw - 320px) / 680));
-    --footer-title-font-size: calc(13px + 6 * ((100vw - 320px) / 680));
-    /* font-size: calc(16px + 6 * ((100vw - 320px) / 680)); */
+    --fd-content-above:row;
+    --img-above-position:sticky;
   }
 }
 
 @media screen and (max-width: 640px) {
   :root {
-    --fd-footer-center: column;
-    --header-height: 50px;
-    --height-footer-center: auto;
-    --footer-center-left-right-width: 90%;
-    --footer-font-size: calc(13px + 6 * ((100vw - 320px) / 680));
-    --footer-title-font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    --content-above-width:100%;
+    --fd-content-above:column-reverse;
+    --img-above-height:300px;
+    --img-above-position:unset;
   }
 }
+
 .Aboutus {
   padding: var(--padding-screen);
   height: auto;
@@ -71,6 +44,7 @@
 .content-above {
   width: 100%;
   display: flex;
+  flex-direction: var(--fd-content-above);
   justify-content: space-around;
   margin: 2rem auto;
 }
@@ -79,16 +53,17 @@
   font-size: calc(13px + 6 * ((100vw - 320px) / 680));
 }
 .content-above .content {
-  width: 50%;
+  width: var(--content-above-width);
 }
 .content-above .img-content {
-  width: 47%;
+  width: var(--content-above-width);
+  height: var(--img-above-height);
   position: relative;
 }
 .content-above .img-content img {
   width: 100%;
   height: auto;
-  position: sticky;
+  position: var(--img-above-position);
   position: -webkit-sticky;
   top: 0.5rem;
   border: 2px black solid;
