@@ -16,8 +16,7 @@
         <section class="header">
             <!-- <div></div> -->
             <div class="header-logo">
-                <img class="header-logo__img" src="<?= ImageLink("Logo1.png") ?>" alt="">
-                <p>Tiếp nối truyền thống giò chả Việt</p>
+                <img class="header-logo__img" src="<?= ImageLink("Logo.png") ?>" alt="">
             </div>
             <ul class="header-menu">
                 <li class="menu-item"><a href="<?= Redirect("Home") ?>">TRANG CHỦ</a></li>
@@ -57,7 +56,10 @@
     <?php require_once "./Views/Pages/{$data['page']}.php" ?>
     <footer class="footer">
         <div class="footer-top">
-            <img class="footer-top__img" src="<?= ImageLink("Logo.png") ?>" alt="">
+            <div class="footer-logo">
+                <img class="footer-top__img" src="<?= ImageLink("Logo.png") ?>" alt="">
+                <p>Tiếp nối truyền thống giò chả Việt</p>
+            </div>
             <div class="footer-top-right">
                 <span style="font-weight:bold">Theo dõi chúng tôi tại</span>
                 <a href="https://www.facebook.com/giochacoman" target="blank">
