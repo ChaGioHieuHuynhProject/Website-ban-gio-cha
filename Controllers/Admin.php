@@ -31,9 +31,10 @@
             "loginMessage" => $message
         ]);
     }
-    function Logout() {
+    function Logout()
+    {
         $_SESSION[ADMIN_LOGIN] = null;
-        return header("Location:".Redirect("Admin", "Login"));
+        return header("Location:" . Redirect("Admin", "Login"));
     }
     function DashBoard()
     {
@@ -52,21 +53,104 @@
         }
         switch ($action) {
             case "Create": {
+                $error = "";
+                if (isset($_POST["save"])) {
+                    $name = $_POST["name"];
+                    $price = $_POST["price"];
+                    $ingredients = $_POST["ingredients"];
+                    $description = $_POST["description"];
+                    $usageGuide = $_POST["usageGuide"];
 
+                    $img_name = $_FILES['img']['name'];
+                    $file_tmp = $_FILES['img']['tmp_name'];
+                    $file_ext = strtolower(end(explode('.', $img_name)));
+
+                    $extensions = array("jpeg", "jpg", "png");
+
+                    if (!in_array($file_ext, $extensions)) {
+                        $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
+                    }
+                    if (empty($error)) {
+                        try {
+                            move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
+                            $this->model("ProductModel")->addProduct($name, $price, $img_name, $ingredients, $description, $usageGuide);
+                            return header("Location:" . Redirect("Admin", "Product"));
+                        } catch (Exception) {
+                            $error = "Có lỗi xảy ra!";
+                        }
+                    }
                 }
-            case "Delete": {
-                    
-                }
-            case "Update": {
-                }
-            default: {
-                $productList = $this->model("ProductModel")->getProductList();
-                $this->view("AdminLayout", [
-                    "page" => "Product",
+                return $this->view("AdminLayout", [
+                    "page" => "ProductForm",
                     "action" => "Product",
-                    "productList" => $productList
+                    "error" => $error
                 ]);
             }
+            case "Delete": {
+                if ($id == null) {
+                    return header("Location:" . Redirect("Admin", "Product"));
+                }
+                $this->model("ProductModel")->deleteProduct($id);
+                return header("Location:" . Redirect("Admin", "Product"));
+            }
+            case "Update": {
+                if ($id == null) {
+                    return header("Location:" . Redirect("Admin", "Product"));
+                }
+
+                $product = $this->model("ProductModel")->getProductByid($id);
+                if ($product == null) {
+                    return header("Location:" . Redirect("Admin", "Product"));
+                }
+
+                $error = "";
+                if (isset($_POST["save"])) {
+                    $name = $_POST["name"];
+                    $price = $_POST["price"];
+                    $ingredients = $_POST["ingredients"];
+                    $description = $_POST["description"];
+                    $usageGuide = $_POST["usageGuide"];
+
+                    if (empty($_FILES["img"])) {
+                        $img_name = $_POST["old-img"];
+                    } else {
+                        $img_name = $_FILES['img']['name'];
+                        $file_tmp = $_FILES['img']['tmp_name'];
+                        $file_ext = strtolower(end(explode('.', $img_name)));
+
+                        $extensions = array("jpeg", "jpg", "png");
+
+                        if (!in_array($file_ext, $extensions)) {
+                            $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
+                        }
+                        else {
+                            move_uploaded_file($file_tmp, "./Assets/img/" . $img_name);
+                        }
+                    }
+                    if (empty($error)) {
+                        try {
+                            $this->model("ProductModel")->updateProduct($id, $name, $price, $img_name, $ingredients, $description, $usageGuide);
+                            return header("Location:" . Redirect("Admin", "Product"));
+                        } catch (Exception) {
+                            $error = "Có lỗi xảy ra!";
+                        }
+                    }
+                }
+                return $this->view("AdminLayout", [
+                    "page" => "ProductForm",
+                    "action" => "Product",
+                    "error" => $error,
+                    "product" => $product
+                ]);
+            }
+            default: {
+                    $productList = $this->model("ProductModel")->getProductList();
+                    $this->view("AdminLayout", [
+                        "page" => "Product",
+                        "action" => "Product",
+                        "productList" => $productList
+                    ]);
+                }
         }
     }
     function Order($action = null, $id = null)
@@ -104,27 +188,28 @@
         }
         switch ($action) {
             default: {
-                $this->view("AdminLayout", [
-                    "page" => "Contact"
-                ]);
-            }
+                    $this->view("AdminLayout", [
+                        "page" => "Contact"
+                    ]);
+                }
         }
     }
-    function QAA($action = null, $id = null) {
-        
+    function QAA($action = null, $id = null)
+    {
     }
-    private function isAdminLogedIn() {
+    private function isAdminLogedIn()
+    {
         return $_SESSION[ADMIN_LOGIN] != null;
-    } 
-    function test() {
+    }
+    function test()
+    {
         // $pwd = "admin";
         // $pwdPeppered = hash_hmac("sha256", $pwd, $_ENV["pepper"]);
         // $pwdHashed = password_hash($pwdPeppered, PASSWORD_DEFAULT);
         $this->view("AdminLayout", [
             "page" => "test",
-            "action"=> "test",
+            "action" => "test",
             "id" => $_GET["id"]
         ]);
     }
 }
-?>
