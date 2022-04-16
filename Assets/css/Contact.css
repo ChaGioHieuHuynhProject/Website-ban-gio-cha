@@ -2,21 +2,23 @@
     --fd-contact-layout:row;
     /* --form-contact-width: 40%; */
     --map-iframe-height:100%;
+    --padding-screen: 0 150px;
 }
 
 @media screen and (max-width: 1224px) {
     :root {
         --fd-contact-layout:row;
-        --form-contact-width: 40%;
+        --form-contact-width: 45%;
         --map-iframe-height:100%;
+        --padding-screen: 0 35px;
     }
 }
-/* 
+
 @media screen and (max-width: 960px) {
     :root {
-        
+        --padding-screen: 0 calc(7px + 5vw);
     }
-} */
+}
 
 @media screen and (max-width: 640px) {
     :root {
@@ -26,16 +28,19 @@
     }
 }
 
-
+#note-contact{
+    row-gap: 7;
+}
 
 .N-layout {
-    width: 90%;
+    /* width: 90%; */
     height: auto;
     display: flex;
     flex-direction: var(--fd-contact-layout);
     justify-content: space-between;
     gap: 2rem;
     margin: 3rem auto;
+    padding: var(--padding-screen);
 }
 
 .N-map {
