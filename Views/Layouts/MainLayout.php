@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title><?= $data['page'] ?></title>
-    <?php RenderCSS("MainLayout") ?>
+    <?php RenderCSS("mainLayout") ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
         integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -30,21 +30,30 @@
                 <li class="menu-item"><a href="<?= Redirect("Contact") ?>">LIÊN HỆ</a></li>
             </ul>
             <div class="header__btn">
-                <div class="header-icon__btn menu-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <path
-                            d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" />
-                    </svg>
-                </div>
                 <a href="<?= Redirect("Cart") ?>">
                     <svg class="header-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                         <path
                             d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z" />
                     </svg>
                 </a>
+                <label for="nav-mobile-open" class="header-icon__btn menu-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path
+                            d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z" />
+                    </svg>
+                </label>
+
             </div>
-            <div class="nav__overlay"></div>
+            <input type="checkbox" class="nav-checkbox-open" id="nav-mobile-open" style="display: none;">
+            <label for="nav-mobile-open" class="nav__overlay"></label>
             <div class="mobile-nav">
+                <label for="nav-mobile-open" class="header-icon__btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                        <path class="header-icon__btn menu-btn"
+                            d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM175 208.1L222.1 255.1L175 303C165.7 312.4 165.7 327.6 175 336.1C184.4 346.3 199.6 346.3 208.1 336.1L255.1 289.9L303 336.1C312.4 346.3 327.6 346.3 336.1 336.1C346.3 327.6 346.3 312.4 336.1 303L289.9 255.1L336.1 208.1C346.3 199.6 346.3 184.4 336.1 175C327.6 165.7 312.4 165.7 303 175L255.1 222.1L208.1 175C199.6 165.7 184.4 165.7 175 175C165.7 184.4 165.7 199.6 175 208.1V208.1z" />
+                    </svg>
+                </label>
                 <ul class="mobile-header-menu">
                     <li class="mobile-menu-item"><a href="<?= Redirect("Home") ?>">TRANG CHỦ</a></li>
                     <li class="mobile-menu-item"><a href="<?= Redirect("AboutUs") ?>">VỀ CHÚNG TÔI</a></li>
@@ -60,9 +69,11 @@
     <?php require_once "./Views/Pages/{$data['page']}.php" ?>
     <footer class="footer">
         <div class="footer-top">
-            <img class="footer-top__img" src="<?= ImageLink("Logo.png") ?>" alt="">
+            <div class="footer-logo">
+                <img class="footer-top__img" src="<?= ImageLink("Logo.png") ?>" alt="">
+            </div>
             <div class="footer-top-right">
-                <span style="font-weight:bold">Theo dõi chúng tôi tại</span>
+                <h1 class="footer-center__title">Theo dõi chúng tôi tại</h1>
                 <a href="https://www.facebook.com/giochacoman" target="blank">
                     <svg class="footer-top__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path
@@ -116,52 +127,48 @@
             <div class="footer-center-mid">
                 <h1 class="footer-center__title">KHÁM PHÁ</h1>
                 <div class="page-map">
-                    <div class="page-map__left">
-                        <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path
-                                    d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
-                            </svg>
-                            <a href="<?= Redirect("Home") ?>">Trang Chủ</a>
-                        </p>
-                        <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path
-                                    d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
-                            </svg>
-                            <a href="<?= Redirect("AboutUs") ?>">Về Chúng Tôi</a>
-                        </p>
-                        <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path
-                                    d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
-                            </svg>
-                            <a href="<?= Redirect("Product") ?>">Sản Phẩm</a>
-                        </p>
-                        <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path
-                                    d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
-                            </svg>
-                            <a href="<?= Redirect("Stories") ?>">Câu Chuyện</a>
-                        </p>
-                    </div>
-                    <div class="page-map__right">
-                        <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path
-                                    d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
-                            </svg>
-                            <a href="<?= Redirect("Review") ?>">Đánh giá</a>
-                        </p>
-                        <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path
-                                    d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
-                            </svg>
-                            <a href="<?= Redirect("Qaa") ?>">Hỏi đáp</a>
-                        </p>
-                        <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path
-                                    d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
-                            </svg>
-                            <a href="<?= Redirect("Contact") ?>">Liên Hệ</a>
-                        </p>
-                    </div>
+                    <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
+                        </svg>
+                        <a href="<?= Redirect("Home") ?>">Trang Chủ</a>
+                    </p>
+                    <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
+                        </svg>
+                        <a href="<?= Redirect("AboutUs") ?>">Về Chúng Tôi</a>
+                    </p>
+                    <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
+                        </svg>
+                        <a href="<?= Redirect("Product") ?>">Sản Phẩm</a>
+                    </p>
+                    <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
+                        </svg>
+                        <a href="<?= Redirect("Stories") ?>">Câu Chuyện</a>
+                    </p>
+                    <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
+                        </svg>
+                        <a href="<?= Redirect("Review") ?>">Đánh giá</a>
+                    </p>
+                    <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
+                        </svg>
+                        <a href="<?= Redirect("Qaa") ?>">Hỏi đáp</a>
+                    </p>
+                    <p><svg class="footer-icon__btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M256 0C114.6 0 0 114.6 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256C512 114.6 397.4 0 256 0zM358.6 278.6l-112 112c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25L290.8 256L201.4 166.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l112 112C364.9 239.6 368 247.8 368 256S364.9 272.4 358.6 278.6z" />
+                        </svg>
+                        <a href="<?= Redirect("Contact") ?>">Liên Hệ</a>
+                    </p>
                 </div>
             </div>
             <div class="footer-center-right">
@@ -169,7 +176,8 @@
                 <img src="<?= ImageLink("vitrade.jpg") ?>" alt="">
             </div>
         </div>
-        <div class="footer-bottom">© 2022 by <a href="https://www.passerellesnumeriques.org/vi/">Passerelles numériques
+        <div class="footer-bottom">© 2022 by <a href="https://www.passerellesnumeriques.org/vi/">Passerelles
+                numériques
                 Vietnam</a> students </div>
     </footer>
 </body>
