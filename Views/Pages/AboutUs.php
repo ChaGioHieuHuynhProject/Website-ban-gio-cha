@@ -51,7 +51,7 @@
             <img class="" src=<?= ImageLink('OCOP-certificate.jpg') ?>>
         </div>
         <div class="img-content">
-            <img class="img-content" src=<?= ImageLink('certificate-of-food-hygiene-and-safety.jpg') ?>>
+            <img src=<?= ImageLink('certificate-of-food-hygiene-and-safety.jpg') ?>>
         </div>
     </div>
     <div class=" rule-in-work">
@@ -74,4 +74,5 @@
         </div>
     </div>
 </section>
+<link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/AboutUs.css">
 <?= RenderCSS("AboutUs") ?>

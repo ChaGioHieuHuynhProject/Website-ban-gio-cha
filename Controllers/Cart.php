@@ -26,10 +26,10 @@
         if (empty($this->model("ProductModel")->getProductById($id)) || $cartModel->hasProduct($id)) {
             return header("Location:".Redirect("Cart"));
         }
-        $massUnitList = array_map(fn ($value) => $value["name"], $this->model("MassUnitModel")->getMassUnitListByProductId($id));
-        if ($massUnit != null & !in_array($massUnit, $massUnitList)) {
-            $massUnit = $massUnitList[0];
-        }
+            // $massUnitList = array_map(fn ($value) => $value["name"], $this->model("MassUnitModel")->getMassUnitListByProductId($id));
+            // if ($massUnit != null & !in_array($massUnit, $massUnitList)) {
+            //     $massUnit = $massUnitList[0];
+            // }
         $cartModel->add(["id" => $id, "quantity" => $quantity, "massUnit" => $massUnit]);
         return header("Location:" . Redirect("Cart"));
     }
