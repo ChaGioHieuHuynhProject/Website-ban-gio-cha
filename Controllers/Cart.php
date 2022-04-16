@@ -54,8 +54,14 @@
         foreach($_SESSION[CART] as $detail) {
             $orderDetailModel->addOrderDetail($orderId, $detail["id"], $detail["quantity"], $detail["massUnit"]);
         }
-        header("Location:".Redirect("Home"));
+        $_SESSION[CART] = null;
 
+        $subject = "[Đơn hàng số $orderId][Đang chờ xác nhận]";
+        $content = "Tên khách hàng: <b>{$_POST['customerName']}</b><br>
+                    Số điện thoại: <b>{$_POST["phoneNumber"]}</b><br>
+                    Địa chỉ: <b>{$_POST["customerAddress"]}</b><br><br>
+                    Vui lòng vào admin page để biết thêm chi tiết!";
+        sendEmail($subject, $content);
     }
     function test() {
         // session_destroy();

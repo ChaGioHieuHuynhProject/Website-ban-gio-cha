@@ -3,16 +3,16 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use HPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-define("ROOT_URL", "http://localhost/KyNguyen/Website-ban-gio-cha/");
+define("ROOT_URL", "http://localhost/Website-ban-gio-cha/");
 define("CART", "cart");
-
+define("ADMIN_LOGIN", "adminLogin");
 function Error()
 {
     require_once "error.php";
 }
 function Redirect($controller, $action = "")
 {
-    return "/KyNguyen/Website-ban-gio-cha/$controller/$action";
+    return "/Website-ban-gio-cha/$controller/$action";
 }
 function RenderCSS($cssFileName)
 {
