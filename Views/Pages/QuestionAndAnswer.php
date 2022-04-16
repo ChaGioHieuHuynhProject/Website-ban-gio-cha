@@ -5,16 +5,14 @@
     </div>
     <div class="h-questions">
         <div class="h-accordion">
+            <?php foreach($data["qaaList"] as $qaa) { ?>
             <div class="h-container">
-                <div class="h-label">Cách bảo quản giò chả? Bảo quản tối đa được bao lâu?</div>
-                <div class="h-text">Cách bảo quản giò lụa, giò bò, chả là cho vào ngăn mát tủ lạnh hoặc khu vực có
-                    nhiệt độ dưới 25 độ C. Nếu để chúng trong ngăn mát tủ lạnh thì có thể để được từ 4 – 6 ngày. Còn
-                    ngăn đá có thể giữ giò chả được trong khoảng 10 - 20
-                    ngày. Giò được bảo quản trong ngăn đá phải được rã đông trước khi ăn. Bạn có thể để ở nhiệt độ
-                    phòng trong 4 tiếng hoặc cho vào ngăn mát tủ lạnh khoảng 8 tiếng trước khi ăn.</div>
+                <div class="h-label"><?=$qaa["question"]?></div>
+                <div class="h-text"><?=$qaa["answer"]?></div>
             </div>
             <hr>
-            <div class="h-container">
+            <?php } ?>
+            <!-- <div class="h-container">
                 <div class="h-label">Giò chả có thể vận chuyển đi xa được không?</div>
                 <div class="h-text">CSS stands for Cascading Style Sheets. It is the language for describing the
                     presentation of Web pages, including colours, layout, and fonts, thus making our web pages
@@ -40,7 +38,7 @@
                     library responsible only for the application’s view layer.
                     In Model View Controller (MVC) architecture, the view layer is responsible for how the app looks
                     and feels. React was created by Jordan Walke, a software engineer at Facebook. </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
