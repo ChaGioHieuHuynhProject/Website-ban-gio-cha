@@ -1,0 +1,33 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+#detail__img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* background-image: ; */
+    height: auto;
+    width: 100%;
+}
+
+#bg-detail {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* height: 90vh; */
+    width: 90%;
+    height: 90%;
+}
+
+.detail-img {
+    position: relative;
+}
+
+h3{
+    font-weight: bold;
+}
