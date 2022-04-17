@@ -5,7 +5,7 @@ const update = (index, quantity) => {
         data: { index: index, quantity: quantity },
     });
     $(`#total-${index}`).text($(`#price-${index}`).text() * quantity);
-    updateTempCost();
+    updateTempCost()
 };
 const updateTempCost = () => {
     var totalList = $(".total span");

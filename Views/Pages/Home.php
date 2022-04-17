@@ -1,15 +1,11 @@
 <section class="t2-container">
     <div class="banner">
         <div class="slides">
+            <?php foreach($data["bannerList"] as $banner) { ?>
             <div class="t2-slide">
-                <img src="<?= ROOT_URL ?>Assets/img/Banner.jpg" alt="">
+                <img src="<?= ImageLink($banner["img"])?>" alt="">
             </div>
-            <div class="t2-slide">
-                <img src="<?= ROOT_URL ?>Assets/img/Banner1.png" alt="">
-            </div>
-            <div class="t2-slide">
-                <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="">
-            </div>
+            <?php } ?>
         </div>
         <div class="right-banner">
             <div class="title">
@@ -48,7 +44,7 @@
             <a class="N-btn N-btn-see-more" href="<?= Redirect("AboutUs") ?>">Tìm hiểu thêm</a>
         </div>
     </div>
-    <img src="<?= ROOT_URL ?>Assets/img/Banner2.png" alt="">
+    <img src="<?= ImageLink('Banner2.png')?>" alt="">
 </section>
 <section class="N-container">
     <div class="N-title">

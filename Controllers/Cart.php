@@ -38,8 +38,8 @@
     }
     function Update()
     {
-        if (!isset($_POST)) {
-            return header("Loaction:" . Redirect("Cart"));
+        if (empty($_POST)) {
+            return header("Location:" . Redirect("Cart"));
         }
         $this->model("CartSessionHelper")->update(["index" => $_POST["index"], "quantity" => $_POST["quantity"]]);
     }
@@ -50,8 +50,8 @@
     }
     function Confirm()
     {
-        if (!isset($_POST)) {
-            return header("Loaction:" . Redirect("Cart"));
+        if (empty($_POST)) {
+            return header("Location:" . Redirect("Cart"));
         }
         $orderModel = $this->model("OrderModel");
         $orderDetailModel = $this->model("OrderDetailModel");
