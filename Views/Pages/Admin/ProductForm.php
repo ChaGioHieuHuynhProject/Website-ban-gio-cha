@@ -14,6 +14,7 @@
 <div class="d-flex justify-content-center align-items-center my-5">
     <div class="w-75">
         <h1 class="text-center"><?= $title ?></h1>
+        <p>***Lưu ý: Khi muốn xuống dòng trong đoạn văn, bạn cần chền "<span><</span>br<span>></span>" vào đầu câu cần xuống hàng. </p>
         <form action="" enctype="multipart/form-data" method="post">
             <div class="my-2">
                 <label for="name">Tên sản phẩm:</label><br>

@@ -2,12 +2,9 @@
     function Index () {
         $this->view("MainLayout", [
             "page" => "Home", 
-            "productList" => $this->model("ProductModel")->get3Products()
+            "productList" => $this->model("ProductModel")->get3Products(),
+            "bannerList" => $this->model("BannerModel")->getBannerList()
         ]);
-    }
-    function Logout() {
-        $_SESSION["LOGIN"] = null;
-        header("Location:".ROOT_URL);
     }
 }
 ?>
