@@ -1,0 +1,47 @@
+.Aboutus {
+  width: 70vw;
+  height: auto;
+  margin: auto;
+}
+.foundation-title {
+  margin: 2rem auto 2rem;
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+.content-above {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem auto;
+}
+.content {
+  text-align: justify;
+  font-size: 18px;
+}
+.content-above .content {
+  width: 50%;
+}
+.content-above .img-content {
+  width: 47%;
+  position: relative;
+}
+.img-content img {
+  width: 100%;
+  height: auto;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0.5rem;
+}
+.content-below .img-content {
+  width: 100%;
+  height: auto;
+}
+.content-below .content {
+  width: 100%;
+  margin: 2rem auto;
+}
+.rule-in-work .content {
+  width: 100%;
+  margin-bottom: 2rem;
+}

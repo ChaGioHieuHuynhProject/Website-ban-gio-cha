@@ -157,12 +157,17 @@ table {
 .h-img {
     display: block;
     max-width: 600px;
-    height: 700px;
+    height: auto;
     object-fit: cover;
     object-position: 50% 50%;
+    border: 2px solid black;
 }
 
-
+.h-questions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* accordion */
 
 .h-accordion .h-container {

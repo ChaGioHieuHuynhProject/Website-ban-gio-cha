@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+
+body{font-family: 'Lora', serif;}
 .N-container {
     height: auto;
     width: 960px;
@@ -13,59 +16,62 @@
 .N-title p {
     text-align: center;
     font-size: 35px;
+    margin: 2rem 0;
+    font-weight: bold
 }
 
 .N-layout {
-    display: flex;
-    justify-content: space-around;
-}
-
-.N-card {
-    border: 1px solid #000000;
-    padding: 30px;
-    margin-bottom: 20px;
-    width: 18rem;
-}
-
-.N-cardImg {
     width: 100%;
-    height: 15vw;
-    object-fit: cover;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "d1 d2" "d3 d4";
 }
 
-.N-cardBody {
+.N-layout-img-item {
     width: 100%;
-}
-
-.N-cardTitle {
-    text-align: center;
-    font-size: 20px;
-}
-
-.N-cardText {
+    height: 100%;
     overflow: hidden;
 }
 
-.N-seeMore {
-    display: flex;
-    justify-content: center;
+.N-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }
 
-.N-btn {
-    display: inline-block;
-    text-decoration: none;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    color: #000000;
-    padding: 12px 24px;
-    border-radius: 30px;
+.N-text-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.N-btn-continue {
-    background-color: bisque;
+/* .N-textContent {
+    padding: 0 30px;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+} */
+.N-text-content {
+    padding: 30px;
+    word-wrap: break-word;
+    text-align: justify;
+    
+}
+.N-layout-text-item:nth-child(1) {
+    grid-area: d2;
 }
 
-.N-btn-continue:visited {
-    color: grey;
+.N-layout-text-item:nth-child(2) {
+    grid-area: d3;
+}
+
+.N-layout-img-item:nth-child(1) {
+    grid-area: d1;
+}
+
+.N-layout-img-item:nth-child(2) {
+    grid-area: d4;
 }

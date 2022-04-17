@@ -1,0 +1,138 @@
+.cart {
+    width: 80vw;
+    margin: 2rem auto;
+}
+
+.cart-table {
+    width: 100%;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+thead tr {
+    background-color: #e9d3bc;
+}
+
+thead th {
+    padding: 0.9rem;
+}
+.cart-table td {
+    vertical-align: middle;
+}
+.tbl tr {
+    height: 7rem;
+}
+.tbl-title {
+    font-weight: bold
+}
+#tbl-img {
+    height: 10vh;
+}
+
+.del-btn {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    color: red;
+    background-color: rgba(203, 204, 172, 0.1);
+}
+
+.below {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.confirm {
+    width: 35%;
+}
+
+.confirm table {
+    width: 100%;
+}
+
+.confirm table tr {
+    height: 2.5rem;
+}
+
+.confirm-title-right {
+    text-align: right;
+}
+
+.confirm-title {
+    font-size: 1.5rem;
+}
+
+.confirm-btn {
+    margin: auto;
+    display: block;
+    border: none;
+    outline: none;
+    color: #000000;
+    padding: 12px 24px;
+    border-radius: 30px;
+    background-color: antiquewhite;
+    border: 2px transparent solid;
+}
+.confirm-btn:hover{
+    font-weight: bold;
+    border: 2px solid black;
+}
+/* -------------------Quantity button--------------------- */
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.number-input {
+    width: 85%;
+    border: none;
+    display: inline-flex;
+    margin: auto;
+}
+
+.number-input,
+.number-input * {
+    box-sizing: border-box;
+}
+
+.number-input button {
+    outline: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    cursor: pointer;
+    position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    width: 35%;
+    height: 2px;
+    background-color: #82E2A8;
+    transform: translate(-50%, -50%);
+}
+
+.number-input button.plus:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+    width: 3rem;
+    border: none;
+    text-align: center;
+}
