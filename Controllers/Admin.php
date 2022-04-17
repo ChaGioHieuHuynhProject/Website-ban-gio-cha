@@ -157,13 +157,13 @@
                 ]);
             }
             default: {
-                    $productList = $this->model("ProductModel")->getProductList();
-                    $this->view("AdminLayout", [
-                        "page" => "Product",
-                        "action" => "Product",
-                        "productList" => $productList
-                    ]);
-                }
+                $productList = $this->model("ProductModel")->getProductList();
+                $this->view("AdminLayout", [
+                    "page" => "Product",
+                    "action" => "Product",
+                    "productList" => $productList
+                ]);
+            }
         }
     }
     function Order($action = null, $id = null)
