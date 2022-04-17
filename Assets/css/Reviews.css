@@ -1,203 +1,87 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+:root {
+    --padding-screen: 0 150px;
+    --column-content:1fr 1fr 1fr 1fr;
+    --radius-img:100px;
 }
 
-
-/* HTML5 display-role reset for older browsers */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-    display: block;
+@media screen and (max-width: 1224px) {
+    :root {   
+        --padding-screen: 0 calc(7px + 5vw);
+        --column-content:1fr 1fr 1fr;
+        --radius-img:120px;
+    }
 }
 
-body {
-    line-height: 1;
+@media screen and (max-width: 960px) {
+    :root {
+        --padding-screen: 0 calc(7px + 5vw);
+        --column-content:1fr 1fr;
+        --radius-img:100px;
+    }
 }
 
-ol,
-ul {
-    list-style: none;
+@media screen and (max-width: 640px) {
+    :root {
+        --column-content:1fr;
+        --radius-img:200px;
+    }
 }
-
-blockquote,
-q {
-    quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-
 /*----------------------------Hạnh---------------------------------------------------*/
-
-.h-content h1 {
-    font-size: 50px;
+.h-review {
+    margin: 2rem auto;
+    padding: var(--padding-screen);
+    font-size: calc(13px + 6 * ((100vw - 320px) / 680));
+}
+.h-review h1 {
+    font-size: calc(23px + 6 * ((100vw - 320px) / 680));
+    font-weight: bold;
     text-align: center;
     width: 100%;
-    margin-bottom: 5%;
-    margin-top: 2%;
-    margin: 2%;
+    margin: 1rem auto;
 }
 
-.h-soLieu {
+.h-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1%;
-    padding-top: 1%;
-    margin-bottom: 5%;
+    grid-template-columns: var(--column-content);    
 }
 
-.h-soLieu h2 {
-    font-size: 30px;
-    text-align: center;
+.feedback{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    margin: auto 1rem;
 }
 
-.h-soLieu p {
-    font-size: 25px;
-    margin-left: 22%;
-    width: 60%;
+.feedback-title {
+    font-weight: bold;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    /* font-size: calc(20px + 6 * ((100vw - 320px) / 680)); */
+    margin: 0.5rem auto;
 }
+
 
 #h-img {
-    max-width: 500px;
-    height: 150px;
-    clip-path: circle(70px at 50% 50%);
+    width: 100%;
+    height: calc(var(--radius-img)*2);
+    clip-path: circle(var(--radius-img));
 }
 
 
 /* ----- */
 
-.h-binhLuanCuaKh {
-    margin-bottom: 5%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1%;
-    padding-top: 1%;
-    text-align: center;
-}
-
 .h-card {
-    margin: 5%;
-    padding: 5%;
+    margin: 1rem auto;
+    padding: auto 1rem;
 }
 
 .h-card h4 {
-    font-size: 20px;
-    margin-bottom: 5%;
-    margin-top: 5%;
+    font-weight: bold;
+    /* font-size: calc(20px + 6 * ((100vw - 320px) / 680)); */
+    margin: 0.5rem auto;
 }
 
 .h-card p {
-    width: 70%;
-    margin-left: 17%;
+    width: 85%;
 }

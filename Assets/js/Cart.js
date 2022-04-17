@@ -1,7 +1,7 @@
 const update = (index, quantity) => {
   $.ajax({
     method: "post",
-    url: "http://localhost/KyNguyen/Website-ban-gio-cha/Cart/Update",
+    url: "http://localhost:8080/Website-ban-gio-cha/Cart/Update",
     data: { index: index, quantity: quantity },
   });
   $(`#total-${index}`).text($(`#price-${index}`).text() * quantity);
@@ -18,7 +18,7 @@ const updateTempCost = () => {
 const confirmOrder = () => {
   $.ajax({
     method: "post",
-    url: "http://localhost/KyNguyen/Website-ban-gio-cha/Cart/Confirm",
+    url: "http://localhost:8080/Website-ban-gio-cha/Cart/Confirm",
     data: {
       customerName: "NDK",
       phoneNumber: "0987654321",
@@ -39,6 +39,6 @@ $("#confirm-btn").click(() => {
     },
   }).then(() => {
     return (window.location.href =
-      "http://localhost/KyNguyen/Website-ban-gio-cha/");
+      "http://localhost:8080/Website-ban-gio-cha/");
   });
 });
