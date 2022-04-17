@@ -1,0 +1,116 @@
+
+/* ____________________________ */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.login {
+    width: 900px;
+    margin: auto auto;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.login-left {
+    text-align: center;
+    width: 450px;
+    padding: 15% 5%;
+    border-radius: 20px;
+    height: var(--modal-height);
+}
+
+.login-left h1 {
+    font-size: 50px;
+    padding: 0 0 5% 0;
+    color: rgb(161, 105, 0);
+}
+
+.login-left a {
+    color: green;
+}
+
+.login-left button {
+    font-size: 20px;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    border: green;
+    color: white;
+    background-color: green;
+    margin: 0 0 5% 0;
+}
+
+.login-left .btn-login {
+    margin-top: 5%;
+}
+
+.login-left input {
+    width: 300px;
+    height: 40px;
+    border-radius: 20px;
+    border: solid 1px green;
+    outline: none;
+    padding: 0 4% 0 4%;
+    margin-bottom: 5%;
+    font-size: 20px;
+    color: rgb(161, 105, 0)
+}
+
+::placeholder {
+    color: rgb(161, 105, 0);
+}
+
+.login-icon {
+    font-size: 45px;
+    padding: 0 5% 0 5%;
+    margin-bottom: 5%;
+    color: rgba(0, 70, 182, 0.883);
+}
+
+.login-left p {
+    font-size: 24px;
+    color: rgb(161, 105, 0);
+}
+
+.login-right .login-exit {
+    position: absolute;
+    z-index: 1;
+    padding: 1% 0 0 0;
+    font-size: 40px;
+    color: green;
+    margin: 12px 0 0 390px;
+}
+
+.login-right img {
+    position: relative;
+    height: 603px;
+    width: 450px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 20px;
+}
+
+.login-right {
+    height: var(--modal-height)
+}
+
+.hidden {
+    display: none;
+}
+
+.btn-signup:hover {
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    margin: 1rem 0
+}

@@ -7,6 +7,6 @@
     <title><?=$data['page']?></title>
 </head>
 <body>
-<?php require_once "./Views/Pages/{$data['page']}.php"?>
+<?php require_once "./Views/Pages/Admin/{$data['page']}.php"?>
 </body>
 </html>

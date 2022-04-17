@@ -2,8 +2,7 @@
 {
     function Index()
     {
-        $storiesModel = $this->model("StoriesModel");
-        $storyList = $storiesModel->getStoryList();
+        $storyList = $this->model("StoriesModel")->getStoryList();
         $this->view("MainLayout", [
             "page" => "Stories",
             "storyList" => $storyList

@@ -2,14 +2,14 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteRule ^(.+)$ index.php?url=$1
-RewriteRule ^Assets/?$ - [F,L]
-RewriteRule ^Cotrollers/?$ - [F,L]
-RewriteRule ^Core/?$ - [F,L]
-RewriteRule ^Models/?$ - [F,L]
-RewriteRule ^Views/?$ - [F,L]
-RewriteRule ^vendor/?$ - [F,L]
-
-<Files .env>
+# RewriteRule ^Assets/?$ - [F,L]
+# RewriteRule ^Cotrollers/?$ - [F,L]
+# RewriteRule ^Core/?$ - [F,L]
+# RewriteRule ^Models/?$ - [F,L]
+# RewriteRule ^Views/?$ - [F,L]
+# RewriteRule ^vendor/?$ - [F,L]
+Options -Indexes
+<FilesMatch "^\.">
 Order Allow,Deny
 Deny from all
-</Files>
+</FilesMatch>

@@ -1,5 +1,5 @@
 <?php
-    class OrderDetail extends Model{
+    class OrderDetailModel extends Model{
 
         function getOrderDetailList(){
             $results = $this->con->query(
@@ -36,10 +36,13 @@
             
         }
 
-        function addOrderDetail($orderId, $productId, $quantity){
-            $sql = "INSERT INTO orderDetails (orderId, productId, quantity) 
-                VALUES('$orderId', '$productId', '$quantity')";
+        function addOrderDetail($orderId, $productId, $quantity, $massUnit){
+            $sql = "INSERT INTO orderDetails (orderId, productId, quantity, massUnit) 
+                VALUES('$orderId', '$productId', '$quantity', '$massUnit')";
             return $this->con->query($sql);
+        }
+        function countProduct($productId) {
+        return $this->con->query("SELECT count(*) as count FROM orderDetails WHERE productId = $productId")->fetch_assoc()["count"];
         }
 
     }

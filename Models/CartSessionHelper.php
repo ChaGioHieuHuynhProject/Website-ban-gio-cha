@@ -12,7 +12,7 @@
         array_splice($_SESSION[CART], $index, 1);
     }
     function update($data) {
-        $_SESSION[CART][$data["index"]] = $data["quantity"];
+        $_SESSION[CART][$data["index"]]["quantity"] = $data["quantity"];
     }
     function hasProduct($id) {
         foreach($_SESSION[CART] as $product) {

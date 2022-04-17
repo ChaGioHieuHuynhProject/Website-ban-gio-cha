@@ -1,7 +1,8 @@
-<?php class ContactModel extends Model {
+<?php class ContactModel extends Model
+{
     function getContactList()
     {
-        $results = $this->con->query("SELECT * FROM contacts  ");
+        $results = $this->con->query("SELECT * FROM contacts ORDER BY createdDate DESC");
         $contactList = [];
         while ($row = $results->fetch_assoc()) {
             array_push($contactList, $row);
@@ -14,21 +15,16 @@
         $result = $this->con->query("SELECT * FROM contacts WHERE id = {$id}");
         return $result->fetch_assoc();
     }
-    function addContact($name, $phoneNumber, $email, $note)
+    function addContact($name, $phoneNumber, $address, $note)
     {
+        $date = date_create("now", new DateTimeZone("Asia/Ho_Chi_Minh"))->format("Y-m-d H:i:s");
         $sql = "INSERT INTO contacts (name, phoneNumber, email, note, createdDate)
-            value ('$name', '$phoneNumber', '$email', '$note')";
+            VALUES ('$name', '$phoneNumber', '$address', '$note','$date')";
         return $this->con->query($sql);
     }
-    function updateContact($id, $name, $phoneNumber, $email, $note)
-    {
-        $sql = "UPDATE contacts SET name='$name', phoneNumber='$phoneNumber', email='$email', note='$note' WHERE id={$id}";
-        return $this->con->query($sql);
-    }
-
     function deleteContact($id)
     {
-        $sql = "DELETE FROM contacts WHERE id={$id}";
+        $sql = "DELETE FROM contacts WHERE id= $id";
         return $this->con->query($sql);
     }
 }

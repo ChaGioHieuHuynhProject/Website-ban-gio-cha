@@ -46,7 +46,10 @@
 *::after {
   box-sizing: border-box;
 }
-
+.content-wrapper {
+  overflow-x: hidden;
+  width: 80vw
+}
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -1679,7 +1682,7 @@ pre code {
 .table th,
 .table td {
   padding: 0.75rem;
-  vertical-align: top;
+  vertical-align: middle;
   border-top: 1px solid #dee2e6;
 }
 
@@ -28783,7 +28786,6 @@ html.maximized-card {
 
 .card-title {
   float: left;
-  font-size: 1.1rem;
   font-weight: 400;
   margin: 0;
 }
@@ -53008,5 +53010,17 @@ a.text-muted:hover {
 
 .dark-mode .border-dark {
   border-color: #4b545c !important;
+}
+.vertical-middle {
+  vertical-align: middle!important;
+}
+.sidebar-collapse .content-wrapper{
+  width: 90vw
+}
+.content-wrapper {
+  transition: width 0.5s ease-out!important;
+}
+input:-internal-autofill-selected {
+  background-color: transparent!important;
 }
 /*# sourceMappingURL=adminlte.css.map */

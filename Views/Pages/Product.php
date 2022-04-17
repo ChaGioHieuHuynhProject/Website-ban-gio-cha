@@ -11,4 +11,4 @@
         <?php } ?>
     </div>
 </section>
-<link rel="stylesheet" href="<?= ROOT_URL ?>Assets/css/product.css">
+<?= RenderCSS("Product") ?>

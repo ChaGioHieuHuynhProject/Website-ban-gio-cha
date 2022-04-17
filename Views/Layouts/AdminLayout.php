@@ -5,24 +5,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard</title>
-
-  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- overlayScrollbars -->
-  <!-- <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css"> -->
-  <!-- Theme style -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <?= RenderCSS("adminlte") ?>
 </head>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
-
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__wobble" src="<?=ImageLink('AdminLTELogo.png')?>" alt="AdminLTELogo" height="60" width="60">
-    </div>
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
       <!-- Left navbar links -->
@@ -30,14 +21,42 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
+        <!-- <li class="nav-item d-none d-sm-inline-block">
           <a href="index3.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
-        </li>
+        </li> -->
+        <?php
+        switch ($data["action"]) {
+          case "Product": { ?>
+              <li class="nav-item d-none d-sm-inline-block">
+                <a href="<?= Redirect("Admin", "Product") ?>/Create" class="nav-link">Tạo sản phẩm mới</a>
+              </li>
+            <?php break;
+            }
+          case "Order": { ?>
+              <li class="nav-item d-none d-flex align-items-center">
+                <form method="post">
+                  <select name="filter-order-status">
+                    <option value="">---Chọn trạng thái đơn hàng---</option>
+                    <?php foreach ($data["statusList"] as $status) { ?>
+                      <option value="<?= $status["id"] ?>" <?= (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] == $status["id"]) ? "selected" : "" ?>><?= $status["name"] ?></option>
+                    <?php } ?>
+                  </select>
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                </form>
+              </li>
+          <?php break;
+            }
+          case "Banner": { ?>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?= Redirect("Admin", "Banner") ?>/Create" class="nav-link">Tạo banner mới</a>
+            </li>
+          <?php break; 
+            }
+        } ?>
       </ul>
-
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
@@ -61,7 +80,6 @@
             </form>
           </div>
         </li>
-
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
@@ -109,22 +127,20 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
+          <a class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Đăng xuất" href="<?= Redirect("Admin", "Logout") ?>" role="button">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
           </a>
         </li>
       </ul>
     </nav>
     <!-- /.navbar -->
-
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
-      <a href="<?=Redirect("Admin")?>" class="brand-link">
-        <img src="<?=ImageLink("Logo.png")?>" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <a href="<?= Redirect("Admin") ?>" class="brand-link">
+        <img src="<?= ImageLink("Logo.png") ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Chả Giò Hiếu Huynh</span>
       </a>
-
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- SidebarSearch Form -->
@@ -138,18 +154,53 @@
             </div>
           </div>
         </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item menu-open">
-              <a href="#" class="nav-link active">
+              <a id="DashBoard" href="<?= Redirect("Admin", "DashBoard") ?>" class=" nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
                   <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <a id="Product" href="<?= Redirect("Admin", "Product") ?>" class="nav-link">
+                <i class="nav-icon fas fa-box-open"></i>
+                <p>
+                  Sản phẩm
+                </p>
+              </a>
+              <a id="Order" href="<?= Redirect("Admin", "Order") ?>" class="nav-link">
+                <i class="nav-icon fas fa-file-invoice"></i>
+                <p>
+                  Đơn hàng
+                </p>
+              </a>
+              <a id="Contact" href="<?= Redirect("Admin", "Contact") ?>" class="nav-link">
+                <i class="nav-icon fas fa-envelope"></i>
+                <p>
+                  Liên hệ
+                </p>
+              </a>
+              <a id="QAA" href="<?= Redirect("Admin", "QAA") ?>" class="nav-link">
+                <i class="nav-icon fas fa-question"></i>
+                <p>
+                  Q&A
+                </p>
+              </a>
+              <a id="Banner" href="<?= Redirect("Admin", "Banner") ?>" class="nav-link">
+                <i class="nav-icon fas fa-image"></i>
+                <p>
+                  Banner
+                </p>
+              </a>
+              <a id="MassUnit" href="<?= Redirect("Admin", "MassUnit") ?>" class="nav-link">
+                <i class="nav-icon fas fa-image"></i>
+                <p>
+                  Đơn vị khối lượng
                 </p>
               </a>
             </li>
@@ -159,20 +210,16 @@
       </div>
       <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Main content will be here -->
-      <?php require_once "./Views/Pages/{$data['page']}.php" ?>
+      <section class="content">
+        <main class="container-fluid">
+          <?php require_once "./Views/Pages/Admin/{$data['page']}.php" ?>
+        </main>
+      </section>
     </div>
     <!-- /.content-wrapper -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
     <!-- Main Footer -->
     <footer class="main-footer">
       <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -182,33 +229,12 @@
       </div>
     </footer>
   </div>
-  <!-- ./wrapper -->
-
-  <!-- REQUIRED SCRIPTS -->
-  <!-- jQuery -->
-  <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
-  <!-- Bootstrap -->
-  <!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-  <!-- overlayScrollbars -->
-  <!-- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
-  <!-- AdminLTE App -->
-  <?= RenderJs("jquery");
-  RenderJs("bootstrap.bundle");
+  <?= RenderJs("bootstrap.bundle");
   RenderJs("adminlte") ?>
-
-  <!-- PAGE PLUGINS -->
-  <!-- jQuery Mapael -->
-  <!-- <script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-  <script src="plugins/raphael/raphael.min.js"></script>
-  <script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-  <script src="plugins/jquery-mapael/maps/usa_states.min.js"></script> -->
-  <!-- ChartJS -->
-  <!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
-
-  <!-- AdminLTE for demo purposes -->
-  <!-- <script src="dist/js/demo.js"></script> -->
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <!-- <script src="dist/js/pages/dashboard2.js"></script> -->
+  <script>
+    $("#<?= $data["action"] ?>").addClass("active")
+    console.log("OK")
+  </script>
 </body>
 
 </html>
