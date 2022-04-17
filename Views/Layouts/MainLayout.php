@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title><?= $data['page'] ?></title>
     <?php RenderCSS("mainLayout") ?>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
@@ -166,10 +167,10 @@
                 <img src="<?= ImageLink("vitrade.jpg") ?>" alt="" style="margin: 1rem auto">
             </div>
         </div>
-        <div class="footer-bottom">© 2022 by 
+        <div class="footer-bottom">© 2022 by
             <a href="https://www.passerellesnumeriques.org/vi/">
                 Passerelles numériques Vietnam
-            </a> students 
+            </a> students
         </div>
     </footer>
 </body>

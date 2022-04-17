@@ -27,7 +27,7 @@
                     <td><?= $product["description"] ?></td>
                     <td><?= $product["usageGuide"] ?></td>
                     <td>
-                        <a href="<?= Redirect("Admin", "Product") ?>/Delete/<?= $product["id"] ?>" role="button" class="btn btn-danger">
+                        <a onclick="deleteProduct(<?=$product['id']?>)" role="button" class="btn btn-danger">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                         <a href="<?= Redirect("Admin", "Product") ?>/Update/<?= $product["id"] ?>" role="button" class="btn btn-primary mt-2">
@@ -39,3 +39,4 @@
         </tbody>
     </table>
 <?php } ?>
+<?=RenderJs("AdminProduct")?>

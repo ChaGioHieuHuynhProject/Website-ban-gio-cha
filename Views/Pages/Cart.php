@@ -50,7 +50,6 @@
         </div>
     <?php } ?>
 </section>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?= RenderCSS("Cart");
 RenderJs("Cart");
 ?>

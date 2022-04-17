@@ -87,10 +87,21 @@
                 ]);
             }
             case "Delete": {
-                if ($id == null) {
+                if (empty($_POST)) {
                     return header("Location:" . Redirect("Admin", "Product"));
                 }
-                $this->model("ProductModel")->deleteProduct($id);
+                $id = $_POST["id"];
+                $productModel = $this->model("ProductModel");
+                if (($product = $productModel->getProductById($id)) == null) {
+                    return header("Location:" . Redirect("Admin", "Product"));
+                }
+                if ($this->model("OrderDetailModel")->countProduct($id) == 0) {
+                    unlink("Assets/img/{$product["img"]}");
+                    $productModel->deleteProduct($id);
+                }
+                else {
+                    $productModel->disableProduct($id);
+                }
                 return header("Location:" . Redirect("Admin", "Product"));
             }
             case "Update": {
@@ -111,12 +122,14 @@
                     $description = $_POST["description"];
                     $usageGuide = $_POST["usageGuide"];
 
-                    if (empty($_FILES["img"])) {
+                    if (empty($_FILES["img"]["name"])) {
                         $img_name = $_POST["old-img"];
-                    } else {
+                    } 
+                    else {
                         $img_name = $_FILES['img']['name'];
                         $file_tmp = $_FILES['img']['tmp_name'];
-                        $file_ext = strtolower(end(explode('.', $img_name)));
+                        $tempArr = explode('.', $img_name);
+                        $file_ext = strtolower(end($tempArr));
 
                         $extensions = array("jpeg", "jpg", "png");
 
@@ -166,19 +179,19 @@
             case "Show": {
                 }
             default: {
-                    $statusList = $this->model("StatusModel")->getStatusList();
-                    if (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] != '') {
-                        $orderList = $this->model("OrderModel")->getOrderListByStatusId($_POST["filter-order-status"]);
-                    } else {
-                        $orderList = $this->model("OrderModel")->getOrderList("DESC");
-                    }
-                    return $this->view("AdminLayout", [
-                        "page" => "Order",
-                        "action" => "Order",
-                        "orderList" => $orderList,
-                        "statusList" => $statusList
-                    ]);
+                $statusList = $this->model("StatusModel")->getStatusList();
+                if (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] != '') {
+                    $orderList = $this->model("OrderModel")->getOrderListByStatusId($_POST["filter-order-status"]);
+                } else {
+                    $orderList = $this->model("OrderModel")->getOrderList("DESC");
                 }
+                return $this->view("AdminLayout", [
+                    "page" => "Order",
+                    "action" => "Order",
+                    "orderList" => $orderList,
+                    "statusList" => $statusList
+                ]);
+            }
         }
     }
     function Contact($action = null, $id = null)
@@ -188,14 +201,31 @@
         }
         switch ($action) {
             default: {
-                    $this->view("AdminLayout", [
-                        "page" => "Contact"
-                    ]);
-                }
+                $this->view("AdminLayout", [
+                    "page" => "Contact",
+                    "action" => "Contact"
+                ]);
+            }
         }
     }
     function QAA($action = null, $id = null)
     {
+    }
+    function MassUnit($action = null, $id = null) {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+        switch ($action) {
+            case "Create" : {
+
+            }
+            default : {
+                return $this->view("AdminLayout", [
+                    "page" => "MassUnit",
+                    "action" => "MassUnit",
+                ]);
+            }
+        }
     }
     private function isAdminLogedIn()
     {
@@ -203,9 +233,6 @@
     }
     function test()
     {
-        // $pwd = "admin";
-        // $pwdPeppered = hash_hmac("sha256", $pwd, $_ENV["pepper"]);
-        // $pwdHashed = password_hash($pwdPeppered, PASSWORD_DEFAULT);
         $this->view("AdminLayout", [
             "page" => "test",
             "action" => "test",

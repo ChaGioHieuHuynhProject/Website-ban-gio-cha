@@ -14,7 +14,7 @@
 <div class="d-flex justify-content-center align-items-center my-5">
     <div class="w-75">
         <h1 class="text-center"><?= $title ?></h1>
-        <form action="" enctype="multipart/form-data" method="post" muti>
+        <form action="" enctype="multipart/form-data" method="post">
             <div class="my-2">
                 <label for="name">Tên sản phẩm:</label><br>
                 <input type="text" value="<?= $name ?>" name="name" class="form-control" required>

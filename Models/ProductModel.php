@@ -2,7 +2,7 @@
 {
     function getProductList()
     {
-        $results = $this->con->query("SELECT * FROM products");
+        $results = $this->con->query("SELECT * FROM products WHERE isDeleted = false");
         $productList = [];
         while ($row = $results->fetch_assoc()) {
             array_push($productList, $row);
@@ -36,10 +36,11 @@
         $sql = "UPDATE products SET name ='$name', price ='$price', img = '$img', ingredients ='$ingredients', description ='$description', usageGuide ='$usageGuide' WHERE id = $id";
         return $this->con->query($sql);
     }
-
+    function disableProduct($id) {
+        return $this->con->query("UPDATE products SET isDeleted = 1 WHERE id = $id");
+    }
     function deleteProduct($id)
     {
-        $sql = "DELETE FROM products WHERE id = $id";
-        return $this->con->query($sql);
+        return $this->con->query("DELETE FROM products WHERE id = $id");
     }
 }

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <?= RenderCSS("adminlte") ?>
 </head>
 
@@ -29,10 +30,11 @@
         <?php
         switch ($data["action"]) {
           case "Product": { ?>
-            <li class="nav-item d-none d-sm-inline-block">
-              <a href="<?=Redirect("Admin", "Product")?>/Create" class="nav-link">Tạo sản phẩm mới</a>
-            </li>
-          <?php break;}
+              <li class="nav-item d-none d-sm-inline-block">
+                <a href="<?= Redirect("Admin", "Product") ?>/Create" class="nav-link">Tạo sản phẩm mới</a>
+              </li>
+            <?php break;
+            }
           case "Order": { ?>
               <li class="nav-item d-none d-flex align-items-center">
                 <form method="post">
@@ -45,7 +47,8 @@
                   <button class="btn btn-primary" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
                 </form>
               </li>
-        <?php break; }
+        <?php break;
+            }
         } ?>
       </ul>
       <!-- Right navbar links -->
@@ -161,19 +164,19 @@
               <a id="Product" href="<?= Redirect("Admin", "Product") ?>" class="nav-link">
                 <i class="nav-icon fas fa-box-open"></i>
                 <p>
-                  Product
+                  Sản phẩm
                 </p>
               </a>
               <a id="Order" href="<?= Redirect("Admin", "Order") ?>" class="nav-link">
                 <i class="nav-icon fas fa-file-invoice"></i>
                 <p>
-                  Order
+                  Đơn hàng
                 </p>
               </a>
               <a id="Contact" href="<?= Redirect("Admin", "Contact") ?>" class="nav-link">
                 <i class="nav-icon fas fa-envelope"></i>
                 <p>
-                  Contact
+                  Liên hệ
                 </p>
               </a>
               <a id="QAA" href="<?= Redirect("Admin", "QAA") ?>" class="nav-link">
@@ -186,6 +189,12 @@
                 <i class="nav-icon fas fa-image"></i>
                 <p>
                   Banner
+                </p>
+              </a>
+              <a id="MassUnit" href="<?= Redirect("Admin", "MassUnit") ?>" class="nav-link">
+                <i class="nav-icon fas fa-image"></i>
+                <p>
+                  Đơn vị khối lượng
                 </p>
               </a>
             </li>

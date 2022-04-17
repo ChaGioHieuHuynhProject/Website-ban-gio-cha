@@ -41,6 +41,9 @@
                 VALUES('$orderId', '$productId', '$quantity', '$massUnit')";
             return $this->con->query($sql);
         }
+        function countProduct($productId) {
+        return $this->con->query("SELECT count(*) as count FROM orderDetails WHERE productId = $productId")->fetch_assoc()["count"];
+        }
 
     }
 ?>
