@@ -211,6 +211,69 @@
     function QAA($action = null, $id = null)
     {
     }
+    function Banner ($action = null, $id = null) {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+        switch ($action) {
+            case "Create": {
+                $error = '';
+                if (isset($_POST["save"])) {
+                    $isDisplayed = $_POST["isDisplayed"] == "on" ? 1 : 0;
+
+                    $img_name = $_FILES['img']['name'];
+                    $file_tmp = $_FILES['img']['tmp_name'];
+                    $tempArr = explode('.', $img_name);
+                    $file_ext = strtolower(end($tempArr));
+
+                    $extensions = array("jpeg", "jpg", "png");
+
+                    if (!in_array($file_ext, $extensions)) {
+                        $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
+                    }
+                    if (empty($error)) {
+                        try {
+                            move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
+                            $this->model("BannerModel")->addBanner($img_name, $isDisplayed);
+                            return header("Location:" . Redirect("Admin", "Banner"));
+                        } catch (Exception) {
+                            $error = "Có lỗi xảy ra!";
+                        }
+                    }
+                }
+                return $this->view("AdminLayout", [
+                    "page" => "BannerForm",
+                    "action" => "Banners",
+                    "error" => $error
+                ]);
+            }
+            case "Delete": {
+                $bannerModel = $this->model("BannerModel");
+                if ($id == null || ($banner = $bannerModel->getBannerById($id)) == null) {
+                    return header("Location:" . Redirect("Admin", "Banner"));
+                }
+                unlink("Assets/img/{$banner["img"]}");
+                $this->model("BannerModel")->deleteBanner($id);
+                return header("Location:" . Redirect("Admin", "Banner"));
+            }
+            case "UpdateStatus" : {
+                if (empty($_POST)) {
+                    return header("Location:" . Redirect("Admin", "Banner"));
+                }
+                $this->model("BannerModel")->updateDisplayStatus($_POST["id"]);
+                return;
+            }
+            default: {
+                $bannerList = $this-> model("BannerModel")->getAllBanner();
+                return $this->view("AdminLayout", [
+                    "page" => "Banner",
+                    "action" => "Banner",
+                    "bannerList" => $bannerList,
+                ]);
+            }
+        }
+        
+    }
     function MassUnit($action = null, $id = null) {
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
