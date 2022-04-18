@@ -16,7 +16,7 @@ const deleteProduct = (id) => {
                   icon: "success",
                 }).then(() => {
                   window.location.href =
-                    `${ROOT_URL}Admin/Product/;
+                    `${ROOT_URL}Admin/Product/`;
                 });
             }
         )
