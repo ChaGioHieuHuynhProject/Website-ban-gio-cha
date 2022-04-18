@@ -194,6 +194,40 @@
             }
         }
     }
+
+    function updateStatus($orderId, $statusID){
+        $orderModel = $this->model("OrderModel");
+        $orderModel->updateOrder($orderId, $statusID);
+        header("Location:http://localhost:8080/Website-ban-gio-cha/Admin/order");
+    }
+
+    function status1($orderId){
+        $this->updateStatus($orderId, 1);
+    }
+
+    function status2($orderId)
+    {
+        $this->updateStatus($orderId, 2);
+    }
+
+    function status3($orderId)
+    {
+        $this->updateStatus($orderId, 3);
+    }
+
+    function orderDetail($orderId){
+        $orderModel = $this->model("OrderModel");
+        $order = $orderModel->getOrderById($orderId);
+        $orderDetailModel = $this->model("OrderDetailModel");
+        $orderDetail = $orderDetailModel->getOrderDetailById($orderId);
+        $this->view("AdminLayout", [
+            "page" => "OrderDetail",
+            "action" => "Order",
+            "order" => $order,
+            "orderDetail" => $orderDetail
+        ]);
+    }
+
     function Contact($action = null, $id = null)
     {
         if (!$this->isAdminLogedIn()) {
