@@ -155,7 +155,9 @@
             </div>
             <div class="footer-center-right">
                 <h1 class="footer-center__title">VITRADE</h1>
-                <a href="https://chaheohieuhuynh.danangtrade.gov.vn/" target="blank"><img src="<?= ImageLink("vitrade.jpg") ?>" alt="" style="margin: 1rem auto"></a>
+                <a href="https://chaheohieuhuynh.danangtrade.gov.vn/" target="blank">
+                    <img style="margin-bottom: 1rem" src="<?= ImageLink("vitrade.jpg") ?>" alt="" style="margin: 1rem auto">
+                </a>
             </div>
         </div>
         <div class="footer-bottom">© 2022 by

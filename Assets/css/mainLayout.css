@@ -423,9 +423,9 @@ img {
   display: flex;
   flex-direction: var(--fd-footer-center);
   justify-content: var(--footer-center-space);
-  align-items: center;
   padding: var(--padding-screen);
   height: 275px var(--height-footer-center);
+  margin-top: 1rem
 }
 
 .footer-center__title {
