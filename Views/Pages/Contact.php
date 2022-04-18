@@ -19,7 +19,8 @@
                 oninput="this.setCustomValidity('')"
                 oninvalid="this.setCustomValidity('Vui lòng nhập lời nhắn đến shop')"></textarea>
             <div style="margin: 1rem 0; color: red; text-align: center">
-                <?= empty($data["message"]) ? "" : $data["message"] ?></div>
+                <?= empty($data["message"]) ? "" : $data["message"] ?>
+            </div>
             <button class="N-submit" type="submit" name="send-contact">Gửi</button>
         </form>
     </div>

@@ -1,12 +1,23 @@
+:root {
+    --fd-confirm: row;
+    --width-input-content: 48%
+}
+@media screen and (max-width: 640px) {
+    :root{
+    --fd-confirm: column-reverse;
+    --width-input-content: 100%
+    }
+}
+
 .cart {
     width: 80vw;
-    margin: 2rem auto;
+    margin: 1rem auto;
 }
 
 .cart-table {
     width: 100%;
     text-align: center;
-    margin: 3rem 0;
+    margin: 1rem 0;
 }
 
 thead tr {
@@ -27,7 +38,8 @@ thead th {
 }
 .tbl-img {
     height: 10vh;
-    padding: 1rem
+    padding: 1rem;
+    width: 100%;
 }
 
 .del-btn {
@@ -41,12 +53,21 @@ thead th {
 .below {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-end;
 }
 
 .confirm {
-    width: 35%;
+    width: 100%;
+    display: flex;
+    flex-direction: var(--fd-confirm);
+    justify-content: space-between;
+}
+.input-content{
+    width: var(--width-input-content);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .confirm table {
@@ -79,6 +100,17 @@ thead th {
 #confirm-btn:hover{
     font-weight: bold;
     border: 2px solid black;
+}
+.N-field {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: black;
+    font-size: 1.1rem;
 }
 /* -------------------Quantity button--------------------- */
 input[type="number"] {
