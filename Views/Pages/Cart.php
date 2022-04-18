@@ -9,8 +9,7 @@
                 <th colspan="2">Sản Phẩm</th>
                 <th>Giá</th>
                 <th>Số lượng</th>
-                <th>Thành Tiền</th>
-                <th></th>
+                <th colspan="2">Thành Tiền</th>
             </tr>
         </thead>
         <tbody id="cart-tbl-body">
@@ -53,7 +52,7 @@
                 <textarea class="N-field" name="note-contact" id="note" cols="30" rows="4" placeholder="Lời nhắn *"
                     required oninput="this.setCustomValidity('')"
                     oninvalid="this.setCustomValidity('Vui lòng nhập lời nhắn đến shop')">
-            </textarea>
+                </textarea>
                 <div style="margin: 1rem 0; color: red; text-align: center">
                     <?= empty($data["message"]) ? "" : $data["message"] ?>
                 </div>
@@ -66,7 +65,9 @@
                     </tr>
                     <tr>
                         <td class="confirm-title">Tính tạm</td>
-                        <td class="confirm-title confirm-title-right"><span id="temp-cost"></span> VNĐ</td>
+                        <td class="confirm-title confirm-title-right" style="color: green"><span id="temp-cost"></span>
+                            VNĐ
+                        </td>
                     </tr>
                 </table>
             </div>

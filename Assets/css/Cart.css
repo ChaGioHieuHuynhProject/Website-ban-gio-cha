@@ -1,31 +1,46 @@
 :root {
-    --fd-confirm: row;
-    --width-input-content: 48%
+    --padding-screen: 0 calc(7px + 5vw);
+    --padding-screen: 0 150px;
+    --width-input-content: 48%;
+}
+@media screen and (max-width: 1224px) {
+    :root {
+        --padding-screen: 0 35px;
+        --width-input-content: 48%;
+    }
+}
+@media screen and (max-width: 960px) {
+    :root {
+        --fd-confirm: row;  
+        --width-input-content: 48%;
+        --padding-screen: 0 calc(7px + 5vw);
+    }
 }
 @media screen and (max-width: 640px) {
     :root{
-    --fd-confirm: column-reverse;
-    --width-input-content: 100%
+        --fd-confirm: column-reverse;
+        --width-input-content: 100%
     }
 }
 
 .cart {
-    width: 80vw;
-    margin: 1rem auto;
+    padding: var(--padding-screen);
+    margin: 2rem auto;
 }
 
 .cart-table {
     width: 100%;
     text-align: center;
-    margin: 1rem 0;
 }
-
+#cart-tbl-body{
+    font-size: calc(10px + 6 * ((100vw - 320px) / 680));
+}
 thead tr {
     background-color: #e9d3bc;
 }
 
 thead th {
-    padding: 0.9rem;
+    padding: 0.9rem 0;
 }
 .cart-table td {
     vertical-align: middle;
@@ -68,6 +83,10 @@ thead th {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.input-content td{
+    font-weight: bold;
 }
 
 .confirm table {
@@ -153,9 +172,9 @@ input[type=number]::-webkit-outer-spin-button {
     display: inline-block;
     position: absolute;
     content: '';
-    width: 35%;
+    width: 10px;
     height: 2px;
-    background-color: #82E2A8;
+    background-color: green;
     transform: translate(-50%, -50%);
 }
 
