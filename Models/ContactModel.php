@@ -1,7 +1,8 @@
-<?php class ContactModel extends Model {
+<?php class ContactModel extends Model
+{
     function getContactList()
     {
-        $results = $this->con->query("SELECT * FROM contacts");
+        $results = $this->con->query("SELECT * FROM contacts ORDER BY createdDate DESC");
         $contactList = [];
         while ($row = $results->fetch_assoc()) {
             array_push($contactList, $row);
@@ -16,13 +17,14 @@
     }
     function addContact($name, $phoneNumber, $address, $note)
     {
-        $sql = "INSERT INTO contacts (name, phoneNumber, address, note)
-            value ('$name', '$phoneNumber', '$address', '$note')";
+        $date = date_create("now", new DateTimeZone("Asia/Ho_Chi_Minh"))->format("Y-m-d H:i:s");
+        $sql = "INSERT INTO contacts (name, phoneNumber, address, note, createdDate)
+            VALUES ('$name', '$phoneNumber', '$address', '$note','$date')";
         return $this->con->query($sql);
     }
-    function delateContact($id)
+    function deleteContact($id)
     {
-        $sql = "DELETE FROM contacts WHERE id={$id}";
+        $sql = "DELETE FROM contacts WHERE id= $id";
         return $this->con->query($sql);
     }
 }

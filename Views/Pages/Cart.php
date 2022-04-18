@@ -1,5 +1,5 @@
 <section class="cart">
-    <?php if (empty($_SESSION[CART])) { ?>
+    <?php if (empty($_SESSION["CART"])) { ?>
     <div class="blank-cart">Bạn chưa thêm gì vào giỏ hàng!</div>
     <?php } else { ?>
     <table cellspacing="0" class="cart-table">

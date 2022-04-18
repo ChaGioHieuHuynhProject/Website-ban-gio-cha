@@ -16,16 +16,16 @@
             try {
                 $contactModel->addContact($name, $phone, $address, $note);
                 $message = "Đã gửi thành công!<br>Cảm ơn quý khách đã gửi thông tin liên lạc";
-            } catch (Exception $name) {
-                $message = "Xảy ra lỗi!";
-            }
-            $subject = "[Khách hàng liên lạc][Đang chờ phản hồi]";
-            $content = "Tên khách hàng: <b>{$_POST['name']}</b><br>
+                $subject = "[Khách hàng liên lạc][Đang chờ phản hồi]";
+                $content = "Tên khách hàng: <b>{$_POST['name']}</b><br>
                     Số điện thoại: <b>{$_POST["phone-number"]}</b><br>
                     Địa chỉ: <b>{$_POST["address"]}</b><br>
                     Với lời nhắn: \"{$_POST["note"]}\"<br><br>
                     Hãy liên lạc lại ngay với khách hàng đi nào!";
-            sendEmail($subject, $content);
+                sendEmail($subject, $content);
+            } catch (Exception $ex) {
+                $message = $ex . "Xảy ra lỗi!";
+            }
             return $this->view("MainLayout", [
                 "page" => "Contact",
                 "message" => $message

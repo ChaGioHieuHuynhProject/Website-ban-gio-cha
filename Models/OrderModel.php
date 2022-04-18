@@ -4,7 +4,7 @@ class OrderModel extends Model
 
     function getOrderList($order)
     {
-        $results = $this->con->query("SELECT o.id, o.customerName, o.customerPhone, o.customerAddress, o.date, o.note, s.name as status FROM orders as o
+        $results = $this->con->query("SELECT o.id, o.customerName, o.customerPhone, o.customerAddress, o.date, o.note, s.name as status, statusID FROM orders as o
                                             JOIN statuses as s ON o.statusId = s.id 
                                             ORDER BY o.date $order, o.statusId ASC");
         $orderList = [];
@@ -27,7 +27,11 @@ class OrderModel extends Model
     }
     function getOrderById($id)
     {
-        $result = $this->con->query("SELECT * FROM orders WHERE id ={$id}");
+        $result = $this->con->query("SELECT orders.id as id, customerName, customerPhone, customerAddress, date, note, name as nameStatus
+        FROM orders 
+        LEFT JOIN statuses
+        ON orders.statusID = statuses.id
+        WHERE orders.id = {$id}");
         return $result->fetch_assoc();
     }
 
@@ -50,9 +54,9 @@ class OrderModel extends Model
         return $this->con->query($sql);
     }
 
-    function updateOrder($id, $date, $statusID, $shipFee)
+    function updateOrder($id, $statusID)
     {
-        $sql = "UPDATE orders SET date ='$date', statusID ='$statusID', shipFee = $shipFee WHERE id = $id";
+        $sql = "UPDATE orders SET statusID ='$statusID' WHERE id = $id";
         return $this->con->query($sql);
     }
 

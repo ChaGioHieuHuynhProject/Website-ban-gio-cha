@@ -21,18 +21,18 @@
 
         function getOrderDetailById($orderId)
         {
-            $result = $this->con->query(
-                "SELECT name, phoneNumber, address, email, products.name, quantity, price FROM customers 
-                    LEFT JOIN orders
-                    ON customers.id = orders.cusId
-                    LEFT JOIN orderDetails
-                    ON orders.id = orderDetails
-                    LEFT JOIN products
-                    ON orderDetails.productId = products.id
-                    WHERE orders.id = {$orderId} 
-                    "
+            $results = $this->con->query(
+            "SELECT productId, massUnit, products.name as productsName, orderdetails.quantity as quantity, products.price as price, (orderdetails.quantity * products.price) as total  
+                FROM orderdetails 
+                LEFT JOIN products
+                ON orderdetails.productId = products.id
+                WHERE orderdetails.orderId = {$orderId}"
             );
-            return $result->fetch_assoc();
+            $orderDetailList = [];
+            while ($row = $results->fetch_assoc()) {
+                array_push($orderDetailList, $row);
+            }
+            return $orderDetailList;
             
         }
 

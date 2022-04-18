@@ -3,7 +3,12 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use HPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+<<<<<<< HEAD
 define("ROOT_URL", "http://localhost/KyNguyen/Website-ban-gio-cha/");
+=======
+
+define("ROOT_URL", "http://localhost:8080/Website-ban-gio-cha/");
+>>>>>>> 7c0877a46701f5c690aaee2014da3c3aec2295aa
 define("CART", "cart");
 define("ADMIN_LOGIN", "adminLogin");
 function Error()
@@ -26,7 +31,8 @@ function ImageLink($imgFileName)
 {
     return ROOT_URL . "Assets/img/$imgFileName";
 }
-function sendEmail($subject, $content) {
+function sendEmail($subject, $content)
+{
     //Create an instance; passing `true` enables exceptions
     $mail = new PHPMailer(true);
 
