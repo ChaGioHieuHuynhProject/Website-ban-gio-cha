@@ -218,8 +218,21 @@
         }
     }
 
+    function Contact()
+    {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+        $contactList = $this->model("ContactModel")->getContactList();
+        $this->view("AdminLayout", [
+            "page" => "Contact",
+            "action" => "Contact",
+            "contactList" => $contactList
+        ]);
+    }
+
     function QAA($action = null, $id = null) {
-        
+
     }
     function Banner($action = null, $id = null)
     {
@@ -284,6 +297,7 @@
                 }
         }
     }
+
     function MassUnit($action = null, $id = null)
     {
         if (!$this->isAdminLogedIn()) {
