@@ -18,7 +18,6 @@
             $pwd = $_POST["password"];
             $pepperedPwd = hash_hmac('sha256', $pwd, $pepper);
             if (password_verify($pepperedPwd, $admin['password'])) {
-                // session_start();
                 $_SESSION[ADMIN_LOGIN] = ["admin" => $admin["email"]];
                 return header("Location:" . Redirect("Admin"));
             }
@@ -170,38 +169,38 @@
         }
         switch ($action) {
             case "UpdateStatus": {
-                if ($orderId == null || $statusId == null) {
-                    return header("Location:" . Redirect("Admin", "Order"));
-                }
-                switch ($statusId) {
-                    case 1: {
-                        return $this->updateStatus($orderId, 1);
-                    }
-                    case 2: {
-                        return $this->updateStatus($orderId, 2);
-                    }
-                    default: {
+                    if ($orderId == null || $statusId == null) {
                         return header("Location:" . Redirect("Admin", "Order"));
                     }
+                    switch ($statusId) {
+                        case 1: {
+                                return $this->updateStatus($orderId, 1);
+                            }
+                        case 2: {
+                                return $this->updateStatus($orderId, 2);
+                            }
+                        default: {
+                                return header("Location:" . Redirect("Admin", "Order"));
+                            }
+                    }
                 }
-            }
             case "Show": {
-                if ($orderId ==  null) {
-                    return header("Location:" . Redirect("Admin", "Order"));
+                    if ($orderId ==  null) {
+                        return header("Location:" . Redirect("Admin", "Order"));
+                    }
+                    $order = $this->model("OrderModel")->getOrderById($orderId);
+                    if (empty($order)) {
+                        $orderDetail = null;
+                    } else {
+                        $orderDetail = $this->model("OrderDetailModel")->getOrderDetailById($orderId);
+                    }
+                    return $this->view("AdminLayout", [
+                        "page" => "OrderDetail",
+                        "action" => "Order",
+                        "order" => $order,
+                        "orderDetail" => $orderDetail
+                    ]);
                 }
-                $order = $this->model("OrderModel")->getOrderById($orderId);
-                if (empty($order)) {
-                    $orderDetail = null;
-                } else {
-                    $orderDetail = $this->model("OrderDetailModel")->getOrderDetailById($orderId);
-                }
-                return $this->view("AdminLayout", [
-                    "page" => "OrderDetail",
-                    "action" => "Order",
-                    "order" => $order,
-                    "orderDetail" => $orderDetail
-                ]);
-            }
             default: {
                     $statusList = $this->model("StatusModel")->getStatusList();
                     if (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] != '') {
@@ -313,7 +312,6 @@
                 }
         }
     }
-
     private function isAdminLogedIn()
     {
         return $_SESSION[ADMIN_LOGIN] != null;
@@ -322,7 +320,7 @@
     {
         $orderModel = $this->model("OrderModel");
         $orderModel->updateOrder($orderId, $statusID);
-        header("Location:http://localhost:8080/Website-ban-gio-cha/Admin/order");
+        header("Location:".Redirect("Admin", "Order"));
     }
     function test()
     {
