@@ -231,8 +231,8 @@
         ]);
     }
 
-    function QAA($action = null, $id = null) {
-
+    function QAA($action = null, $id = null)
+    {
     }
     function Banner($action = null, $id = null)
     {
@@ -314,6 +314,36 @@
                 }
         }
     }
+    function UpdateWebsiteInfo()
+    {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+        $message = "";
+        $info = json_decode(file_get_contents("./info.json"), true);
+
+        if (!empty($_POST)) {
+            $phoneNumber = $_POST["phone-number"];
+            $address = $_POST["address"];
+            $facebook = $_POST["facebook"];
+            $zalo = $_POST["zalo"];
+            $email = $_POST['email'];
+
+            $info["phoneNumber"] = $phoneNumber;
+            $info["address"] = $address;
+            $info["facebook"] = $facebook;
+            $info["zalo"] = $zalo;
+            $info["email"] = $email;
+            file_put_contents("./info.json",json_encode($info, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+            $message = "Đổi thông tin thành công!";
+        }
+        return $this->view("AdminLayout", [
+            "page" => "UpdateWebsiteInformation",
+            "action" => "UpdateInfo",
+            "info" => $info,
+            "message" => $message
+        ]);
+    }
     private function isAdminLogedIn()
     {
         return $_SESSION[ADMIN_LOGIN] != null;
@@ -322,7 +352,7 @@
     {
         $orderModel = $this->model("OrderModel");
         $orderModel->updateOrder($orderId, $statusID);
-        header("Location:".Redirect("Admin", "Order"));
+        header("Location:" . Redirect("Admin", "Order"));
     }
     function test()
     {
