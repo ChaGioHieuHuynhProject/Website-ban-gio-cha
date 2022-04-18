@@ -36,6 +36,11 @@
         padding-left: 7%;
     }
 </style>
+<?php if (empty($data["order"])) { ?>
+    <div class="d-flex-justify-content-center align-items-center">
+        <h2 class="text-danger">Không có order này!</h2>
+    </div>
+<?php } else { ?> 
 <section class="order-detail">
     <br />
     <br />
@@ -104,3 +109,4 @@
         </div>
     </div>
 </section>
+<?php } ?>

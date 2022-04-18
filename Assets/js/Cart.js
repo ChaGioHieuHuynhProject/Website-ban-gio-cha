@@ -1,9 +1,6 @@
+const ROOT_URL = "http://localhost/KyNguyen/Website-ban-gio-cha/";
 const update = (index, quantity) => {
-  $.ajax({
-    method: "post",
-    url: "http://localhost:8080/Website-ban-gio-cha/Cart/Update",
-    data: { index: index, quantity: quantity },
-  });
+  $.post(`${ROOT_URL}Cart/Update`, { index: index, quantity: quantity });
   $(`#total-${index}`).text($(`#price-${index}`).text() * quantity);
   updateTempCost();
 };
@@ -16,15 +13,11 @@ const updateTempCost = () => {
   $("#temp-cost").text(sum);
 };
 const confirmOrder = () => {
-  $.ajax({
-    method: "post",
-    url: "http://localhost:8080/Website-ban-gio-cha/Cart/Confirm",
-    data: {
-      customerName: "NDK",
-      phoneNumber: "0987654321",
-      customerAddress: "101B - Lê Hữu Trác",
-      note: "Đòn 0.5kg",
-    },
+  $.post(`${ROOT_URL}Cart/Confirm`, {
+    customerName: "NDK",
+    phoneNumber: "0987654321",
+    customerAddress: "101B - Lê Hữu Trác",
+    note: "Đòn 0.5kg",
   });
 };
 updateTempCost();
@@ -38,7 +31,6 @@ $("#confirm-btn").click(() => {
       className: "back-to-home",
     },
   }).then(() => {
-    return (window.location.href =
-      "http://localhost:8080/Website-ban-gio-cha/");
+    return (window.location.href = ROOT_URL);
   });
 });

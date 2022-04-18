@@ -1,3 +1,4 @@
+const ROOT_URL = "http://localhost/KyNguyen/Website-ban-gio-cha/";
 const deleteProduct = (id) => {
     swal({
       title: "Bạn muốn xóa sản phẩm?",
@@ -7,7 +8,7 @@ const deleteProduct = (id) => {
     }).then((willDelete) => {
       if (willDelete) {
         $.post(
-            'http://localhost/KyNguyen/Website-ban-gio-cha/Admin/Product/Delete',
+            `${ROOT_URL}Admin/Product/Delete`,
             {id: id},
             () => {
                 swal({
@@ -15,7 +16,7 @@ const deleteProduct = (id) => {
                   icon: "success",
                 }).then(() => {
                   window.location.href =
-                    "http://localhost/KyNguyen/Website-ban-gio-cha/Admin/Product/";
+                    `${ROOT_URL}Admin/Product/;
                 });
             }
         )

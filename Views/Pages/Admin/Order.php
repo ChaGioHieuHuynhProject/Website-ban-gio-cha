@@ -34,17 +34,12 @@
                     <td><?= $order["date"] ?></td>
                     <td>
                         <?php if ($order["statusID"] == 0) { ?>
-                            <a href="http://localhost:8080/Website-ban-gio-cha/Admin/status1/<?= $order["id"] ?>" class="status">
+                            <a href="<?= Redirect("Admin", "Order") . "/UpdateStatus/{$order["id"]}/1" ?>" class="status">
                                 <input type="checkbox" name="updateStatus-<?= $order["id"] ?>">
                                 <?= $order["status"] ?>
                             </a>
                         <?php } elseif ($order["statusID"] == 1) { ?>
-                            <a href="http://localhost:8080/Website-ban-gio-cha/Admin/status2/<?= $order["id"] ?>" class="status">
-                                <input type="checkbox" name="updateStatus-<?= $order["id"] ?>">
-                                <?= $order["status"] ?>
-                            </a>
-                        <?php } elseif ($order["statusID"] == 2) { ?>
-                            <a href="http://localhost:8080/Website-ban-gio-cha/Admin/status3/<?= $order["id"] ?>" class="status">
+                            <a href="<?= Redirect("Admin", "Order") . "/UpdateStatus/{$order["id"]}/2" ?>" class="status">
                                 <input type="checkbox" name="updateStatus-<?= $order["id"] ?>">
                                 <?= $order["status"] ?>
                             </a>
@@ -53,7 +48,7 @@
                         <?php } ?>
                     </td>
                     <td>
-                        <a href="http://localhost:8080/Website-ban-gio-cha/Admin/orderDetail/<?= $order["id"] ?>" role="button" class="btn btn-primary">
+                        <a href="<?= Redirect("Admin", "Order") . "/Show/{$order["id"]}" ?>" role="button" class="btn btn-primary">
                             Xem Chi Tiết
                         </a>
                     </td>

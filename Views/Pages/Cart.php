@@ -18,7 +18,7 @@
                     <tr>
                         <td><?= $index + 1 ?></td>
                         <td><img class="tbl-img" src="<?= ImageLink($detail["productInfo"]["img"]) ?>" alt=""></td>
-                        <td><?= $detail["productInfo"]["name"] ?><?= $detail["massUnit"] == null ? '' : "({$detail['massUnit']})" ?></td>
+                        <td><?= $detail["productInfo"]["name"] ?> <?= $detail["massUnit"] == null ? '' : "({$detail['massUnit']})" ?></td>
                         <td><span id="price-<?= $index ?>"><?= $detail["price"] ?></span> VND</td>
                         <td>
                             <div class="number-input">

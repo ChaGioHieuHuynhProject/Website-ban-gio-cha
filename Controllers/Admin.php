@@ -53,109 +53,106 @@
         }
         switch ($action) {
             case "Create": {
-                $error = "";
-                if (isset($_POST["save"])) {
-                    $name = $_POST["name"];
-                    $price = $_POST["price"];
-                    $ingredients = $_POST["ingredients"];
-                    $description = $_POST["description"];
-                    $usageGuide = $_POST["usageGuide"];
+                    $error = "";
+                    if (isset($_POST["save"])) {
+                        $name = $_POST["name"];
+                        $price = $_POST["price"];
+                        $ingredients = $_POST["ingredients"];
+                        $description = $_POST["description"];
+                        $usageGuide = $_POST["usageGuide"];
 
-                    $img_name = $_FILES['img']['name'];
-                    $file_tmp = $_FILES['img']['tmp_name'];
-                    $file_ext = strtolower(end(explode('.', $img_name)));
-
-                    $extensions = array("jpeg", "jpg", "png");
-
-                    if (!in_array($file_ext, $extensions)) {
-                        $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
-                    }
-                    if (empty($error)) {
-                        try {
-                            move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
-                            $this->model("ProductModel")->addProduct($name, $price, $img_name, $ingredients, $description, $usageGuide);
-                            return header("Location:" . Redirect("Admin", "Product"));
-                        } catch (Exception) {
-                            $error = "Có lỗi xảy ra!";
-                        }
-                    }
-                }
-                return $this->view("AdminLayout", [
-                    "page" => "ProductForm",
-                    "action" => "Product",
-                    "error" => $error
-                ]);
-            }
-            case "Delete": {
-                if (empty($_POST)) {
-                    return header("Location:" . Redirect("Admin", "Product"));
-                }
-                $id = $_POST["id"];
-                $productModel = $this->model("ProductModel");
-                if (($product = $productModel->getProductById($id)) == null) {
-                    return header("Location:" . Redirect("Admin", "Product"));
-                }
-                if ($this->model("OrderDetailModel")->countProduct($id) == 0) {
-                    unlink("Assets/img/{$product["img"]}");
-                    $productModel->deleteProduct($id);
-                }
-                else {
-                    $productModel->disableProduct($id);
-                }
-                return header("Location:" . Redirect("Admin", "Product"));
-            }
-            case "Update": {
-                if ($id == null) {
-                    return header("Location:" . Redirect("Admin", "Product"));
-                }
-
-                $product = $this->model("ProductModel")->getProductByid($id);
-                if ($product == null) {
-                    return header("Location:" . Redirect("Admin", "Product"));
-                }
-
-                $error = "";
-                if (isset($_POST["save"])) {
-                    $name = $_POST["name"];
-                    $price = $_POST["price"];
-                    $ingredients = $_POST["ingredients"];
-                    $description = $_POST["description"];
-                    $usageGuide = $_POST["usageGuide"];
-
-                    if (empty($_FILES["img"]["name"])) {
-                        $img_name = $_POST["old-img"];
-                    } 
-                    else {
                         $img_name = $_FILES['img']['name'];
                         $file_tmp = $_FILES['img']['tmp_name'];
-                        $tempArr = explode('.', $img_name);
-                        $file_ext = strtolower(end($tempArr));
+                        $file_ext = strtolower(end(explode('.', $img_name)));
 
                         $extensions = array("jpeg", "jpg", "png");
 
                         if (!in_array($file_ext, $extensions)) {
                             $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
                         }
-                        else {
-                            move_uploaded_file($file_tmp, "./Assets/img/" . $img_name);
+                        if (empty($error)) {
+                            try {
+                                move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
+                                $this->model("ProductModel")->addProduct($name, $price, $img_name, $ingredients, $description, $usageGuide);
+                                return header("Location:" . Redirect("Admin", "Product"));
+                            } catch (Exception) {
+                                $error = "Có lỗi xảy ra!";
+                            }
                         }
                     }
-                    if (empty($error)) {
-                        try {
-                            $this->model("ProductModel")->updateProduct($id, $name, $price, $img_name, $ingredients, $description, $usageGuide);
-                            return header("Location:" . Redirect("Admin", "Product"));
-                        } catch (Exception) {
-                            $error = "Có lỗi xảy ra!";
-                        }
-                    }
+                    return $this->view("AdminLayout", [
+                        "page" => "ProductForm",
+                        "action" => "Product",
+                        "error" => $error
+                    ]);
                 }
-                return $this->view("AdminLayout", [
-                    "page" => "ProductForm",
-                    "action" => "Product",
-                    "error" => $error,
-                    "product" => $product
-                ]);
-            }
+            case "Delete": {
+                    if (empty($_POST)) {
+                        return header("Location:" . Redirect("Admin", "Product"));
+                    }
+                    $id = $_POST["id"];
+                    $productModel = $this->model("ProductModel");
+                    if (($product = $productModel->getProductById($id)) == null) {
+                        return header("Location:" . Redirect("Admin", "Product"));
+                    }
+                    if ($this->model("OrderDetailModel")->countProduct($id) == 0) {
+                        unlink("Assets/img/{$product["img"]}");
+                        $productModel->deleteProduct($id);
+                    } else {
+                        $productModel->disableProduct($id);
+                    }
+                    return header("Location:" . Redirect("Admin", "Product"));
+                }
+            case "Update": {
+                    if ($id == null) {
+                        return header("Location:" . Redirect("Admin", "Product"));
+                    }
+
+                    $product = $this->model("ProductModel")->getProductByid($id);
+                    if ($product == null) {
+                        return header("Location:" . Redirect("Admin", "Product"));
+                    }
+
+                    $error = "";
+                    if (isset($_POST["save"])) {
+                        $name = $_POST["name"];
+                        $price = $_POST["price"];
+                        $ingredients = $_POST["ingredients"];
+                        $description = $_POST["description"];
+                        $usageGuide = $_POST["usageGuide"];
+
+                        if (empty($_FILES["img"]["name"])) {
+                            $img_name = $_POST["old-img"];
+                        } else {
+                            $img_name = $_FILES['img']['name'];
+                            $file_tmp = $_FILES['img']['tmp_name'];
+                            $tempArr = explode('.', $img_name);
+                            $file_ext = strtolower(end($tempArr));
+
+                            $extensions = array("jpeg", "jpg", "png");
+
+                            if (!in_array($file_ext, $extensions)) {
+                                $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
+                            } else {
+                                move_uploaded_file($file_tmp, "./Assets/img/" . $img_name);
+                            }
+                        }
+                        if (empty($error)) {
+                            try {
+                                $this->model("ProductModel")->updateProduct($id, $name, $price, $img_name, $ingredients, $description, $usageGuide);
+                                return header("Location:" . Redirect("Admin", "Product"));
+                            } catch (Exception) {
+                                $error = "Có lỗi xảy ra!";
+                            }
+                        }
+                    }
+                    return $this->view("AdminLayout", [
+                        "page" => "ProductForm",
+                        "action" => "Product",
+                        "error" => $error,
+                        "product" => $product
+                    ]);
+                }
             default: {
                     $productList = $this->model("ProductModel")->getProductList();
                     $this->view("AdminLayout", [
@@ -166,7 +163,141 @@
                 }
         }
     }
-    function Order($action = null, $id = null)
+    function Order($action = null, $orderId = null, $statusId = null)
+    {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+        switch ($action) {
+            case "UpdateStatus": {
+                if ($orderId == null || $statusId == null) {
+                    return header("Location:" . Redirect("Admin", "Order"));
+                }
+                switch ($statusId) {
+                    case 1: {
+                        return $this->updateStatus($orderId, 1);
+                    }
+                    case 2: {
+                        return $this->updateStatus($orderId, 2);
+                    }
+                    default: {
+                        return header("Location:" . Redirect("Admin", "Order"));
+                    }
+                }
+            }
+            case "Show": {
+                if ($orderId ==  null) {
+                    return header("Location:" . Redirect("Admin", "Order"));
+                }
+                $order = $this->model("OrderModel")->getOrderById($orderId);
+                if (empty($order)) {
+                    $orderDetail = null;
+                } else {
+                    $orderDetail = $this->model("OrderDetailModel")->getOrderDetailById($orderId);
+                }
+                return $this->view("AdminLayout", [
+                    "page" => "OrderDetail",
+                    "action" => "Order",
+                    "order" => $order,
+                    "orderDetail" => $orderDetail
+                ]);
+            }
+            default: {
+                    $statusList = $this->model("StatusModel")->getStatusList();
+                    if (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] != '') {
+                        $orderList = $this->model("OrderModel")->getOrderListByStatusId($_POST["filter-order-status"]);
+                    } else {
+                        $orderList = $this->model("OrderModel")->getOrderList("DESC");
+                    }
+                    return $this->view("AdminLayout", [
+                        "page" => "Order",
+                        "action" => "Order",
+                        "orderList" => $orderList,
+                        "statusList" => $statusList
+                    ]);
+                }
+        }
+    }
+
+    function Contact()
+    {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+        $contactList = $this->model("ContactModel")->getContactList();
+        $this->view("AdminLayout", [
+            "page" => "Contact",
+            "action" => "Contact",
+            "contactList" => $contactList
+        ]);
+    }
+    function QAA($action = null, $id = null)
+    {
+    }
+    function Banner($action = null, $id = null)
+    {
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+        switch ($action) {
+            case "Create": {
+                    $error = '';
+                    if (isset($_POST["save"])) {
+                        $isDisplayed = $_POST["isDisplayed"] == "on" ? 1 : 0;
+
+                        $img_name = $_FILES['img']['name'];
+                        $file_tmp = $_FILES['img']['tmp_name'];
+                        $tempArr = explode('.', $img_name);
+                        $file_ext = strtolower(end($tempArr));
+
+                        $extensions = array("jpeg", "jpg", "png");
+
+                        if (!in_array($file_ext, $extensions)) {
+                            $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
+                        }
+                        if (empty($error)) {
+                            try {
+                                move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
+                                $this->model("BannerModel")->addBanner($img_name, $isDisplayed);
+                                return header("Location:" . Redirect("Admin", "Banner"));
+                            } catch (Exception) {
+                                $error = "Có lỗi xảy ra!";
+                            }
+                        }
+                    }
+                    return $this->view("AdminLayout", [
+                        "page" => "BannerForm",
+                        "action" => "Banners",
+                        "error" => $error
+                    ]);
+                }
+            case "Delete": {
+                    $bannerModel = $this->model("BannerModel");
+                    if ($id == null || ($banner = $bannerModel->getBannerById($id)) == null) {
+                        return header("Location:" . Redirect("Admin", "Banner"));
+                    }
+                    unlink("Assets/img/{$banner["img"]}");
+                    $this->model("BannerModel")->deleteBanner($id);
+                    return header("Location:" . Redirect("Admin", "Banner"));
+                }
+            case "UpdateStatus": {
+                    if (empty($_POST)) {
+                        return header("Location:" . Redirect("Admin", "Banner"));
+                    }
+                    $this->model("BannerModel")->updateDisplayStatus($_POST["id"]);
+                    return;
+                }
+            default: {
+                    $bannerList = $this->model("BannerModel")->getAllBanner();
+                    return $this->view("AdminLayout", [
+                        "page" => "Banner",
+                        "action" => "Banner",
+                        "bannerList" => $bannerList,
+                    ]);
+                }
+        }
+    }
+    function MassUnit($action = null, $id = null)
     {
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
@@ -174,96 +305,24 @@
         switch ($action) {
             case "Create": {
                 }
-            case "Update": {
-                }
-            case "Show": {
-                }
             default: {
-                $statusList = $this->model("StatusModel")->getStatusList();
-                if (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] != '') {
-                    $orderList = $this->model("OrderModel")->getOrderListByStatusId($_POST["filter-order-status"]);
-                } else {
-                    $orderList = $this->model("OrderModel")->getOrderList("DESC");
+                    return $this->view("AdminLayout", [
+                        "page" => "MassUnit",
+                        "action" => "MassUnit",
+                    ]);
                 }
-                return $this->view("AdminLayout", [
-                    "page" => "Order",
-                    "action" => "Order",
-                    "orderList" => $orderList,
-                    "statusList" => $statusList
-                ]);
-            }
         }
     }
 
-    function updateStatus($orderId, $statusID){
-        $orderModel = $this->model("OrderModel");
-        $orderModel->updateOrder($orderId, $statusID);
-        header("Location:http://localhost:8080/Website-ban-gio-cha/Admin/order");
-    }
-
-    function status1($orderId){
-        $this->updateStatus($orderId, 1);
-    }
-
-    function status2($orderId)
-    {
-        $this->updateStatus($orderId, 2);
-    }
-
-    function status3($orderId)
-    {
-        $this->updateStatus($orderId, 3);
-    }
-
-    function orderDetail($orderId){
-        $orderModel = $this->model("OrderModel");
-        $order = $orderModel->getOrderById($orderId);
-        $orderDetailModel = $this->model("OrderDetailModel");
-        $orderDetail = $orderDetailModel->getOrderDetailById($orderId);
-        $this->view("AdminLayout", [
-            "page" => "OrderDetail",
-            "action" => "Order",
-            "order" => $order,
-            "orderDetail" => $orderDetail
-        ]);
-    }
-
-    function Contact($action = null, $id = null)
-    {
-        if (!$this->isAdminLogedIn()) {
-            return header("Location:" . Redirect("Admin", "Login"));
-        }
-        switch ($action) {
-            default: {
-                $this->view("AdminLayout", [
-                    "page" => "Contact",
-                    "action" => "Contact"
-                ]);
-            }
-        }
-    }
-    function QAA($action = null, $id = null)
-    {
-    }
-    function MassUnit($action = null, $id = null) {
-        if (!$this->isAdminLogedIn()) {
-            return header("Location:" . Redirect("Admin", "Login"));
-        }
-        switch ($action) {
-            case "Create" : {
-
-            }
-            default : {
-                return $this->view("AdminLayout", [
-                    "page" => "MassUnit",
-                    "action" => "MassUnit",
-                ]);
-            }
-        }
-    }
     private function isAdminLogedIn()
     {
         return $_SESSION[ADMIN_LOGIN] != null;
+    }
+    private function updateStatus($orderId, $statusID)
+    {
+        $orderModel = $this->model("OrderModel");
+        $orderModel->updateOrder($orderId, $statusID);
+        header("Location:http://localhost:8080/Website-ban-gio-cha/Admin/order");
     }
     function test()
     {

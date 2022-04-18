@@ -47,7 +47,13 @@
                   <button class="btn btn-primary" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
                 </form>
               </li>
-        <?php break;
+          <?php break;
+            }
+          case "Banner": { ?>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?= Redirect("Admin", "Banner") ?>/Create" class="nav-link">Tạo banner mới</a>
+            </li>
+          <?php break; 
             }
         } ?>
       </ul>
