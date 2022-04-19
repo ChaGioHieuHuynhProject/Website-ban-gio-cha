@@ -1,4 +1,4 @@
-const ROOT_URL = "http://localhost:8080/website/Website-ban-gio-cha/";
+const ROOT_URL = "http://localhost/KyNguyen/Website-ban-gio-cha/";
 const deleteStory = (id) => {
     swal({
         title: "Bạn muốn xóa câu chuyện?",

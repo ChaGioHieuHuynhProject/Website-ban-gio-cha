@@ -59,12 +59,12 @@
             <li class="nav-item d-none d-sm-inline-block">
               <a href="<?= Redirect("Admin", "QAA") ?>/Create" class="nav-link">Tạo câu hỏi mới</a>
             </li>
-          <?php }
+          <?php break;}
           case "Stories": { ?>
             <li class="nav-item d-none d-sm-inline-block">
               <a href="<?= Redirect("Admin", "Stories") ?>/Create" class="nav-link">Tạo câu chuyện mới</a>
             </li>
-          <?php } 
+          <?php break;} 
         } ?>
       </ul>
       <!-- Right navbar links -->
