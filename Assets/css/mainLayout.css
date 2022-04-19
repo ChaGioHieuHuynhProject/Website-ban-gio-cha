@@ -395,7 +395,7 @@ img {
 .slogan{
   text-decoration: none;
   color: green;
-  font-size: calc(20px + 6 * ((100vw - 320px) / 680));
+  font-size: calc(18px + 6 * ((100vw - 320px) / 680));
   font-weight: bold;
 }
 
@@ -423,9 +423,9 @@ img {
   display: flex;
   flex-direction: var(--fd-footer-center);
   justify-content: var(--footer-center-space);
-  align-items: center;
   padding: var(--padding-screen);
   height: 275px var(--height-footer-center);
+  margin-top: 1rem
 }
 
 .footer-center__title {

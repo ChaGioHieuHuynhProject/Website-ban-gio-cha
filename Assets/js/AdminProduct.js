@@ -6,6 +6,7 @@ const deleteProduct = (id) => {
         buttons: true,
         dangerMode: true,
     }).then((willDelete) => {
+<<<<<<< HEAD
         if (willDelete) {
             $.post(
                 `${ROOT_URL}Admin/Product/Delete`, { id: id },
@@ -20,5 +21,22 @@ const deleteProduct = (id) => {
                 }
             )
         }
+=======
+      if (willDelete) {
+        $.post(
+            `${ROOT_URL}Admin/Product/Delete`,
+            {id: id},
+            () => {
+                swal({
+                  title: "Đã xóa sản phẩm!",
+                  icon: "success",
+                }).then(() => {
+                  window.location.href =
+                    `${ROOT_URL}Admin/Product/`;
+                });
+            }
+        )
+      }
+>>>>>>> ff0e044c8417e92ca39d15216379902ea26792ac
     });
 }

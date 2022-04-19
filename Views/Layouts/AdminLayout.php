@@ -47,13 +47,13 @@
                   <button class="btn btn-primary" type="submit"><i class="fa fa-filter" aria-hidden="true"></i></button>
                 </form>
               </li>
-          <?php break;
+            <?php break;
             }
           case "Banner": { ?>
-            <li class="nav-item d-none d-sm-inline-block">
-              <a href="<?= Redirect("Admin", "Banner") ?>/Create" class="nav-link">Tạo banner mới</a>
-            </li>
-          <?php break; 
+              <li class="nav-item d-none d-sm-inline-block">
+                <a href="<?= Redirect("Admin", "Banner") ?>/Create" class="nav-link">Tạo banner mới</a>
+              </li>
+        <?php break;
             }
           case "QAA": { ?>
             <li class="nav-item d-none d-sm-inline-block">
@@ -174,49 +174,70 @@
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
-                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+            </li>
+            <li class="nav-item">
               <a id="Product" href="<?= Redirect("Admin", "Product") ?>" class="nav-link">
                 <i class="nav-icon fas fa-box-open"></i>
                 <p>
                   Sản phẩm
                 </p>
               </a>
+            </li>
+            <li class="nav-item">
               <a id="Order" href="<?= Redirect("Admin", "Order") ?>" class="nav-link">
                 <i class="nav-icon fas fa-file-invoice"></i>
                 <p>
                   Đơn hàng
                 </p>
               </a>
+            </li>
+            <li class="nav-item">
               <a id="Contact" href="<?= Redirect("Admin", "Contact") ?>" class="nav-link">
                 <i class="nav-icon fas fa-envelope"></i>
                 <p>
                   Liên hệ
                 </p>
               </a>
+            </li>
+            <li class="nav-item">
               <a id="QAA" href="<?= Redirect("Admin", "QAA") ?>" class="nav-link">
-                <i class="nav-icon fas fa-question"></i>
+                <i class="nav-icon fas fa-circle-question"></i>
                 <p>
                   Q&A
                 </p>
               </a>
+            </li>
+            <li class="nav-item">
               <a id="Stories" href="<?= Redirect("Admin", "Stories") ?>" class="nav-link">
-                <i class="nav-icon fas fa-question"></i>
+                <i class="nav-icon fas fa-book"></i>
                 <p>
                   Câu chuyện
                 </p>
               </a>
+            </li>
+            <li class="nav-item">
               <a id="Banner" href="<?= Redirect("Admin", "Banner") ?>" class="nav-link">
                 <i class="nav-icon fas fa-image"></i>
                 <p>
                   Banner
                 </p>
               </a>
+            </li>
+            <li class="nav-item">
               <a id="MassUnit" href="<?= Redirect("Admin", "MassUnit") ?>" class="nav-link">
-                <i class="nav-icon fas fa-image"></i>
+                <i class="nav-icon fas fa-money-bill"></i>
                 <p>
                   Đơn vị khối lượng
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a id="UpdateInfo" href="<?= Redirect("Admin", "UpdateWebsiteInfo") ?>" class="nav-link">
+                <i class="nav-icon fas fa-circle-info"></i>
+                <p>
+                  Cập nhật thông tin
                 </p>
               </a>
             </li>
