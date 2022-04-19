@@ -55,6 +55,16 @@
             </li>
           <?php break; 
             }
+          case "QAA": { ?>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?= Redirect("Admin", "QAA") ?>/Create" class="nav-link">Tạo câu hỏi mới</a>
+            </li>
+          <?php }
+          case "Stories": { ?>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?= Redirect("Admin", "Stories") ?>/Create" class="nav-link">Tạo câu chuyện mới</a>
+            </li>
+          <?php } 
         } ?>
       </ul>
       <!-- Right navbar links -->
@@ -159,7 +169,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a id="DashBoard" href="<?= Redirect("Admin", "DashBoard") ?>" class=" nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -189,6 +199,12 @@
                 <i class="nav-icon fas fa-question"></i>
                 <p>
                   Q&A
+                </p>
+              </a>
+              <a id="Stories" href="<?= Redirect("Admin", "Stories") ?>" class="nav-link">
+                <i class="nav-icon fas fa-question"></i>
+                <p>
+                  Câu chuyện
                 </p>
               </a>
               <a id="Banner" href="<?= Redirect("Admin", "Banner") ?>" class="nav-link">
@@ -233,7 +249,6 @@
   RenderJs("adminlte") ?>
   <script>
     $("#<?= $data["action"] ?>").addClass("active")
-    console.log("OK")
   </script>
 </body>
 

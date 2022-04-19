@@ -21,7 +21,7 @@
 
     }
     function deleteStory($id){
-        $this->con->query("DELETE FROM stories WHERE id = {$id}");
+        return $this->con->query("DELETE FROM stories WHERE id = {$id}");
     }
     function getStoryById($id){
         $result= $this->con->query("SELECT * FROM stories WHERE id = {$id}");

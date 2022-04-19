@@ -45,7 +45,7 @@
                     $customerModel->addNewCustomer($id, $name, $phoneNumber, $address, $email);
                     $accountModel->addNewAccount($id, $pwdHashed);
                     return header("Location:" . ROOT_URL);
-                } catch (Exception) {
+                } catch (Exception $ex) {
                     $message = "Có lỗi xảy ra!";
                 }
             }
