@@ -142,7 +142,7 @@ svg {
 
 /* ______________________________________________________________________________________________ */
 :root {
-  --gap-nav: 35px;
+  --gap-nav: 20px;
   --fz-body: 13px;
   --display-menu-btn: none;
   --display-nav: flex;
@@ -248,16 +248,16 @@ img {
   display: var(--display-menu-btn);
 }
 
-
 .header-menu {
   display: var(--display-nav);
   gap: var(--gap-nav);
   margin: 0 10px;
+  font-size: 1.35vw;
+  line-height: 1.8rem;
 }
 
 .menu-item {
   display: block;
-  /* inline-size: max-content; */
   font-weight: bold;
 }
 

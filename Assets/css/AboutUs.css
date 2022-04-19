@@ -51,6 +51,7 @@
 .content {
   text-align: justify;
   font-size: calc(13px + 6 * ((100vw - 320px) / 680));
+  line-height: 1.8rem;
 }
 .content-above .content {
   width: var(--content-above-width);
@@ -98,4 +99,7 @@
 .certificate img {
   height: 100vh;
   width: auto;
+}
+.text-bold {
+  font-weight: bold;
 }

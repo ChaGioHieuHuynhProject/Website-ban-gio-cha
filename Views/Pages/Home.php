@@ -41,15 +41,15 @@
             Chồng tôi kể rằng: “Bố là dân di cư từ Bắc vào Đà Nẵng vào năm 1954. Lúc còn nhỏ, tôi chỉ
             biết bám theo ông, ông dậy sớm giã chả, tôi cũng dậy theo... Vào năm 1975, bố mất lúc tôi
             chỉ mới 7 tuổi. Lớn lên tôi còn nhớ về bố trong những lần vét cối giã chả, gói trong lá
-            chuối rồi đem hấp. Mùi vị chả gói trong lá chuối đến bây giờ vẫn còn đọng mãi trong tôi. Vị ngọt
-            của thịt, vị mặn vừa phải của nước mắm, và mùi thơm đặc trưng của giò Bắc (còn gọi là
+            chuối rồi đem hấp. Mùi vị chả gói trong lá chuối đến bây giờ vẫn còn đọng mãi trong tôi. 
+            Vị ngọt của thịt, vị mặn vừa phải của nước mắm, và mùi thơm đặc trưng của giò Bắc (còn gọi là
             chả lụa)...
         </p>
         <div class="N-see-more">
             <a class="N-btn N-btn-see-more" href="<?= Redirect("AboutUs") ?>">Tìm hiểu thêm</a>
         </div>
     </div>
-    <img src="<?= ImageLink('Banner2.png')?>" alt="">
+    <img src="<?= ImageLink('BaChuQuan.jpg')?>" alt="">
 </section>
 <section class="N-container">
     <div class="N-title">
@@ -58,7 +58,7 @@
     <div class="N-layout">
     <?php foreach ($data["storiesList"] as $story) { ?>
         <div class="N-card">
-            <img class="N-card-img" src="https://www.disneycooking.com/wp-content/uploads/2021/04/cha-bo.jpg" alt="">
+            <img class="N-card-img" src="<?=ImageLink($story["img"])?>" alt="">
             <div class="N-card-body">
                 <p class="N-card-title"><?= $story["title"] ?></p>
                 <p class="N-card-text"><?= $story["content"] ?></p>

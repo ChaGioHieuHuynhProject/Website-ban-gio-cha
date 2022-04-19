@@ -1,41 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
-
 :root {
-    --padding-screen: 0 150px;
+    --padding-screen: 0 5vw;
     --content-above-width:48%;
     --content-img-above-width:50%;
     --img-above-position:sticky;
 }
 
-@media screen and (max-width: 1224px) {
-    :root {
-        --padding-screen: 0 35px;
-        --padding-screen: 0 calc(7px + 5vw);
-        --content-above-width:48%;
-        --content-img-above-width:50%;
-    }
-}
-
-@media screen and (max-width: 960px) {
-    :root {
-        --img-above-height:auto;
-        --padding-screen: 0 calc(7px + 5vw);
-        --fd-content-above:row;
-        --img-above-position:sticky;
-        --fd-story: row;
-    }
-}
-
-@media screen and (max-width: 640px) {
-    :root {
-        --content-above-width:100%;
-        --content-img-above-width:100%;
-        --fd-content-above:column-reverse;
-        --img-above-height:300px;
-        --img-above-position:unset;
-        --fd-story: column;
-    }
-}
 .N-container {
     height: auto;
     padding: var(--padding-screen);
@@ -77,11 +46,13 @@
 .N-img {
     width: 100%;
     height: auto;
+    margin-top: 3rem;
     height: var(--img-above-height);
     position: var(--img-above-position);
     position: -webkit-sticky;
-    top: 0.5rem;
-    border: 2px black solid;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50% -50%);
 }
 
 .N-text-title {
@@ -94,5 +65,37 @@
     margin: 1rem;
     word-wrap: break-word;
     text-align: justify;
+    line-height: 1.8rem
 }
 
+@media screen and (max-width: 1224px) {
+    :root {
+        --padding-screen: 0 calc(7px + 3vw);
+        --content-above-width: 48%;
+        --content-img-above-width: 50%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    :root {
+        --img-above-height: auto;
+        --padding-screen: 0 calc(7px + 3vw);
+        --fd-content-above: row;
+        --img-above-position: sticky;
+        --fd-story: row;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+        --content-above-width: 100%;
+        --content-img-above-width: 100%;
+        --fd-content-above: column-reverse;
+        --img-above-height: 300px;
+        --img-above-position: unset;
+        --fd-story: column;
+    }
+    .reverse {
+        flex-direction: var(--fd-story);
+    }
+}
