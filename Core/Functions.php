@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use HPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-define("ROOT_URL", "http://localhost/KyNguyen/Website-ban-gio-cha/");
+define("ROOT_URL", "http://localhost:8080/website/Website-ban-gio-cha/");
 define("CART", "cart");
 define("ADMIN_LOGIN", "adminLogin");
 function Error()
@@ -13,7 +13,7 @@ function Error()
 }
 function Redirect($controller, $action = "")
 {
-    return "/KyNguyen/Website-ban-gio-cha/$controller/$action";
+    return "/website/Website-ban-gio-cha/$controller/$action";
 }
 function RenderCSS($cssFileName)
 {

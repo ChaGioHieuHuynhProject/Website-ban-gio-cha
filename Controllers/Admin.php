@@ -74,7 +74,7 @@
                                 move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
                                 $this->model("ProductModel")->addProduct($name, $price, $img_name, $ingredients, $description, $usageGuide);
                                 return header("Location:" . Redirect("Admin", "Product"));
-                            } catch (Exception) {
+                            } catch (Exception $ex) {
                                 $error = "Có lỗi xảy ra!";
                             }
                         }
@@ -140,7 +140,7 @@
                             try {
                                 $this->model("ProductModel")->updateProduct($id, $name, $price, $img_name, $ingredients, $description, $usageGuide);
                                 return header("Location:" . Redirect("Admin", "Product"));
-                            } catch (Exception) {
+                            } catch (Exception $ex) {
                                 $error = "Có lỗi xảy ra!";
                             }
                         }
@@ -231,9 +231,199 @@
         ]);
     }
 
-    function QAA($action = null, $id = null)
-    {
+    function QAA($action = null, $id = null) {
+
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+
+        switch($action){
+            case "Create": {
+                $error = "";
+                if (isset($_POST["save"])) {
+                    $question = $_POST["question"];
+                    $answer = $_POST["answer"];
+
+                    if (empty($error)) {
+                        try {
+                            $this->model("QAAModel")->addQAA($question, $answer);
+                            return header("Location:" . Redirect("Admin", "QAA"));
+                        } catch (Exception $ex) {
+                            $error = "Có lỗi xảy ra!";
+                        }
+                    }
+                }
+                return $this->view("AdminLayout", [
+                    "page" => "QaaForm",
+                    "action" => "QAA",
+                    "error" => $error
+                ]);
+            }
+            case "Delete": {
+                if (empty($_POST)) {
+                    return header("Location:" . Redirect("Admin", "QAA"));
+                }
+                $id = $_POST["id"];
+                $qaaModel = $this->model("QAAModel");
+                if (($qaaModel->getQaaById($id)) == null) {
+                    return header("Location:" . Redirect("Admin", "QAA"));
+                }
+                $qaaModel->deleteQAA($id);
+                return header("Location:" . Redirect("Admin", "QAA"));
+            }
+            case "Update": {
+                if ($id == null) {
+                    return header("Location:" . Redirect("Admin", "QAA"));
+                }
+                $qaa = $this->model("QAAModel")->getQaaById($id);
+                if (empty($qaa)) {
+                    return header("Location:" . Redirect("Admin", "QAA"));
+                }
+
+                $error = "";
+                if (isset($_POST["save"])) {
+                    $question = $_POST["question"];
+                    $answer = $_POST["answer"];
+
+                    if (empty($error)) {
+                        try {
+                            $this->model("QAAModel")->updateQAA($id, $question, $answer);
+                            return header("Location:" . Redirect("Admin", "QAA"));
+                        } catch (Exception $ex) {
+                            $error = "Có lỗi xảy ra!";
+                        }
+                    }
+                }
+                return $this->view("AdminLayout", [
+                    "page" => "QaaForm",
+                    "action" => "QAA",
+                    "qaa" => $qaa,
+                    "error" => $error
+                ]);
+            }
+            default: {
+                $qaaList = $this->model("QaaModel")->getQaaList();
+                return $this->view("AdminLayout", [
+                    "page" => "Qaa",
+                    "action" => "QAA",
+                    "qaaList" => $qaaList
+                ]);
+            }
+        }
     }
+
+    function Stories($action = null, $id = null){
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+
+        switch($action){
+            case "Create": {
+                $error = '';
+                if (isset($_POST["save"])) {
+                    $title = $_POST["title"]; 
+                    $content = $_POST["content"];
+
+                    $img_name = $_FILES['img']['name'];
+                    $file_tmp = $_FILES['img']['tmp_name'];
+                    $tempArr = explode('.', $img_name);
+                    $file_ext = strtolower(end($tempArr));
+
+                    $extensions = array("jpeg", "jpg", "png");
+
+                    if (!in_array($file_ext, $extensions)) {
+                        $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
+                    }
+                    if (empty($error)) {
+                        try {
+                            move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
+                            $this->model("StoriesModel")->addStories($img_name, $title,$content);
+                            return header("Location:" . Redirect("Admin", "Stories"));
+                        } catch (Exception $ex) {
+                            $error = "Có lỗi xảy ra!";
+                        }
+                    }
+                }
+                return $this->view("AdminLayout", [
+                    "page" => "StoriesForm",
+                    "action" => "Stories",
+                    "error" => $error
+                ]);
+            }
+            
+            case "Delete": {
+                if (empty($_POST)) {
+                    return header("Location:" . Redirect("Admin", "Stories"));
+                }
+                $id = $_POST["id"];
+                $storiesModel = $this->model("StoriesModel");
+                $story = $storiesModel->getStoryById($id);
+                if (empty($story)) {
+                    return header("Location:" . Redirect("Admin", "Stories"));
+                }
+                unlink("Assets/img/{$story["img"]}");
+                $storiesModel->deleteStory($id);
+                return header("Location:" . Redirect("Admin", "Stories"));
+            }
+
+            case "Update": {
+                if ($id == null) {
+                    return header("Location:" . Redirect("Admin", "Stories"));
+                }
+
+                $story = $this->model("StoriesModel")->getStoryById($id);
+                if (empty($story)) {
+                    return header("Location:" . Redirect("Admin", "Stories"));
+                }
+
+                $error = "";
+                if (isset($_POST["save"])) {
+                    $title = $_POST["title"]; 
+                    $content = $_POST["content"];
+
+                    if (empty($_FILES["img"]["name"])) {
+                        $img_name = $_POST["old-img"];
+                    } else {
+                        $img_name = $_FILES['img']['name'];
+                        $file_tmp = $_FILES['img']['tmp_name'];
+                        $tempArr = explode('.', $img_name);
+                        $file_ext = strtolower(end($tempArr));
+
+                        $extensions = array("jpeg", "jpg", "png");
+
+                        if (!in_array($file_ext, $extensions)) {
+                            $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
+                        } else {
+                            move_uploaded_file($file_tmp, "./Assets/img/" . $img_name);
+                        }
+                    }
+                    if (empty($error)) {
+                        try {
+                            $this->model("StoriesModel")->updateStory($id, $title, $content, $img_name);
+                            return header("Location:" . Redirect("Admin", "Stories"));
+                        } catch (Exception $ex) {
+                            $error = "Có lỗi xảy ra!";
+                        }
+                    }
+                }
+                return $this->view("AdminLayout", [
+                    "page" => "StoriesForm",
+                    "action" => "Stories",
+                    "error" => $error,
+                    "story" => $story
+                ]);
+            }
+            default: {
+                $storiesList = $this->model("StoriesModel")->getStoryList();
+                return $this->view("AdminLayout", [
+                    "page" => "Stories",
+                    "action" => "Stories",
+                    "storiesList" => $storiesList,
+                ]);
+            }
+        }
+    }
+
     function Banner($action = null, $id = null)
     {
         if (!$this->isAdminLogedIn()) {
@@ -260,7 +450,7 @@
                                 move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
                                 $this->model("BannerModel")->addBanner($img_name, $isDisplayed);
                                 return header("Location:" . Redirect("Admin", "Banner"));
-                            } catch (Exception) {
+                            } catch (Exception $ex) {
                                 $error = "Có lỗi xảy ra!";
                             }
                         }

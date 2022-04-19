@@ -55,6 +55,16 @@
               </li>
         <?php break;
             }
+          case "QAA": { ?>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?= Redirect("Admin", "QAA") ?>/Create" class="nav-link">Tạo câu hỏi mới</a>
+            </li>
+          <?php }
+          case "Stories": { ?>
+            <li class="nav-item d-none d-sm-inline-block">
+              <a href="<?= Redirect("Admin", "Stories") ?>/Create" class="nav-link">Tạo câu chuyện mới</a>
+            </li>
+          <?php } 
         } ?>
       </ul>
       <!-- Right navbar links -->
@@ -200,6 +210,14 @@
               </a>
             </li>
             <li class="nav-item">
+              <a id="Stories" href="<?= Redirect("Admin", "Stories") ?>" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Câu chuyện
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a id="Banner" href="<?= Redirect("Admin", "Banner") ?>" class="nav-link">
                 <i class="nav-icon fas fa-image"></i>
                 <p>
@@ -252,7 +270,6 @@
   RenderJs("adminlte") ?>
   <script>
     $("#<?= $data["action"] ?>").addClass("active")
-    console.log("OK")
   </script>
 </body>
 
