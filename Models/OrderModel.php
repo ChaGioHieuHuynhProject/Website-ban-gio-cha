@@ -14,7 +14,7 @@ class OrderModel extends Model
         return $orderList;
     }
     function getOrderListByStatusId($statusId) {
-        $results = $this->con->query("SELECT o.id, o.customerName, o.customerPhone, o.customerAddress, o.date, o.note, s.name as status FROM orders as o
+        $results = $this->con->query("SELECT o.id, o.customerName, o.customerPhone, o.customerAddress, o.date, o.note, s.name as status, o.statusID FROM orders as o
                                             JOIN statuses as s ON o.statusId = s.id 
                                             WHERE s.id = $statusId
                                             ORDER BY o.date DESC"
