@@ -1,23 +1,22 @@
-<h1 class="text-center my-5">Danh Sách Các câu hỏi và câu trả lời</h1>
 <table class="table">
-    <thead>
+    <thead class=" w-100">
         <tr class="text-center">
             <th scope="col">ID</th>
             <th scope="col">Câu hỏi</th>
-            <th scope="col">Trả lời</th>
+            <th scope="col" class="w-60">Trả lời</th>
             <th scope="col">Thao tác</th>
         </tr>
     </thead>
-    <tbody class="text-justify">
+    <tbody class="text-justify w-100">
         <?php foreach ($data["qaaList"] as $qaa) { ?>
             <tr class="text-justify">
                 <th scope="row"><?= $qaa["id"] ?></th>
                 <td><?= $qaa["question"] ?></td>
-                <td><?= $qaa["answer"] ?></td>
-                <td>
+                <td class="w-60"><?= $qaa["answer"] ?></td>
+                <td class="text-center">
                     <a onclick="deleteQaa(<?=$qaa['id']?>)" role="button" class="btn btn-danger">
                         <i class="fa fa-trash" aria-hidden="true"></i>
-                    </a>
+                    </a> <br>
                     <a href="<?= Redirect("Admin", "Qaa") ?>/Update/<?= $qaa["id"] ?>" role="button" class="btn btn-primary mt-2">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
@@ -26,4 +25,5 @@
         <?php } ?>
     </tbody>
 </table>
-<?=RenderJs("AdminQaa")?>
+<?=RenderCSS("tableStyles");
+RenderJs("AdminQaa")?>

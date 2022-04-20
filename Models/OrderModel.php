@@ -27,7 +27,7 @@ class OrderModel extends Model
     }
     function getOrderById($id)
     {
-        $result = $this->con->query("SELECT orders.id as id, customerName, customerPhone, customerAddress, date, note, name as nameStatus
+        $result = $this->con->query("SELECT orders.id as id, customerName, customerPhone, customerAddress, date, note, name as nameStatus, shipFee
         FROM orders 
         LEFT JOIN statuses
         ON orders.statusID = statuses.id
@@ -54,9 +54,14 @@ class OrderModel extends Model
         return $this->con->query($sql);
     }
 
-    function updateOrder($id, $statusID)
+    function updateStatus($id, $statusID)
     {
         $sql = "UPDATE orders SET statusID ='$statusID' WHERE id = $id";
+        return $this->con->query($sql);
+    }
+    function updateShipFee($id, $fee)
+    {
+        $sql = "UPDATE orders SET shipFee = $fee WHERE id = $id";
         return $this->con->query($sql);
     }
 
@@ -70,23 +75,6 @@ class OrderModel extends Model
     {
         $result = $this->con->query("SELECT COUNT(id) as count FROM orders");
         return $result->fetch_assoc()["count"];
-    }
-
-    function countOrdersMoreThanFiveTimes()
-    {
-        $results = $this->con->query(
-            "SELECT name, phoneNumber, address, email, count(id) as count FROM customers 
-            LEFT JOIN orders
-            ON customers.id = orders.cusId
-            GROUP BY orders.cusId
-            HAVING 'count' >= 5
-            "
-        );
-        $orderList = [];
-        while ($row = $results->fetch_assoc()) {
-            array_push($orderList, $row);
-        }
-        return $orderList;
     }
     function getLatestOrderId()
     {

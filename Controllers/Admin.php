@@ -1,6 +1,6 @@
 <?php
 class Admin extends Controller
-{   
+{
     function Index()
     {
         header("Location:" . Redirect("Admin", "DashBoard"));
@@ -32,34 +32,34 @@ class Admin extends Controller
         ]);
     }
 
-    function Signup(){
+    function Signup()
+    {
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
         }
-        if (!isset($_POST["signup"])){
+        if (!isset($_POST["signup"])) {
             return $this->view("AdminLayout", [
                 "page" => "Signup",
                 "action" => "DashBoard",
-                "error" =>""
+                "error" => ""
             ]);
-        }else{
+        } else {
             $adminModel = $this->model("AdminModel");
             $email = $_POST['user-email'];
             $password1 = $_POST['user-password'];
             $password2 = $_POST['enter-the-password'];
-            if($adminModel->checkUserEmail($email)){
-                if($password1 == $password2){
+            if ($adminModel->checkUserEmail($email)) {
+                if ($password1 == $password2) {
                     $adminModel->addAdmin($email, $password1);
-                    return header("Location:" . Redirect("Admin").$_SESSION["indexPage"]);
-                }
-                else{
+                    return header("Location:" . Redirect("Admin") . $_SESSION["indexPage"]);
+                } else {
                     return $this->view("AdminLayout", [
                         "page" => "Signup",
                         "action" => "DashBoard",
                         "error" => "Mật khẩu Không Khớp"
                     ]);
                 }
-            }else{
+            } else {
                 return $this->view("AdminLayout", [
                     "page" => "Signup",
                     "action" => "DashBoard",
@@ -67,7 +67,6 @@ class Admin extends Controller
                 ]);
             }
         }
-
     }
 
     function Logout()
@@ -80,13 +79,9 @@ class Admin extends Controller
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
         }
-<<<<<<< HEAD
         $orderModel = $this->model("OrderModel");
-        return $this->view("AdminLayout", [
-=======
         $_SESSION["indexPage"] = "DashBoard";
-        $this->view("AdminLayout", [
->>>>>>> 1fafa1ce0000a252ba620fa47b8bd4b2e455a374
+        return $this->view("AdminLayout", [
             "page" => "DashBoard",
             "action" => "DashBoard",
             "numOfCustomers" => $orderModel->countCustomer(),
@@ -212,7 +207,7 @@ class Admin extends Controller
                         "productList" => $productList
                     ]);
                     $_SESSION["indexPage"] = "Product/Update/$id";
-            }
+                }
         }
     }
     function Order($action = null, $orderId = null, $statusId = null)
@@ -237,6 +232,12 @@ class Admin extends Controller
                             }
                     }
                 }
+            case "UpdateShipFee": {
+                if (!isset($_POST)) {
+                    return header("Location:" . Redirect("Admin", "Order"));
+                }
+                return $this->model("OrderModel")->updateShipFee($_POST["orderId"], $_POST["fee"]);
+            }
             case "Show": {
                     if ($orderId ==  null) {
                         return header("Location:" . Redirect("Admin", "Order"));
@@ -255,19 +256,6 @@ class Admin extends Controller
                         "orderDetail" => $orderDetail
                     ]);
                 }
-            case "ShowByStatus":{
-                    $statuses = $this->model("OrderModel")->countGroupByStatus();
-                    $orderList = $this->model("OrderModel")->getOrderListByStatusId($statusId);
-                    $statusList = $this->model("StatusModel")->getStatusList();
-                    $_SESSION["indexPage"] = "Order/ShowByStatus/null/$statusId";
-                    return $this->view("AdminLayout", [
-                        "page" => "Order",
-                        "action" => "Order",
-                        "orderList" => $orderList,
-                        "statusList" => $statusList,
-                        "statuses" => $statuses
-                    ]);
-            }
             default: {
                     $statuses = $this->model("OrderModel")->countGroupByStatus();
                     $statusList = $this->model("StatusModel")->getStatusList();
@@ -302,159 +290,101 @@ class Admin extends Controller
         ]);
     }
 
-    function QAA($action = null, $id = null) {
+    function QAA($action = null, $id = null)
+    {
 
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
         }
 
-        switch($action){
+        switch ($action) {
             case "Create": {
-                $error = "";
-                if (isset($_POST["save"])) {
-                    $question = $_POST["question"];
-                    $answer = $_POST["answer"];
+                    $error = "";
+                    if (isset($_POST["save"])) {
+                        $question = $_POST["question"];
+                        $answer = $_POST["answer"];
 
-                    if (empty($error)) {
-                        try {
-                            $this->model("QAAModel")->addQAA($question, $answer);
-                            return header("Location:" . Redirect("Admin", "QAA"));
-                        } catch (Exception $ex) {
-                            $error = "Có lỗi xảy ra!";
+                        if (empty($error)) {
+                            try {
+                                $this->model("QAAModel")->addQAA($question, $answer);
+                                return header("Location:" . Redirect("Admin", "QAA"));
+                            } catch (Exception $ex) {
+                                $error = "Có lỗi xảy ra!";
+                            }
                         }
                     }
+                    return $this->view("AdminLayout", [
+                        "page" => "QaaForm",
+                        "action" => "QAA",
+                        "error" => $error
+                    ]);
                 }
-                return $this->view("AdminLayout", [
-                    "page" => "QaaForm",
-                    "action" => "QAA",
-                    "error" => $error
-                ]);
-            }
             case "Delete": {
-                if (empty($_POST)) {
+                    if (empty($_POST)) {
+                        return header("Location:" . Redirect("Admin", "QAA"));
+                    }
+                    $id = $_POST["id"];
+                    $qaaModel = $this->model("QAAModel");
+                    if (($qaaModel->getQaaById($id)) == null) {
+                        return header("Location:" . Redirect("Admin", "QAA"));
+                    }
+                    $qaaModel->deleteQAA($id);
                     return header("Location:" . Redirect("Admin", "QAA"));
                 }
-                $id = $_POST["id"];
-                $qaaModel = $this->model("QAAModel");
-                if (($qaaModel->getQaaById($id)) == null) {
-                    return header("Location:" . Redirect("Admin", "QAA"));
-                }
-                $qaaModel->deleteQAA($id);
-                return header("Location:" . Redirect("Admin", "QAA"));
-            }
             case "Update": {
-                if ($id == null) {
-                    return header("Location:" . Redirect("Admin", "QAA"));
-                }
-                $qaa = $this->model("QAAModel")->getQaaById($id);
-                if (empty($qaa)) {
-                    return header("Location:" . Redirect("Admin", "QAA"));
-                }
+                    if ($id == null) {
+                        return header("Location:" . Redirect("Admin", "QAA"));
+                    }
+                    $qaa = $this->model("QAAModel")->getQaaById($id);
+                    if (empty($qaa)) {
+                        return header("Location:" . Redirect("Admin", "QAA"));
+                    }
 
-                $error = "";
-                if (isset($_POST["save"])) {
-                    $question = $_POST["question"];
-                    $answer = $_POST["answer"];
+                    $error = "";
+                    if (isset($_POST["save"])) {
+                        $question = $_POST["question"];
+                        $answer = $_POST["answer"];
 
-                    if (empty($error)) {
-                        try {
-                            $this->model("QAAModel")->updateQAA($id, $question, $answer);
-                            return header("Location:" . Redirect("Admin", "QAA"));
-                        } catch (Exception $ex) {
-                            $error = "Có lỗi xảy ra!";
+                        if (empty($error)) {
+                            try {
+                                $this->model("QAAModel")->updateQAA($id, $question, $answer);
+                                return header("Location:" . Redirect("Admin", "QAA"));
+                            } catch (Exception $ex) {
+                                $error = "Có lỗi xảy ra!";
+                            }
                         }
                     }
+                    return $this->view("AdminLayout", [
+                        "page" => "QaaForm",
+                        "action" => "QAA",
+                        "qaa" => $qaa,
+                        "error" => $error
+                    ]);
                 }
-                return $this->view("AdminLayout", [
-                    "page" => "QaaForm",
-                    "action" => "QAA",
-                    "qaa" => $qaa,
-                    "error" => $error
-                ]);
-            }
             default: {
-                $qaaList = $this->model("QaaModel")->getQaaList();
-                return $this->view("AdminLayout", [
-                    "page" => "Qaa",
-                    "action" => "QAA",
-                    "qaaList" => $qaaList
-                ]);
-            }
+                    $qaaList = $this->model("QaaModel")->getQaaList();
+                    return $this->view("AdminLayout", [
+                        "page" => "Qaa",
+                        "action" => "QAA",
+                        "qaaList" => $qaaList
+                    ]);
+                }
         }
     }
 
-    function Stories($action = null, $id = null){
+    function Stories($action = null, $id = null)
+    {
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
         }
 
-        switch($action){
+        switch ($action) {
             case "Create": {
-                $error = '';
-                if (isset($_POST["save"])) {
-                    $title = $_POST["title"]; 
-                    $content = $_POST["content"];
+                    $error = '';
+                    if (isset($_POST["save"])) {
+                        $title = $_POST["title"];
+                        $content = $_POST["content"];
 
-                    $img_name = $_FILES['img']['name'];
-                    $file_tmp = $_FILES['img']['tmp_name'];
-                    $tempArr = explode('.', $img_name);
-                    $file_ext = strtolower(end($tempArr));
-
-                    $extensions = array("jpeg", "jpg", "png");
-
-                    if (!in_array($file_ext, $extensions)) {
-                        $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
-                    }
-                    if (empty($error)) {
-                        try {
-                            move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
-                            $this->model("StoriesModel")->addStories($img_name, $title,$content);
-                            return header("Location:" . Redirect("Admin", "Stories"));
-                        } catch (Exception $ex) {
-                            $error = "Có lỗi xảy ra!";
-                        }
-                    }
-                }
-                return $this->view("AdminLayout", [
-                    "page" => "StoriesForm",
-                    "action" => "Stories",
-                    "error" => $error
-                ]);
-            }
-            
-            case "Delete": {
-                if (empty($_POST)) {
-                    return header("Location:" . Redirect("Admin", "Stories"));
-                }
-                $id = $_POST["id"];
-                $storiesModel = $this->model("StoriesModel");
-                $story = $storiesModel->getStoryById($id);
-                if (empty($story)) {
-                    return header("Location:" . Redirect("Admin", "Stories"));
-                }
-                unlink("Assets/img/{$story["img"]}");
-                $storiesModel->deleteStory($id);
-                return header("Location:" . Redirect("Admin", "Stories"));
-            }
-
-            case "Update": {
-                if ($id == null) {
-                    return header("Location:" . Redirect("Admin", "Stories"));
-                }
-
-                $story = $this->model("StoriesModel")->getStoryById($id);
-                if (empty($story)) {
-                    return header("Location:" . Redirect("Admin", "Stories"));
-                }
-
-                $error = "";
-                if (isset($_POST["save"])) {
-                    $title = $_POST["title"]; 
-                    $content = $_POST["content"];
-
-                    if (empty($_FILES["img"]["name"])) {
-                        $img_name = $_POST["old-img"];
-                    } else {
                         $img_name = $_FILES['img']['name'];
                         $file_tmp = $_FILES['img']['tmp_name'];
                         $tempArr = explode('.', $img_name);
@@ -464,34 +394,94 @@ class Admin extends Controller
 
                         if (!in_array($file_ext, $extensions)) {
                             $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
-                        } else {
-                            move_uploaded_file($file_tmp, "./Assets/img/" . $img_name);
+                        }
+                        if (empty($error)) {
+                            try {
+                                move_uploaded_file($file_tmp, "Assets/img/" . $img_name);
+                                $this->model("StoriesModel")->addStories($img_name, $title, $content);
+                                return header("Location:" . Redirect("Admin", "Stories"));
+                            } catch (Exception $ex) {
+                                $error = "Có lỗi xảy ra!";
+                            }
                         }
                     }
-                    if (empty($error)) {
-                        try {
-                            $this->model("StoriesModel")->updateStory($id, $title, $content, $img_name);
-                            return header("Location:" . Redirect("Admin", "Stories"));
-                        } catch (Exception $ex) {
-                            $error = "Có lỗi xảy ra!";
-                        }
-                    }
+                    return $this->view("AdminLayout", [
+                        "page" => "StoriesForm",
+                        "action" => "Stories",
+                        "error" => $error
+                    ]);
                 }
-                return $this->view("AdminLayout", [
-                    "page" => "StoriesForm",
-                    "action" => "Stories",
-                    "error" => $error,
-                    "story" => $story
-                ]);
-            }
+
+            case "Delete": {
+                    if (empty($_POST)) {
+                        return header("Location:" . Redirect("Admin", "Stories"));
+                    }
+                    $id = $_POST["id"];
+                    $storiesModel = $this->model("StoriesModel");
+                    $story = $storiesModel->getStoryById($id);
+                    if (empty($story)) {
+                        return header("Location:" . Redirect("Admin", "Stories"));
+                    }
+                    unlink("Assets/img/{$story["img"]}");
+                    $storiesModel->deleteStory($id);
+                    return header("Location:" . Redirect("Admin", "Stories"));
+                }
+
+            case "Update": {
+                    if ($id == null) {
+                        return header("Location:" . Redirect("Admin", "Stories"));
+                    }
+
+                    $story = $this->model("StoriesModel")->getStoryById($id);
+                    if (empty($story)) {
+                        return header("Location:" . Redirect("Admin", "Stories"));
+                    }
+
+                    $error = "";
+                    if (isset($_POST["save"])) {
+                        $title = $_POST["title"];
+                        $content = $_POST["content"];
+
+                        if (empty($_FILES["img"]["name"])) {
+                            $img_name = $_POST["old-img"];
+                        } else {
+                            $img_name = $_FILES['img']['name'];
+                            $file_tmp = $_FILES['img']['tmp_name'];
+                            $tempArr = explode('.', $img_name);
+                            $file_ext = strtolower(end($tempArr));
+
+                            $extensions = array("jpeg", "jpg", "png");
+
+                            if (!in_array($file_ext, $extensions)) {
+                                $error = "File không hợp lệ! File nên có đuôi là JPEG, JPG hoặc PNG.";
+                            } else {
+                                move_uploaded_file($file_tmp, "./Assets/img/" . $img_name);
+                            }
+                        }
+                        if (empty($error)) {
+                            try {
+                                $this->model("StoriesModel")->updateStory($id, $title, $content, $img_name);
+                                return header("Location:" . Redirect("Admin", "Stories"));
+                            } catch (Exception $ex) {
+                                $error = "Có lỗi xảy ra!";
+                            }
+                        }
+                    }
+                    return $this->view("AdminLayout", [
+                        "page" => "StoriesForm",
+                        "action" => "Stories",
+                        "error" => $error,
+                        "story" => $story
+                    ]);
+                }
             default: {
-                $storiesList = $this->model("StoriesModel")->getStoryList();
-                return $this->view("AdminLayout", [
-                    "page" => "Stories",
-                    "action" => "Stories",
-                    "storiesList" => $storiesList,
-                ]);
-            }
+                    $storiesList = $this->model("StoriesModel")->getStoryList();
+                    return $this->view("AdminLayout", [
+                        "page" => "Stories",
+                        "action" => "Stories",
+                        "storiesList" => $storiesList,
+                    ]);
+                }
         }
     }
 
@@ -571,7 +561,7 @@ class Admin extends Controller
                     if (isset($_POST["save"])) {
                         $productId = $_POST["productId"];
                         $nameMassUnit = str_replace(" ", "_", $_POST["nameMassUnit"]);
-                        $factor = $_POST["factor"];
+                        $factor = $_POST["price"] / $this->model("ProductModel")->getProductById($productId)["price"];
                         if (empty($error)) {
                             try {
                                 $this->model("MassUnitModel")->addMassUnit($productId, $nameMassUnit, $factor);
@@ -594,27 +584,25 @@ class Admin extends Controller
                     if ($id == null || $name == null) {
                         return header("Location:" . Redirect("Admin", "MassUnit"));
                     }
-
-                    $MassUnit = $this->model("MassUnitModel")->getMassUnit($id, $name);
+                    $massUnit = $this->model("MassUnitModel")->getMassUnit($id, $name);
                     $error = "";
                     if (isset($_POST["save"])) {
                         $nameMassUnit = str_replace(" ", "_", $_POST["nameMassUnit"]);
-                        $factor = $_POST["factor"];
-                        if (empty($error)) {
-                            try {
-                                $this->model("MassUnitModel")->updateMassUnit($id, $name, $nameMassUnit, $factor);
-                                return header("Location:" . Redirect("Admin", "MassUnit"));
-                            } catch (Exception) {
-                                $error = "Có lỗi xảy ra!";
-                            }
+                        $factor = $_POST["price"]/$this->model("ProductModel")->getProductById($id)["price"];
+                        try {
+                            $this->model("MassUnitModel")->updateMassUnit($id, $name, $nameMassUnit, $factor);
+                            return header("Location:" . Redirect("Admin", "MassUnit"));
+                        } catch (Exception) {
+                            $error = "Có lỗi xảy ra!";
                         }
                     }
+
                     // $_SESSION["indexPage"] = "Product/Update/$id";
                     return $this->view("AdminLayout", [
                         "page" => "MassUnitForm",
                         "action" => "Update",
                         "error" => $error,
-                        "MassUnit" => $MassUnit
+                        "massUnit" => $massUnit
                     ]);
                 }
             case "Delete": {
@@ -625,13 +613,13 @@ class Admin extends Controller
                     return header("Location:" . Redirect("Admin", "MassUnit"));
                 }
             default: {
-                $_SESSION["indexPage"] = "MassUnit";
-                $massUnitList = $this->model("MassUnitModel")->getMassUnitList();
-                return $this->view("AdminLayout", [
-                    "page" => "MassUnit",
-                    "action" => "MassUnit",
-                    "massUnitList" => $massUnitList
-                ]);
+                    $_SESSION["indexPage"] = "MassUnit";
+                    $massUnitList = $this->model("MassUnitModel")->getMassUnitList();
+                    return $this->view("AdminLayout", [
+                        "page" => "MassUnit",
+                        "action" => "MassUnit",
+                        "massUnitList" => $massUnitList
+                    ]);
                 }
         }
     }
@@ -655,7 +643,7 @@ class Admin extends Controller
             $info["facebook"] = $facebook;
             $info["zalo"] = $zalo;
             $info["email"] = $email;
-            file_put_contents("./info.json",json_encode($info, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+            file_put_contents("./info.json", json_encode($info, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
             $message = "Đổi thông tin thành công!";
         }
         return $this->view("AdminLayout", [
@@ -671,8 +659,7 @@ class Admin extends Controller
     }
     private function updateStatus($orderId, $statusID)
     {
-        $orderModel = $this->model("OrderModel");
-        $orderModel->updateOrder($orderId, $statusID);
+        $this->model("OrderModel")->updateStatus($orderId, $statusID);
         header("Location:" . Redirect("Admin", "Order"));
     }
     function test()

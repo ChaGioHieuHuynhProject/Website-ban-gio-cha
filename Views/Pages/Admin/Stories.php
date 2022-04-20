@@ -4,22 +4,22 @@
     </div>
 <?php } else { ?>
     <table class="table">
-        <thead>
+        <thead class=" w-100">
             <tr class="text-center">
                 <th scope="col">ID</th>
                 <th scope="col">Tiêu đề</th>
                 <th scope="col">Ảnh</th>
-                <th scope="col">Nội dung</th>
+                <th scope="col" class="w-60">Nội dung</th>
                 <th scope="col">Thao tác</th>
         </thead>
-        <tbody class="text-justify">
+        <tbody class="text-justify w-100">
             <?php foreach ($data["storiesList"] as $stories) { ?>
                 <tr>
                     <th scope="row"><?= $stories["id"] ?></th>
                     <td><?= $stories["title"] ?></td>
                     <td><img class="img-fluid" src="<?= ImageLink($stories["img"]) ?>"></td>
-                    <td><?= $stories["content"] ?></td>
-                    <td>
+                    <td class="w-60"><?= $stories["content"] ?></td>
+                    <td class="text-center">
                         <a onclick="deleteStory(<?=$stories['id']?>)" role="button" class="btn btn-danger">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
@@ -32,4 +32,5 @@
         </tbody>
     </table>
 <?php } ?>
-<?=RenderJs("AdminStories")?>
+<?= RenderCSS("tableStyles");
+RenderJs("AdminStories")?>

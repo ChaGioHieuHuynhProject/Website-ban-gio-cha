@@ -7,7 +7,8 @@
                     <th class="stt">Mã Sản Phẩm</th>
                     <th>Tên Sản Phẩm</th>
                     <th>Đơn vị</th>
-                    <th>Factor</th>
+                    <th>Hệ số</th>
+                    <th>Đơn giá</th>
                     <th>Sửa</th>
                     <th>Xóa</th>
                 </tr>
@@ -19,6 +20,7 @@
                         <td><?= $massUnit['nameProduct'] ?></td>
                         <td><?= str_replace("_", " ", $massUnit['massunit']) ?></td>
                         <td><?= $massUnit['factor'] ?></td>
+                        <td><?= number_format($massUnit['price']) ?> Đ</td>
                         <td>
                             <a href="<?= Redirect("Admin", "MassUnit") ?>/Update/<?= $massUnit['productId'] ?>/<?= $massUnit['massunit'] ?>" role="button" class="btn btn-primary">
                                 <i class="far fa-edit"></i>

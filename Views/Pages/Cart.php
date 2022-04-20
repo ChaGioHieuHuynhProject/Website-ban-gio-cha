@@ -17,7 +17,7 @@
             <tr>
                 <td><?= $index + 1 ?></td>
                 <td><img class="tbl-img" src="<?= ImageLink($detail["productInfo"]["img"]) ?>" alt=""></td>
-                <td><?= $detail["productInfo"]["name"] ?><?= $detail["massUnit"] == null ? '' : "({$detail['massUnit']})" ?>
+                <td><?= $detail["productInfo"]["name"] ?> (<?= str_replace('_', ' ', $detail['massUnit']) ?>)
                 </td>
                 <td><span id="price-<?= $index ?>"><?= number_format($detail["price"]) ?></span> VND</td>
                 <td>

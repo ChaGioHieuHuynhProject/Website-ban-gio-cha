@@ -2,7 +2,7 @@
 
     function getMassUnitList(){
         $massUnitList = [];
-        $results = $this->con->query("SELECT productId, products.name as nameProduct, massunits.name as massunit, factor 
+        $results = $this->con->query("SELECT productId, products.name as nameProduct, massunits.name as massunit, factor, products.price*factor as price
         FROM massunits
         LEFT JOIN products
         ON massunits.productId = products.id");
@@ -26,7 +26,7 @@
     }
 
     function getMassUnit($productId, $nameMassUnit){
-        $result = mysqli_query($this->con, "SELECT productId, massunits.name as massunit, factor, products.name as nameProduct 
+        $result = $this->con->query("SELECT productId, massunits.name as massunit, factor, products.name as nameProduct, products.price*factor as price 
         FROM massunits
         LEFT JOIN products
         ON massunits.productId = products.id
@@ -46,8 +46,7 @@
     }
     
     function deleteMassUnit($productId, $name){
-        $sql = "DELETE FROM  massunits WHERE productId = {$productId} and name = '{$name}'";
+        $sql = "DELETE FROM massunits WHERE productId = $productId and name = '$name'";
         return $this->con->query($sql);
     }
 }
-?>

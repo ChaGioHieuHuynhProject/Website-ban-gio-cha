@@ -4,7 +4,7 @@
     --content-img-above-width:50%;
     --img-above-position:sticky;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 .N-container {
     height: auto;
     padding: var(--padding-screen);
@@ -18,9 +18,10 @@
 
 .N-title p {
     text-align: center;
-    font-size: 35px;
+    font-size: 2.5rem;
     margin: 2rem 0;
-    font-weight: bold
+    font-weight: bold;
+    text-transform: capitalize;
 }
 
 .N-layout {
@@ -59,13 +60,15 @@
     margin: 1rem auto;
     text-align: center;
     font-weight: bold;
+    font-size: 1.5rem;
 }
 
 .N-text-content {
     margin: 1rem;
     word-wrap: break-word;
     text-align: justify;
-    line-height: 1.8rem
+    line-height: 1.8rem;
+    font-family: 'Source Sans Pro', sans-serif!important;
 }
 
 @media screen and (max-width: 1224px) {
