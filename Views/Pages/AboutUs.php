@@ -44,14 +44,13 @@
     </div>
     <div class="content-below">
         <div class="aboutUs-title">Các chứng nhận đạt được</div>
-        <div class="img-content">
-            <img src="<?= ImageLink('HoinghiOCOP.jpg') ?>">
-        </div>
-        <div class="img-content">
-            <img class="" src=<?= ImageLink('OCOP-certificate.jpg') ?>>
-        </div>
-        <div class="img-content">
-            <img src=<?= ImageLink('certificate-of-food-hygiene-and-safety.jpg') ?>>
+        <div class="img-block">
+            <div class="img-content">
+                <img class="" src=<?= ImageLink('OCOP-certificate.jpg') ?>>
+            </div>
+            <div class="img-content">
+                <img src=<?= ImageLink('certificate-of-food-hygiene-and-safety.jpg') ?>>
+            </div>
         </div>
     </div>
     <div class=" rule-in-work">
