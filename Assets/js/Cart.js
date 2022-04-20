@@ -43,8 +43,7 @@ const confirmOrder = () => {
       className: "back-to-home",
     },
   }).then(() => {
-    return (window.location.href =
-      "http://localhost/KyNguyen/Website-ban-gio-cha/");
+    return (window.location.href = ROOT_URL);
   });
 };
 updateTempCost();

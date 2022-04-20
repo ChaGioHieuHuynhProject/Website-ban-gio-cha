@@ -2,12 +2,16 @@
   --padding-screen: 0 150px;
   --content-above-width:48%;
   --img-above-position:sticky;
+  --fd-img-block: row;
+  --img-below-width: 48%;
 }
 
 @media screen and (max-width: 1224px) {
   :root {
     --padding-screen: 0 calc(7px + 5vw);
     --content-above-width:48%;
+    --fd-img-block: row;
+    --img-below-width: 48%;
   }
 }
 
@@ -17,6 +21,8 @@
     --padding-screen: 0 calc(7px + 5vw);
     --fd-content-above:row;
     --img-above-position:sticky;
+    --fd-img-block: row;
+    --img-below-width: 48%;
   }
 }
 
@@ -26,6 +32,8 @@
     --fd-content-above:column-reverse;
     --img-above-height:300px;
     --img-above-position:unset;
+    --fd-img-block: column;
+    --img-below-width: 100%;
   }
 }
 
@@ -36,7 +44,7 @@
   line-height: 1.5rem;
 }
 .aboutUs-title {
-  margin: 2rem auto 2rem;
+  margin: 2rem auto;
   text-align: center;
   font-size: calc(23px + 6 * ((100vw - 320px) / 680));
   font-weight: bold;
@@ -69,8 +77,14 @@
   top: 0.5rem;
   border: 2px black solid;
 }
+
+.img-block{
+  display: flex;
+  flex-direction: var(--fd-img-block);
+  justify-content: space-between;
+}
 .content-below .img-content {
-  width: 100%;
+  width: var(--img-below-width);
   height: auto;
   margin: 2rem auto;
 }

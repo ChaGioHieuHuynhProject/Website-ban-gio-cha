@@ -1,11 +1,51 @@
-body {
-    overflow-x: hidden;
+:root {
+    --padding-screen: 0 150px;
+    --fd-container-detail:row;
+    --width-content-detail-element:48%;
 }
+
+@media screen and (max-width: 1224px) {
+    :root {
+        --padding-screen: 0 35px;
+        --fd-container-detail:row;
+        --width-content-detail-element:48%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    :root {
+        --padding-screen: 0 calc(7px + 5vw);
+        --fd-container-detail:column-reverse;
+        --width-content-detail-element:100%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+        --fd-container-detail:column-reverse;
+        --width-content-detail-element:100%;
+    }
+}
+/* ___________________________________________________________ */
 .detail-product {
-    margin: 2rem 10rem
+    padding: var(--padding-screen);
+    margin: 2rem auto;
 }
-.container {
-    margin: 1rem 0;
+.container-detail {
+    display: flex;
+    flex-direction: var(--fd-container-detail);
+    justify-content: space-between;
+}
+
+.container-detail a{
+    width: var(--width-content-detail-element);
+}
+
+.detail-des{
+    display: flex;
+    flex-direction: column;
+    width: var(--width-content-detail-element);
+    justify-content: space-evenly;
 }
 .detail-product h1 {
     text-transform: uppercase;
@@ -18,15 +58,17 @@ body {
     align-items: center;
     gap:5rem
 }
-
+.detail-img{
+    width: var(--width-content-detail-element);
+}
 #detail__img {
-    height: 40vw;
-    width: 35vw;
+    width: 100%;
     object-fit: cover;
     object-position: 50% 50%;
+    margin: 1rem auto;
 }
 .top-product {
-    margin: 2rem 0
+    margin: 1rem 0
 }
 .top-product h3 {
     text-align: center
@@ -52,7 +94,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 .buy-btn a {
     background-color: #fae5d7;

@@ -32,31 +32,31 @@
     </div>
 </section>
 <section class="foundation">
+    <div class="N-title">
+        <p>Lịch sử hình thành</p>
+    </div>
     <div class="t2-content">
-        <div class="N-title">
-            <p>Lịch sử hình thành</p>
-        </div>
-
         <p class="content-center">
             Chồng tôi kể rằng: “Bố là dân di cư từ Bắc vào Đà Nẵng vào năm 1954. Lúc còn nhỏ, tôi chỉ
             biết bám theo ông, ông dậy sớm giã chả, tôi cũng dậy theo... Vào năm 1975, bố mất lúc tôi
             chỉ mới 7 tuổi. Lớn lên tôi còn nhớ về bố trong những lần vét cối giã chả, gói trong lá
-            chuối rồi đem hấp. Mùi vị chả gói trong lá chuối đến bây giờ vẫn còn đọng mãi trong tôi. 
-            Vị ngọt của thịt, vị mặn vừa phải của nước mắm, và mùi thơm đặc trưng của giò Bắc (còn gọi là
+            chuối rồi đem hấp. Mùi vị chả gói trong lá chuối đến bây giờ vẫn còn đọng mãi trong tôi.
+            Vị ngọt của thịt, vị mặn vừa phải của nước mắm, và mùi thơm đặc trưng của giò Bắc (còn
+            gọi là
             chả lụa)...
         </p>
-        <div class="N-see-more">
-            <a class="N-btn N-btn-see-more" href="<?= Redirect("AboutUs") ?>">Tìm hiểu thêm</a>
-        </div>
+        <img src="<?= ImageLink('BaChuQuan.jpg')?>" alt="">
     </div>
-    <img src="<?= ImageLink('BaChuQuan.jpg')?>" alt="">
+    <div class="N-see-more">
+        <a class="N-btn N-btn-see-more" href="<?= Redirect("AboutUs") ?>">Tìm hiểu thêm</a>
+    </div>
 </section>
 <section class="N-container">
     <div class="N-title">
         <p>Câu chuyện mỗi ngày</p>
     </div>
     <div class="N-layout">
-    <?php foreach ($data["storiesList"] as $story) { ?>
+        <?php foreach ($data["storiesList"] as $story) { ?>
         <div class="N-card">
             <img class="N-card-img" src="<?=ImageLink($story["img"])?>" alt="">
             <div class="N-card-body">

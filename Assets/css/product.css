@@ -1,13 +1,35 @@
+:root {
+    --padding-screen: 0 150px;
+}
+
+@media screen and (max-width: 1224px) {
+    :root {
+        --padding-screen: 0 35px;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    :root {
+        --padding-screen: 0 calc(7px + 5vw);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+        
+    }
+}
+/* _____________________________________________________________ */
+.products {
+    padding: var(--padding-screen);
+    margin: 2rem auto;
+}
+
 .products-title {
     text-align: center;
     font-size: 2.25rem;
     font-weight: bold;
 } 
-.products {
-    margin: 2rem auto;
-    justify-content: space-between;
-    width: 80vw;
-}
 
 .products h1 {
     margin-top: 1rem;
@@ -15,25 +37,16 @@
 }
 
 .content {
-    display: grid;
-    grid-template-columns: repeat(3, 30%);
-    height: 80vh;
-    justify-content: space-between;
-    margin-top: 1rem;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0);
-    transition: background 0.5s ease;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem auto;
 }
 
 .div-image {
     background: #DBD1CF;
+    height: 400px;
+    width: 400px;
     align-items: center;
     text-align: center;
     position: relative;
@@ -48,23 +61,36 @@
 }
 
 .div-image img {
-    width: 25rem;
-    height: 15rem;
+    height: 100%;
     object-fit: cover;
 }
 
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+}
 
 .title {
     position: absolute;
-    width: 500px;
+    width: 100%;
     bottom: 10%;
     font-weight: 700;
-    font-size: 30px;
     text-align: center;
     color: black;
     z-index: 100;
     transition: top 25 5s ;
 }
+
+.title a::before {
+    content: "ả";
+    visibility: hidden;
+}
+
 .title a::after{
     content: "ả";
     visibility: hidden;
@@ -73,7 +99,6 @@
     top: 50%;
     transform: translate(-50% -50%);
     color: white;
-    
 }
 
 .div-image:hover .block {
@@ -83,25 +108,32 @@
 
 .button {
     position: absolute;
-    width: 500px;
-    text-align: center;
+    width: 100%;
+    text-align: center; 
     opacity: 0;
-    transition: opacity .35s ease;
+    transition: 0.35s ease;
+    opacity: 1;
+    transition: all 1s;
 }
 
 .button a {
     width: 200px;
     padding: 12px 48px;
     text-align: center;
-    color: white;
-    border: solid 2px white;
+    color: rgb(0, 0, 0);
+    border: solid 2px rgb(0, 0, 0);
     z-index: 1;
-    text-decoration: none;
+    /* text-decoration: none; */
+    transition: all 1s;
 }
 
 .div-image:hover .button {
     opacity: 1;
     text-decoration: dashed;
+}
+.div-image:hover a {
+    color: white;
+    border: solid 2px white;
 }
 
 .block {

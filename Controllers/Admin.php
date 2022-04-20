@@ -1,5 +1,6 @@
-<?php class Admin extends Controller
-{
+<?php
+class Admin extends Controller
+{   
     function Index()
     {
         header("Location:" . Redirect("Admin", "DashBoard"));
@@ -30,6 +31,45 @@
             "loginMessage" => $message
         ]);
     }
+
+    function Signup(){
+        if (!$this->isAdminLogedIn()) {
+            return header("Location:" . Redirect("Admin", "Login"));
+        }
+        if (!isset($_POST["signup"])){
+            return $this->view("AdminLayout", [
+                "page" => "Signup",
+                "action" => "DashBoard",
+                "error" =>""
+            ]);
+        }else{
+            $adminModel = $this->model("AdminModel");
+            $email = $_POST['user-email'];
+            $password1 = $_POST['user-password'];
+            $password2 = $_POST['enter-the-password'];
+            if($adminModel->checkUserEmail($email)){
+                if($password1 == $password2){
+                    $adminModel->addAdmin($email, $password1);
+                    return header("Location:" . Redirect("Admin").$_SESSION["indexPage"]);
+                }
+                else{
+                    return $this->view("AdminLayout", [
+                        "page" => "Signup",
+                        "action" => "DashBoard",
+                        "error" => "Mật khẩu Không Khớp"
+                    ]);
+                }
+            }else{
+                return $this->view("AdminLayout", [
+                    "page" => "Signup",
+                    "action" => "DashBoard",
+                    "error" => "Email Đã Tồn Tại"
+                ]);
+            }
+        }
+
+    }
+
     function Logout()
     {
         $_SESSION[ADMIN_LOGIN] = null;
@@ -40,8 +80,13 @@
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
         }
+<<<<<<< HEAD
         $orderModel = $this->model("OrderModel");
         return $this->view("AdminLayout", [
+=======
+        $_SESSION["indexPage"] = "DashBoard";
+        $this->view("AdminLayout", [
+>>>>>>> 1fafa1ce0000a252ba620fa47b8bd4b2e455a374
             "page" => "DashBoard",
             "action" => "DashBoard",
             "numOfCustomers" => $orderModel->countCustomer(),
@@ -84,6 +129,7 @@
                             }
                         }
                     }
+                    // $_SESSION["indexPage"] = "Product/Create";
                     return $this->view("AdminLayout", [
                         "page" => "ProductForm",
                         "action" => "Product",
@@ -116,7 +162,6 @@
                     if ($product == null) {
                         return header("Location:" . Redirect("Admin", "Product"));
                     }
-
                     $error = "";
                     if (isset($_POST["save"])) {
                         $name = $_POST["name"];
@@ -150,6 +195,7 @@
                             }
                         }
                     }
+                    // $_SESSION["indexPage"] = "Product/Update/$id";
                     return $this->view("AdminLayout", [
                         "page" => "ProductForm",
                         "action" => "Product",
@@ -158,13 +204,15 @@
                     ]);
                 }
             default: {
+                    $_SESSION["indexPage"] = "Product";
                     $productList = $this->model("ProductModel")->getProductList();
                     $this->view("AdminLayout", [
                         "page" => "Product",
                         "action" => "Product",
                         "productList" => $productList
                     ]);
-                }
+                    $_SESSION["indexPage"] = "Product/Update/$id";
+            }
         }
     }
     function Order($action = null, $orderId = null, $statusId = null)
@@ -199,6 +247,7 @@
                     } else {
                         $orderDetail = $this->model("OrderDetailModel")->getOrderDetailById($orderId);
                     }
+                    // $_SESSION["indexPage"] = "Order/Show/$orderId";
                     return $this->view("AdminLayout", [
                         "page" => "OrderDetail",
                         "action" => "Order",
@@ -206,18 +255,34 @@
                         "orderDetail" => $orderDetail
                     ]);
                 }
+            case "ShowByStatus":{
+                    $statuses = $this->model("OrderModel")->countGroupByStatus();
+                    $orderList = $this->model("OrderModel")->getOrderListByStatusId($statusId);
+                    $statusList = $this->model("StatusModel")->getStatusList();
+                    $_SESSION["indexPage"] = "Order/ShowByStatus/null/$statusId";
+                    return $this->view("AdminLayout", [
+                        "page" => "Order",
+                        "action" => "Order",
+                        "orderList" => $orderList,
+                        "statusList" => $statusList,
+                        "statuses" => $statuses
+                    ]);
+            }
             default: {
+                    $statuses = $this->model("OrderModel")->countGroupByStatus();
                     $statusList = $this->model("StatusModel")->getStatusList();
                     if (isset($_POST["filter-order-status"]) && $_POST["filter-order-status"] != '') {
                         $orderList = $this->model("OrderModel")->getOrderListByStatusId($_POST["filter-order-status"]);
                     } else {
                         $orderList = $this->model("OrderModel")->getOrderList("DESC");
                     }
+                    $_SESSION["indexPage"] = "Order";
                     return $this->view("AdminLayout", [
                         "page" => "Order",
                         "action" => "Order",
                         "orderList" => $orderList,
-                        "statusList" => $statusList
+                        "statusList" => $statusList,
+                        "statuses" => $statuses
                     ]);
                 }
         }
@@ -229,6 +294,7 @@
             return header("Location:" . Redirect("Admin", "Login"));
         }
         $contactList = $this->model("ContactModel")->getContactList();
+        $_SESSION["indexPage"] = "Contact";
         $this->view("AdminLayout", [
             "page" => "Contact",
             "action" => "Contact",
@@ -483,6 +549,7 @@
                     return;
                 }
             default: {
+                    $_SESSION["indexPage"] = "Banner";
                     $bannerList = $this->model("BannerModel")->getAllBanner();
                     return $this->view("AdminLayout", [
                         "page" => "Banner",
@@ -493,19 +560,78 @@
         }
     }
 
-    function MassUnit($action = null, $id = null)
+    function MassUnit($action = null, $id = null, $name = null)
     {
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
         }
         switch ($action) {
             case "Create": {
+                    $error = "";
+                    if (isset($_POST["save"])) {
+                        $productId = $_POST["productId"];
+                        $nameMassUnit = str_replace(" ", "_", $_POST["nameMassUnit"]);
+                        $factor = $_POST["factor"];
+                        if (empty($error)) {
+                            try {
+                                $this->model("MassUnitModel")->addMassUnit($productId, $nameMassUnit, $factor);
+                                return header("Location:" . Redirect("Admin", "MassUnit"));
+                            } catch (Exception) {
+                                $error = "Có lỗi xảy ra!";
+                            }
+                        }
+                    }
+                    // $_SESSION["indexPage"] = "Product/Create";
+                    $productList = $this->model("ProductModel")->getProductList();
+                    return $this->view("AdminLayout", [
+                        "page" => "MassUnitForm",
+                        "action" => "MassUnit",
+                        "productList" => $productList,
+                        "error" => $error
+                    ]);
+                }
+            case "Update": {
+                    if ($id == null || $name == null) {
+                        return header("Location:" . Redirect("Admin", "MassUnit"));
+                    }
+
+                    $MassUnit = $this->model("MassUnitModel")->getMassUnit($id, $name);
+                    $error = "";
+                    if (isset($_POST["save"])) {
+                        $nameMassUnit = str_replace(" ", "_", $_POST["nameMassUnit"]);
+                        $factor = $_POST["factor"];
+                        if (empty($error)) {
+                            try {
+                                $this->model("MassUnitModel")->updateMassUnit($id, $name, $nameMassUnit, $factor);
+                                return header("Location:" . Redirect("Admin", "MassUnit"));
+                            } catch (Exception) {
+                                $error = "Có lỗi xảy ra!";
+                            }
+                        }
+                    }
+                    // $_SESSION["indexPage"] = "Product/Update/$id";
+                    return $this->view("AdminLayout", [
+                        "page" => "MassUnitForm",
+                        "action" => "Update",
+                        "error" => $error,
+                        "MassUnit" => $MassUnit
+                    ]);
+                }
+            case "Delete": {
+                    if ($id == null || $name == null) {
+                        return header("Location:" . Redirect("Admin", "MassUnit"));
+                    }
+                    $this->model("MassUnitModel")->deleteMassUnit($id, $name);
+                    return header("Location:" . Redirect("Admin", "MassUnit"));
                 }
             default: {
-                    return $this->view("AdminLayout", [
-                        "page" => "MassUnit",
-                        "action" => "MassUnit",
-                    ]);
+                $_SESSION["indexPage"] = "MassUnit";
+                $massUnitList = $this->model("MassUnitModel")->getMassUnitList();
+                return $this->view("AdminLayout", [
+                    "page" => "MassUnit",
+                    "action" => "MassUnit",
+                    "massUnitList" => $massUnitList
+                ]);
                 }
         }
     }

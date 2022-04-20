@@ -13,7 +13,8 @@ function Error()
 }
 function Redirect($controller, $action = "")
 {
-    return "/KyNguyen/Website-ban-gio-cha/$controller/$action";
+    $action = $action != "" ? "/$action" : "";
+    return "/KyNguyen/Website-ban-gio-cha/$controller"."{$action}";
 }
 function RenderCSS($cssFileName)
 {

@@ -28,10 +28,17 @@
           <a href="#" class="nav-link">Contact</a>
         </li> -->
         <?php
+        // session_start();
         switch ($data["action"]) {
           case "Product": { ?>
               <li class="nav-item d-none d-sm-inline-block">
                 <a href="<?= Redirect("Admin", "Product") ?>/Create" class="nav-link">Tạo sản phẩm mới</a>
+              </li>
+            <?php break;
+            }
+          case "MassUnit": { ?>
+              <li class="nav-item d-none d-sm-inline-block">
+                <a href="<?= Redirect("Admin", "MassUnit") ?>/Create" class="nav-link">Tạo đơn vị mới</a>
               </li>
             <?php break;
             }
@@ -134,6 +141,11 @@
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:8080/Website-ban-gio-cha/Admin/Signup" role="button">
+            <i class="fa-solid fa-user-plus"></i>
           </a>
         </li>
         <li class="nav-item">
