@@ -1,4 +1,4 @@
-const ROOT_URL = "http://localhost:8080/Website-ban-gio-cha/";
+const ROOT_URL = "http://localhost/KyNguyen/Website-ban-gio-cha/";
 const update = (index, quantity) => {
   $.post(`${ROOT_URL}Cart/Update`, { index: index, quantity: quantity });
   $(`#total-${index}`).text(
@@ -22,15 +22,18 @@ const confirmOrder = () => {
   var phoneNumber = $("#phoneNumber").val();
   var note = $("#note").val();
   if (!(name && address && phoneNumber)) {
-    console.log("bug");
+    console.log("bug")
     return;
   }
-  $.post(`${ROOT_URL}Cart/Confirm`, {
-    customerName: name,
-    phoneNumber: phoneNumber,
-    customerAddress: address,
-    note: note,
-  });
+  $.post(
+    `${ROOT_URL}Cart/Confirm`,
+    {
+      customerName: name,
+      phoneNumber: phoneNumber,
+      customerAddress: address,
+      note: note,
+    }
+  );
   swal({
     title: "Đặt hàng thành công!",
     text: "Shop sẽ liên lạc với bạn trong vài phút!\nCảm ơn bạn đã lựa chọn shop.",
@@ -41,7 +44,7 @@ const confirmOrder = () => {
     },
   }).then(() => {
     return (window.location.href =
-      "http://localhost:8080/Website-ban-gio-cha/");
+      "http://localhost/KyNguyen/Website-ban-gio-cha/");
   });
 };
 updateTempCost();
