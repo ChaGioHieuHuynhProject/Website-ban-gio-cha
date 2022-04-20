@@ -1,0 +1,36 @@
+ table {
+        table-layout: fixed;
+    }
+
+    th,
+    td {
+        padding: 10px 10px;
+    }
+
+    thead {
+        background: #f9f9f9;
+        display: table;
+        width: 100%;
+        /* width: calc(100% - 18px); */
+    }
+
+    tbody {
+        height: 200px;
+        overflow: auto;
+        display: block;
+        width: 100%;
+    }
+
+    tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .quantity {
+        padding-left: 40px !important;
+    }
+
+    .info-order {
+        padding-left: 7%;
+    }

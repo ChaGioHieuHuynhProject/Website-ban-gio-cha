@@ -13,7 +13,7 @@
     }
     function addStory($title, $content, $img)
     {
-        $this->con->query("INSERT INTO stories  
+        $this->con->query("INSERT INTO stories (title,content,img)  
             VALUES('$title', '$content', '$img')");
     }
     function updateStory($id,$title, $content, $img){

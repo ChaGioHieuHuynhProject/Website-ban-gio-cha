@@ -5,20 +5,20 @@ class OrderModel extends Model
     function getOrderList($order)
     {
         $results = $this->con->query("SELECT o.id, o.customerName, o.customerPhone, o.customerAddress, o.date, o.note, s.name as status, statusID FROM orders as o
-                                            JOIN statuses as s ON o.statusId = s.id 
-                                            ORDER BY o.date $order, o.statusId ASC");
+        JOIN statuses as s ON o.statusID = s.id 
+        ORDER BY o.date $order, o.statusID ASC");
         $orderList = [];
-        while ($row = $results->fetch_assoc()) {
+        while ($row = $results->fetch_assoc()){
             array_push($orderList, $row);
         }
         return $orderList;
     }
     function getOrderListByStatusId($statusId) {
-        $results = $this->con->query("SELECT o.id, o.customerName, o.customerPhone, o.customerAddress, o.date, o.note, s.name as status FROM orders as o
-                                            JOIN statuses as s ON o.statusId = s.id 
-                                            WHERE s.id = $statusId
-                                            ORDER BY o.date DESC"
-                                            );
+        $results = $this->con->query("SELECT o.id, o.customerName, o.customerPhone, o.customerAddress, o.date, o.note, s.name as status, statusID FROM orders as o
+        JOIN statuses as s ON o.statusID = s.id 
+        WHERE s.id = $statusId
+        ORDER BY o.date DESC"
+        );
         $orderList = [];
         while ($row = $results->fetch_assoc()) {
             array_push($orderList, $row);
@@ -91,5 +91,18 @@ class OrderModel extends Model
     function getLatestOrderId()
     {
         return $this->con->query("SELECT max(id) AS id FROM orders")->fetch_assoc()["id"];
+    }
+
+    function countGroupByStatus()
+    {
+        $results = $this->con->query("SELECT statusID, COUNT(statusID) as 'count'
+            FROM orders
+            GROUP BY statusID
+            ");
+        $statusList = [];
+        while ($row = $results->fetch_assoc()) {
+            $statusList += [$row["statusID"] => $row["count"]];
+        }
+        return $statusList;
     }
 }
