@@ -1,4 +1,4 @@
-fetch("http://localhost/KyNguyen/Website-ban-gio-cha/info.json")
+fetch("http://localhost:8080/Website-ban-gio-cha/info.json")
   .then((response) => {
     return response.json();
   })
