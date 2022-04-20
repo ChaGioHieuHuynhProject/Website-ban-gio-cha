@@ -1,5 +1,5 @@
 :root {
-    --banner-height: 870px;
+    --banner-height: 800px;
     --padding-screen: 0 150px;
     --baner-title-font-size: calc(3.75rem + 6 * ((100vw - 320px) / 700));
     --fd-foundation: row;
@@ -10,7 +10,7 @@
 @media screen and (max-width: 1224px) {
     :root {
         --padding-screen: 0 35px;
-        --banner-height: 800px;
+        --banner-height: 500px;
         --baner-title-font-size: calc(3.75rem + 6 * ((100vw - 320px) / 700));
         --fd-foundation: row;
         --foundation-img-width: 48%;
@@ -31,7 +31,7 @@
 
 @media screen and (max-width: 640px) {
     :root {
-        --banner-height: 450px;
+        --banner-height: 400px;
         --baner-title-font-size: calc(2rem + 6 * ((100vw - 320px) / 700));
         --fd-foundation: column;
         --foundation-img-width: 100%;
