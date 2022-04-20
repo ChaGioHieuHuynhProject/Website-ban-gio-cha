@@ -40,9 +40,14 @@
         if (!$this->isAdminLogedIn()) {
             return header("Location:" . Redirect("Admin", "Login"));
         }
-        $this->view("AdminLayout", [
+        $orderModel = $this->model("OrderModel");
+        return $this->view("AdminLayout", [
             "page" => "DashBoard",
-            "action" => "DashBoard"
+            "action" => "DashBoard",
+            "numOfCustomers" => $orderModel->countCustomer(),
+            "numOfProducts" => $this->model("ProductModel")->countProduct(),
+            "numOfOrders" => $orderModel->countOrder(),
+            "numOfContacts" => $this->model("ContactModel")->countContact(),
         ]);
     }
     function Product($action = null, $id = null)

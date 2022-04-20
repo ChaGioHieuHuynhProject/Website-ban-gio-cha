@@ -43,4 +43,7 @@
     {
         return $this->con->query("DELETE FROM products WHERE id = $id");
     }
+    function countProduct() {
+        return $this->con->query("SELECT count(*) as count FROM products")->fetch_assoc()["count"];
+    }
 }

@@ -92,4 +92,10 @@ class OrderModel extends Model
     {
         return $this->con->query("SELECT max(id) AS id FROM orders")->fetch_assoc()["id"];
     }
+    function countOrder() {
+        return $this->con->query("SELECT count(*) AS count FROM orders")->fetch_assoc()["count"];
+    }
+    function countCustomer() {
+        return $this->con->query("SELECT count(DISTINCT(customerPhone)) AS count FROM orders")->fetch_assoc()["count"];
+    }
 }

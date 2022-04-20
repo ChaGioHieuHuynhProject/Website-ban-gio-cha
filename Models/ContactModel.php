@@ -27,4 +27,7 @@
         $sql = "DELETE FROM contacts WHERE id= $id";
         return $this->con->query($sql);
     }
+    function countContact() {
+        return $this->con->query("SELECT count(*) AS count FROM contacts")->fetch_assoc()["count"];
+    }
 }

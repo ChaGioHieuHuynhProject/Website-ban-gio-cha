@@ -423,6 +423,11 @@ h6, .h6 {
   font-weight: 300;
   line-height: 1.2;
 }
+.display-5 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
 
 hr {
   margin-top: 1rem;
@@ -53015,10 +53020,10 @@ a.text-muted:hover {
   vertical-align: middle!important;
 }
 .sidebar-collapse .content-wrapper{
-  width: 90vw
+  width: 95%
 }
 .content-wrapper {
-  transition: width 0.5s ease-out!important;
+  transition: width .7s ease-in-out;
 }
 input:-internal-autofill-selected {
   background-color: transparent!important;

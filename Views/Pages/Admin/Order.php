@@ -30,7 +30,7 @@
                         <div>SĐT: <?= $order["customerPhone"] ?></div>
                         <div>Địa chỉ: <?= $order["customerAddress"] ?></div>
                     </td>
-                    <td style="max-width: 20vw"><?= $order["note"] ?></td>
+                    <td style="max-width: 20vw"><?= empty($order["note"]) ? "Không có" : $order["note"] ?></td>
                     <td><?= $order["date"] ?></td>
                     <td>
                         <?php if ($order["statusID"] == 0) { ?>
