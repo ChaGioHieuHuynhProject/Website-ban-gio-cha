@@ -1,6 +1,5 @@
 <script src=”https://unpkg.com/babel-standalone@6/babel.min.js”></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-<link rel="stylesheet" href="http://localhost:8080/T%E1%BB%B1%20h%E1%BB%8Dc%20PHP/otakuvn/public/css/modalChaitan.css">
 <section class="signup-form">
     <div class="modal">
         <a href="http://localhost:8080/Website-ban-gio-cha/Admin/<?= $_SESSION["indexPage"] ?>"><i class="fa-solid fa-xmark"></i></a>
@@ -32,4 +31,6 @@
         </div>
     </div>
 </section>
-<script src="http://localhost:8080/T%E1%BB%B1%20h%E1%BB%8Dc%20PHP/otakuvn/public/js/modal.js"></script>
+<?= RenderCSS("modal");
+RenderJs("modal")
+?>
