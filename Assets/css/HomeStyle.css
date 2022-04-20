@@ -1,14 +1,52 @@
 :root {
-    --banner-height: 80vh;
+    --banner-height: 870px;
+    --padding-screen: 0 150px;
+    --baner-title-font-size: calc(3.75rem + 6 * ((100vw - 320px) / 700));
+    --fd-foundation: row;
+    --foundation-img-width: 48%;
+    --line-clamp-history-content: 5;
+}
+
+@media screen and (max-width: 1224px) {
+    :root {
+        --padding-screen: 0 35px;
+        --banner-height: 800px;
+        --baner-title-font-size: calc(3.75rem + 6 * ((100vw - 320px) / 700));
+        --fd-foundation: row;
+        --foundation-img-width: 48%;
+        --line-clamp-history-content: 5;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    :root {
+        --padding-screen: 0 calc(7px + 5vw);
+        --banner-height: 500px;
+        --baner-title-font-size: calc(2.5em + 6 * ((100vw - 320px) / 700));
+        --fd-foundation: column;
+        --foundation-img-width: 100%;
+        --line-clamp-history-content: 3;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+        --banner-height: 450px;
+        --baner-title-font-size: calc(2rem + 6 * ((100vw - 320px) / 700));
+        --fd-foundation: column;
+        --foundation-img-width: 100%;
+        --line-clamp-history-content: 3;
+    }
 }
 
 .t2-container {
     margin: 3rem auto;
+    padding: var(--padding-screen);
+    height: var(--banner-height);
 }
 
 .banner {
     height: var(--banner-height);
-    width: 78vw;
     margin: auto;
     display: flex;
     align-items: center;
@@ -16,11 +54,13 @@
 
 .slides {
     width: 75%;
+    height: 100%;
 }
-
+.t2-slide{
+    height: var(--banner-height);
+}
 .t2-slide img {
-    width: 100%;
-    height: 80vh;
+    height: var(--banner-height);
     object-fit: cover;
     object-position: center top;
 }
@@ -45,12 +85,12 @@
 }
 
 .title h3 {
-    font-size: 3.75rem;
+    font-size: var(--baner-title-font-size);
 }
 
 .title h1 {
     margin-top: 5%;
-    font-size: 1.25rem;
+    font-size: calc(1/3*var(--baner-title-font-size));
 }
 
 
@@ -147,6 +187,7 @@
 
 .foundation {
     display: flex;
+    flex-direction: column;
     margin: 3rem auto;
     width: 80vw;
     justify-content: center;
@@ -154,13 +195,26 @@
 }
 
 .foundation img {
-    width: 50%;
+    width: var(--foundation-img-width);
     object-fit: cover;
 }
-
+.t2-content{
+    display: flex;
+    flex-direction: var(--fd-foundation);
+    justify-content: space-between;
+    margin: 2rem auto;
+    gap: 2rem;
+}
 .content-center {
-    margin: 2rem;
     text-align: justify;
+    width: var(--foundation-img-width);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp-history-content);
+    /* number of lines to show */
+    line-clamp: var(--line-clamp-history-content);
+    -webkit-box-orient: vertical;
 }
 
 
@@ -178,9 +232,8 @@
 }
 
 .featured-products__content {
-    display: grid;
-    grid-template-columns: repeat(3, 30%);
-    height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 1rem;
 }
@@ -197,11 +250,14 @@
 
 .t-div-image {
     background: #DBD1CF;
+    height: 300px;
+    width: 300px;
     align-items: center;
     text-align: center;
     position: relative;
     display: flex;
     justify-content: center;
+    margin: 1rem auto;
 }
 
 .t-div-image:hover .t-overlay {
@@ -210,37 +266,20 @@
 }
 
 .t-div-image img {
-    width: 100%;
-    height: 10rem;
+    height: 100%;
     object-fit: cover;
-}
-
-.t-div-image:nth-child(1) {
-    grid-column: 1/2;
-    grid-row: 2/5;
-}
-
-.t-div-image:nth-child(2) {
-    grid-column: 2/3;
-    grid-row: 3/6;
-}
-
-.t-div-image:nth-child(3) {
-    grid-column: 3/4;
-    grid-row: 4/7;
 }
 
 .t-title {
     position: absolute;
-    width: 500px;
+    width: 100%;
     bottom: 10%;
     font-weight: 700;
     font-size: 30px;
     text-align: center;
     color: black;
-    z-index: 1;
+    z-index: 100;
     transition: top 25 5s;
-    user-select: none;
 }
 
 .t-title::before {
@@ -260,7 +299,6 @@
 
 .t-button {
     position: absolute;
-    width: 500px;
     text-align: center;
     opacity: 0;
     transition: opacity 0.35s ease;

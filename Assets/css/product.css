@@ -77,15 +77,20 @@
 
 .title {
     position: absolute;
-    width: 500px;
+    width: 100%;
     bottom: 10%;
     font-weight: 700;
-    font-size: 30px;
     text-align: center;
     color: black;
     z-index: 100;
     transition: top 25 5s ;
 }
+
+.title a::before {
+    content: "ả";
+    visibility: hidden;
+}
+
 .title a::after{
     content: "ả";
     visibility: hidden;
@@ -104,11 +109,10 @@
 .button {
     position: absolute;
     width: 100%;
-    text-align: center;
+    text-align: center; 
     opacity: 0;
     transition: 0.35s ease;
     opacity: 1;
-    display: block;
     transition: all 1s;
 }
 
