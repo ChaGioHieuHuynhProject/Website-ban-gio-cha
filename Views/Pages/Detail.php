@@ -1,51 +1,58 @@
-<section class="detail-products">
+<section class="detail-product">
     <?php if (is_null($data["product"])) {
         echo "No product is available!";
-        } else {
+    } else {
+        $product = $data["product"];
     ?>
-    This is detail of <?=$data["product"]["id"]?> name is <?=$data["product"]["name"]?> <br>
-    <a href="<?=Redirect("Cart", "Add")."/{$data["product"]["id"]}/1/Kg"?>">Thêm vào giỏ</a>
-    <?php } ?>
-
-    <div class="container grid">
+    <h1><?= $product["name"] ?></h1>
+    <div class="container-detail">
         <div class="detail-des">
-            <div class="Ingredient">
-                <h3>Thành phần</h3>
-                <ul>
-                    <li>Thịt heo</li>
-                    <li>Gia vị</li>
-                    <li>Nước mắm nhĩ</li>
-                </ul>
+            <div class="ingredient">
+                <h3>Thành phần:</h3>
+                <p><?=$product["ingredients"]?></p>
             </div>
-            <div class="Smell">
-                <h3>Hương vị</h3>
-                <ul>
-                    <li>Có vị thơm nồng của thịt luộc chín hòa quyện với mùi thơm của lá chuối.</li>
-                    <li>
-                        Hương vị đặc sắc này được tạo ra không chỉ bởi sự hòa hợp trọn vẹn của nước mắm nhĩ trong
-                        từng tế bào thịt mà còn bởi kỹ thuật xay mịn và luộc với lá chuối.
-                    </li>
-                </ul>
-
+            <div class="description">
+                <h3>Mô tả:</h3>
+                <p><?=$product["description"]?></p>
             </div>
-            <div class="use-pro">
-                <h3>Cách thưởng thức</h3>
-                <ul>
-                    <li>Giò lụa thường được cắt thành khoanh tròn theo chiều ngang và chia đều thành 4-8 miếng theo
-                        đường kính mỗi khoanh, trình bày trên đĩa thành hình hoa thị kèm với chén nước mắm ngon.
-                    </li>
-                    <li>Có thể ăn kèm với bánh giầy (gọi là bánh giầy giò), xôi (xôi giò), bánh cuốn hoặc món cơm
-                        gạo tám (cơm tám giò chả). </li>
-                    <li>Để tránh lát giò bị khô, có thể để lạnh.</li>
-                </ul>
+            <div class="usage-guide">
+                <h3>Cách thưởng thức:</h3>
+                <p><?=$product["usageGuide"]?></p>
             </div>
-            <a href="<?=Redirect("Cart", "Add")."/{$data["product"]["id"]}/1/Kg"?>"><button class="container">Thêm vào
-                    giỏ hàng</button></a>
-
         </div>
         <div class="detail-img">
-            <img id="bg-detail" src="<?= ImageLink("giolua.jpg")?>" alt="">
+            <img id="detail__img" src="<?= ImageLink($product["img"]) ?>">
         </div>
     </div>
+    <div class="top-product">
+        <h3>Giá: <span id="price"><?= number_format($product["price"] * $data["massUnitList"][0]["factor"]) ?></span>
+            VND</h3>
+    </div>
+    <div class="top-product mass-unit">
+        <h3>Số lượng: <span>
+                <select id="mass-unit" onchange="changeMassUnit()">
+                    <?php foreach ($data["massUnitList"] as $massUnit) { ?>
+                    <option value="<?= $massUnit["name"] ?>"
+                        data-price="<?= ($product["price"] * $massUnit["factor"]) ?>">
+                        <?= str_replace("_", " ", $massUnit["name"]) ?></option>
+                    <?php } ?>
+                </select>
+                <script>
+                const changeMassUnit = () => {
+                    $('#price').text(new Intl.NumberFormat().format($("#mass-unit").find(":selected").attr(
+                        "data-price")));
+                    $(".buy-btn a").attr("href",
+                        `<?= Redirect("Cart", "Add") . "/{$product["id"]}/1" ?>/${$("#mass-unit").val()}`
+                    )
+                }
+                </script>
+            </span>
+        </h3>
+    </div>
+    <div class="buy-btn">
+        <a role="button" href="<?= Redirect("Cart", "Add") . "/{$data["product"]["id"]}/1/Kg" ?>">Đặt
+            hàng</button>
+    </div>
+    <?php } ?>
 </section>
-<?= RenderCSS("Detail")?>
+<?= RenderCSS("Detail") ?>

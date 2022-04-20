@@ -11,14 +11,14 @@
         }
 
         function getQAAById($id){
-            $result = $this->con->query("SELECT * FROM QaA WHERE id={$id}");
+            $result = $this->con->query("SELECT * FROM QaA WHERE id= $id");
             return $result->fetch_assoc();
         }
 
         function addQAA($question, $answer){
-            $sql = "INSERT INTO reviews(question,answer) 
+            $sql = "INSERT INTO QaA(question,answer) 
             VALUES('$question','$answer')";
-            $this->con->query($sql);
+            return $this->con->query($sql);
         }
 
         function updateQAA($id,$question, $answer){
@@ -28,7 +28,7 @@
 
         function deleteQAA($id){
             $sql = "DELETE FROM QaA where id = $id";
-            $this->con->query($sql);
+            return $this->con->query($sql);
         }
     }
 ?>

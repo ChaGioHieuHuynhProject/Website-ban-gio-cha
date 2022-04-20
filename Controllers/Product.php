@@ -8,13 +8,15 @@
     }
     function Detail($id=null) {
         if (is_null($id)) {
-            Error();
-            return;
+            return Error();
         }
         $product = $this->model("ProductModel")->getProductById($id);
+        $masUnitList = $this->model("MassUnitModel")->getMassUnitListByProductId($id);
+        $product["price"] = $product["price"];
         $this->view("MainLayout", [
             "page" => "Detail",
-            "product" => $product
+            "product" => $product,
+            "massUnitList" => $masUnitList
         ]);
     }
 }

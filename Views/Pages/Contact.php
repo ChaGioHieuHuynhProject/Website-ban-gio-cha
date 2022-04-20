@@ -9,7 +9,8 @@
             <input class="N-field" type="text" name="phone-number" placeholder="Điện thoại *" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập số điện thoại của bạn')">
             <textarea class="N-field" name="note" cols="30" rows="8" placeholder="Lời nhắn *" required oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Vui lòng nhập lời nhắn đến shop')"></textarea>
             <div style="margin: 1rem 0; color: red; text-align: center">
-                <?= empty($data["message"]) ? "" : $data["message"] ?></div>
+                <?= empty($data["message"]) ? "" : $data["message"] ?>
+            </div>
             <button class="N-submit" type="submit" name="send-contact">Gửi</button>
         </form>
     </div>

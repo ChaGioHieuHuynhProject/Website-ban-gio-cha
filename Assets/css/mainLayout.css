@@ -142,7 +142,7 @@ svg {
 
 /* ______________________________________________________________________________________________ */
 :root {
-  --gap-nav: 35px;
+  --gap-nav: 20px;
   --fz-body: 13px;
   --display-menu-btn: none;
   --display-nav: flex;
@@ -248,16 +248,16 @@ img {
   display: var(--display-menu-btn);
 }
 
-
 .header-menu {
   display: var(--display-nav);
   gap: var(--gap-nav);
   margin: 0 10px;
+  font-size: 1.35vw;
+  line-height: 1.8rem;
 }
 
 .menu-item {
   display: block;
-  /* inline-size: max-content; */
   font-weight: bold;
 }
 
@@ -395,7 +395,7 @@ img {
 .slogan{
   text-decoration: none;
   color: green;
-  font-size: calc(20px + 6 * ((100vw - 320px) / 680));
+  font-size: calc(18px + 6 * ((100vw - 320px) / 680));
   font-weight: bold;
 }
 
@@ -423,9 +423,9 @@ img {
   display: flex;
   flex-direction: var(--fd-footer-center);
   justify-content: var(--footer-center-space);
-  align-items: center;
   padding: var(--padding-screen);
   height: 275px var(--height-footer-center);
+  margin-top: 1rem
 }
 
 .footer-center__title {

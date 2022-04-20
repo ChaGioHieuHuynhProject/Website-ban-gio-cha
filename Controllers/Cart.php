@@ -12,7 +12,7 @@
         $massUnitModel = $this->model("MassUnitModel");
         foreach ($_SESSION[CART] as $detail) {
             $product = $productModel->getProductById($detail["id"]);
-            $price = $detail["massUnit"] != null ? $massUnitModel->getFactor($detail["id"], $detail["massUnit"]) * $product["price"] : $product["price"];
+            $price = $massUnitModel->getFactor($detail["id"], $detail["massUnit"]) * $product["price"];
             array_push($detailList, ["productInfo" => $product, "quantity" => $detail["quantity"], "massUnit" => $detail["massUnit"], "price" => $price]);
         }
         $this->view("MainLayout", [
@@ -22,7 +22,7 @@
     }
     function Add($id = null, $quantity = null, $massUnit = null)
     {
-        if ($id == null || $quantity == null) {
+        if ($id == null || $quantity == null || $massUnit == null) {
             return header("Location:" . Redirect("Cart"));
         }
         $cartModel = $this->model("CartSessionHelper");

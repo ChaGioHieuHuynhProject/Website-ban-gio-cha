@@ -3,13 +3,28 @@
     function getStoryList()
     {
         $storyList = [];
-        $results = $this->con->query("SELECT * FROM stories");
+        $results = $this->con->query("SELECT * FROM stories ORDER BY id DESC");
         if ($results) {
             while ($row = $results->fetch_assoc()) {
                 array_push($storyList, $row);
             }
         }
         return $storyList;
+    }
+    function get2LatestStories() {
+        $storyList = [];
+        $results = $this->con->query("SELECT * FROM stories ORDER BY id DESC LIMIT 2");
+        if ($results) {
+            while ($row = $results->fetch_assoc()) {
+                array_push($storyList, $row);
+            }
+        }
+        return $storyList;
+    }
+    function getStoryById($id)
+    {
+        $result = $this->con->query("SELECT * FROM stories WHERE id = {$id}");
+        return $result->fetch_assoc();
     }
     function addStory($title, $content, $img)
     {
@@ -21,10 +36,6 @@
 
     }
     function deleteStory($id){
-        $this->con->query("DELETE FROM stories WHERE id = {$id}");
-    }
-    function getStoryById($id){
-        $result= $this->con->query("SELECT * FROM stories WHERE id = {$id}");
-        return $result->fetch_assoc();
+        return $this->con->query("DELETE FROM stories WHERE id = {$id}");
     }
 }

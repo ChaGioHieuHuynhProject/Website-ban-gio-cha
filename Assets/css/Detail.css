@@ -1,33 +1,110 @@
+:root {
+    --padding-screen: 0 150px;
+    --fd-container-detail:row;
+    --width-content-detail-element:48%;
+}
+
+@media screen and (max-width: 1224px) {
+    :root {
+        --padding-screen: 0 35px;
+        --fd-container-detail:row;
+        --width-content-detail-element:48%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    :root {
+        --padding-screen: 0 calc(7px + 5vw);
+        --fd-container-detail:column-reverse;
+        --width-content-detail-element:100%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+        --fd-container-detail:column-reverse;
+        --width-content-detail-element:100%;
+    }
+}
+/* ___________________________________________________________ */
+.detail-product {
+    padding: var(--padding-screen);
+    margin: 2rem auto;
+}
+.container-detail {
+    display: flex;
+    flex-direction: var(--fd-container-detail);
+    justify-content: space-between;
+}
+
+.container-detail a{
+    width: var(--width-content-detail-element);
+}
+
+.detail-des{
+    display: flex;
+    flex-direction: column;
+    width: var(--width-content-detail-element);
+    justify-content: space-evenly;
+}
+.detail-product h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+}
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    display: flex;
+    align-items: center;
+    gap:5rem
 }
-
+.detail-img{
+    width: var(--width-content-detail-element);
+}
 #detail__img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    /* background-image: ; */
-    height: auto;
     width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    margin: 1rem auto;
 }
-
-#bg-detail {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    /* height: 90vh; */
-    width: 90%;
-    height: 90%;
+.top-product {
+    margin: 1rem 0
 }
-
-.detail-img {
-    position: relative;
+.top-product h3 {
+    text-align: center
 }
-
-h3{
+#price {
+    font-size: 150%;
+    color: red;
+}
+#mass-unit{
+    font-size: large;
+    font-weight: bold;
+    border: 2px solid;
+    margin-left: 0.5rem
+}
+.detail-des h3 {
+    font-weight: bold
+}
+.detail-des div p{
+    margin: 1rem 0;
+    text-align: justify;
+}
+.buy-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+.buy-btn a {
+    background-color: #fae5d7;
+    padding: 0.5rem 2rem;
+    border: 2px solid transparent;
+    border-radius: 1.5rem;
+    font-size: 1.2rem;
+    color: black;
+}
+.buy-btn a:hover {
+    border: 2px solid black;
     font-weight: bold;
 }

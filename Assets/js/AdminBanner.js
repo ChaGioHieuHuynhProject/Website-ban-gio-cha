@@ -1,6 +1,7 @@
+const ROOT_URL = "http://localhost/KyNguyen/Website-ban-gio-cha/";
 const updateStatus = (id) => {
   $.post(
-    "http://localhost/KyNguyen/Website-ban-gio-cha/Admin/Banner/UpdateStatus",
+    `${ROOT_URL}Admin/Banner/UpdateStatus`,
     { id: id }
   );
 };
