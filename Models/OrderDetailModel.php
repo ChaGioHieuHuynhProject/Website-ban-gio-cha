@@ -42,8 +42,14 @@
             return $this->con->query($sql);
         }
         function countProduct($productId) {
-        return $this->con->query("SELECT count(*) as count FROM orderDetails WHERE productId = $productId")->fetch_assoc()["count"];
+            return $this->con->query("SELECT count(*) as count FROM orderDetails WHERE productId = $productId")->fetch_assoc()["count"];
         }
-
+        function bestSeller()
+        {
+            return $this->con->query("SELECT count(od.productId) AS count, od.productId, name
+                FROM orderdetails AS od 
+                JOIN products AS p ON od.productId = p.id
+                GROUP BY productId ORDER BY count DESC LIMIT 1")->fetch_assoc();
+        }
     }
 ?>

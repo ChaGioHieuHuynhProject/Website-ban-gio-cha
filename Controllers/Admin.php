@@ -88,6 +88,7 @@ class Admin extends Controller
             "numOfProducts" => $this->model("ProductModel")->countProduct(),
             "numOfOrders" => $orderModel->countOrder(),
             "numOfContacts" => $this->model("ContactModel")->countContact(),
+            "bestSeller" => $this->model("OrderDetailModel")->bestSeller()
         ]);
     }
     function Product($action = null, $id = null)

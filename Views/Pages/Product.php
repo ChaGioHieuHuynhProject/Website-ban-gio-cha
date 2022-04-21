@@ -13,4 +13,4 @@
         <?php } ?>
     </div>
 </section>
-<?= RenderCSS("Product") ?>
+<?= RenderCSS("product") ?>
